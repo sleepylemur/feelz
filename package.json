@@ -1,0 +1,33 @@
+{
+  "name": "fronting-pandas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sleepylemur/fronting-pandas.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sleepylemur/fronting-pandas/issues"
+  },
+  "homepage": "https://github.com/sleepylemur/fronting-pandas#readme",
+  "dependencies": {
+    "bluebird": "^2.9.33",
+    "body-parser": "^1.13.2",
+    "express": "^4.13.1",
+    "express-session": "^1.11.3"
+  },
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "chai-as-promised": "^5.1.0"
+  }
+}
