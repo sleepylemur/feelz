@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var mocha = require('gulp-mocha');
+var concat = require('gulp-concat');
 
 
 gulp.task('servertests', function() {
@@ -7,6 +8,17 @@ gulp.task('servertests', function() {
   return gulp.src('test/**/*.js', {read: false})
     .pipe(mocha());
 });
+
+//concatenates front-end js files into a single file so the browser needs only one require
+gulp.task('scripts', function(){
+  return gulp.src(['public/js/**/*.js'])
+    .pipe(concat('app.js'))
+    .pipe(gulp.dest('public/build/'))
+})
+
+gulp.task('watch_scripts', function(){
+  gulp.watch(['public/js/**/*.js'], ['scripts']);
+})
 
 gulp.task('watch', function() {
   gulp.watch(['lib/**/*.js','test/**/*.js'], ['servertests']);
