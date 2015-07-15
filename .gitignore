@@ -28,3 +28,5 @@ node_modules
 
 # Files ending in tilde ~ (ie old Emacs versions)
 *~
+
+public/build/

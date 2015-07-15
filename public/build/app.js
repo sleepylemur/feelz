@@ -51,6 +51,7 @@ angular.module('map', [])
 
     $scope.map = new google.maps.Map(document.getElementById('map-canvas'), options);
 
+    // initializes heat layer, GET request to the server.
     $scope.heatLayer = function(map){
       $http.get('listposts').success(function(data){
 
@@ -62,12 +63,32 @@ angular.module('map', [])
         $scope.heatmap = new google.maps.visualization.HeatmapLayer({data: locData});
         $scope.heatmap.setMap(map);
       })
-    }
+    };
 
-    $scope.heatLayer($scope.map)
+    $scope.checkZoom = function(){
+      if ($scope.map.getZoom() > 15) {
+
+      }
+    };
+    google.maps.event.addListener($scope.map, 'zoom_changed', $scope.checkZoom)
+
+    $scope.heatLayer($scope.map);
     return $scope;
   })
 var mapStyle = [{"featureType":"all","elementType":"all","stylers":[{"saturation":-100},{"gamma":0.5}]},{"featureType":"administrative.land_parcel","elementType":"geometry","stylers":[{"invert_lightness":true}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"color":"#7a945e"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"saturation":"100"},{"lightness":"0"}]},{"featureType":"road.highway.controlled_access","elementType":"geometry.fill","stylers":[{"saturation":"100"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"saturation":"100"},{"hue":"#ff0000"},{"lightness":"-9"}]},{"featureType":"road.arterial","elementType":"labels.text.fill","stylers":[{"lightness":"0"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"lightness":"-34"},{"saturation":"0"},{"gamma":"3.05"},{"weight":"2.06"},{"invert_lightness":true},{"hue":"#ff0000"}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"saturation":"100"},{"visibility":"on"},{"hue":"#ff0000"},{"lightness":"-8"}]},{"featureType":"road.local","elementType":"geometry.stroke","stylers":[{"saturation":"0"}]},{"featureType":"road.local","elementType":"labels.text.fill","stylers":[{"lightness":"0"}]},{"featureType":"transit.line","elementType":"geometry.fill","stylers":[{"saturation":"100"}]},{"featureType":"transit.line","elementType":"geometry.stroke","stylers":[{"saturation":"100"}]},{"featureType":"transit.station","elementType":"labels.icon","stylers":[{"saturation":"100"}]},{"featureType":"water","elementType":"geometry.fill","stylers":[{"lightness":"-55"}]},{"featureType":"water","elementType":"labels.text","stylers":[{"invert_lightness":true}]},{"featureType":"water","elementType":"labels.text.stroke","stylers":[{"weight":"1.75"},{"color":"#000000"}]}]
+angular.module('signup', [])
+  .controller('SignUpCtrl', function($scope, $http, $location, $window){
+    $scope.user = {}
+    $scope.signUp = function(){
+      $http.post('/signup', $scope.user)
+        .success(function(data, status, header, config){
+          $window.sessionStorage.token = data.token;
+          $location.path('/map');
+        }).error(function(data, status, header, config){
+          alert(status);
+        });
+      }
+    })
 angular.module('authinterceptor', [])
   .factory('authInterceptor', function($q, $window, $location) {
    return {
@@ -87,16 +108,3 @@ angular.module('authinterceptor', [])
      }
    };
  })
-angular.module('signup', [])
-  .controller('SignUpCtrl', function($scope, $http, $location, $window){
-    $scope.user = {}
-    $scope.signUp = function(){
-      $http.post('/signup', $scope.user)
-        .success(function(data, status, header, config){
-          $window.sessionStorage.token = data.token;
-          $location.path('/map');
-        }).error(function(data, status, header, config){
-          alert(status);
-        });
-      }
-    })
