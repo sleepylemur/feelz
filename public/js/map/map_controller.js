@@ -22,9 +22,31 @@ angular.module('map', [])
       })
     };
 
+    $scope.addMarkers = function(map){
+      $http.get('listposts').success(function(data){
+        $scope.markers = data.map(function(e){
+          var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(e.location[0], e.location[1]),
+            map: $scope.map,
+            title: e.message
+          })
+          google.maps.event.addListener(marker, 'click', function(){
+            console.log(e.message);
+          })
+          return marker;
+        });
+      });
+    };
+
+    $scope.removeMarkers = function(map){
+     
+    }
+
     $scope.checkZoom = function(){
       if ($scope.map.getZoom() > 15) {
-
+        $scope.addMarkers($scope.map)
+      } else if ($scope.markers){
+        $scope.removeMarkers($scope.map);
       }
     };
     google.maps.event.addListener($scope.map, 'zoom_changed', $scope.checkZoom)
