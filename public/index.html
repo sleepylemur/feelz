@@ -10,19 +10,12 @@
     <script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?libraries=visualization&sensor=true_or_false"></script>
     <script src="build/app.js"></script>
   </head>
+
   <body ng-app="vent" ng-controller = "mainCtrl">
     <a href="#/signup">Sign Up</a>
     <a href="#/login">Login</a>
     <button ng-click="signOut()">Sign Out</button>
-    <form ng-controller = "SignUpCtrl">
-      <label for ="username"> username </label>
-      <input type = "text"  id = "username" ng-model = "user.username">
-      <label for ="email"> email </label>
-      <input type = "text"  id = "email" ng-model = "user.email">
-      <label for ="password"> password </label>
-      <input type = "password" id = "password" ng-model = "user.password">
-      <button ng-click ="signUp()">sign up </button>
-    </form>
+
     <ng-view>
     </ng-view>
   </body>

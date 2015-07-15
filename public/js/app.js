@@ -30,4 +30,9 @@ angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map'])
       // .when('/feed', {
       //
       // })
+
+      .otherwise({
+        redirectTo: '/signup'
+      })
+
   });
