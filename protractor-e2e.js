@@ -6,7 +6,7 @@ exports.config = {
   allScriptsTimeout: 99999,
  
   // The address of a running selenium server.
-  //seleniumAddress: 'http://localhost:4444/wd/hub',
+  // seleniumAddress: 'http://localhost:4444/wd/hub',
  
   // The location of the selenium standalone server .jar file, relative
   // to the location of this config. If no other method of starting selenium
