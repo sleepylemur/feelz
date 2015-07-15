@@ -11,23 +11,26 @@ angular.module('vent', ['ngRoute'])
       }).error(function(data, status, header, config){
         alert(data);
       });
-      
+
     }
   })
   .controller('SignUpCtrl', function($scope, $http, $location, $window){
     $scope.user = {}
     $scope.signUp = function(){
       $http.post('http://localhost:3000/signup', $scope.user)
-      .success(function(data, status, header, config){
-        $window.sessionStorage.token = data.token; 
-        $location.path('/home'); 
-      }).error(function(data, status, header, config){
-        alert(data);
-      });
+        .success(function(data, status, header, config){
+          // console.log(data);
+          $window.sessionStorage.token = data.token;
+          $location.path('/home');
+        }).error(function(data, status, header, config){
+          alert(status);
+        });
     }
   })
   .controller('homeCtrl', function($scope, $http){
-    $http.get('http://localhost:3000/api/secret').success(console.log);
+    $http.get('http://localhost:3000/api/secret').success(function(data) {
+      console.log(data);
+    });
   })
   .factory('authInterceptor', function($q, $window, $location) {
    return {
