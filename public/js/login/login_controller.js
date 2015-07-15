@@ -34,7 +34,7 @@ angular.module('login', [])
           console.log(data.error);
         });
         // Logged into your app and Facebook.
-        testAPI();
+        // testAPI();
       } else if (response.status === 'not_authorized') {
         // The person is logged into Facebook, but not your app.
         document.getElementById('status').innerHTML = 'Please log ' +
@@ -76,13 +76,13 @@ angular.module('login', [])
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 
-    function testAPI() {
-      console.log('Welcome!  Fetching your information.... ');
-      FB.api('/me', function(response) {
-        console.log('Successful login for: ' + response.name);
-        document.getElementById('status').innerHTML =
-          'Thanks for logging in, ' + response.name + '!';
-      });
-    }
-    
+    // function testAPI() {
+    //   console.log('Welcome!  Fetching your information.... ');
+    //   FB.api('/me', function(response) {
+    //     console.log('Successful login for: ' + response.name);
+    //     document.getElementById('status').innerHTML =
+    //       'Thanks for logging in, ' + response.name + '!';
+    //   });
+    // }
+
 });
