@@ -27,7 +27,8 @@ angular.module('vent', ['ngRoute'])
     }
   })
   .controller('homeCtrl', function($scope, $http){
-    $http.get('http://localhost:3000/api/secret').success(console.log);
+    $http.get('http://localhost:3000/api/secret')
+      .success(function(data){console.log(data)});
   })
   .factory('authInterceptor', function($q, $window, $location) {
    return {
