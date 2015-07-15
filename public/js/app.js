@@ -36,7 +36,5 @@ angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map'])
         templateUrl: '../template/fb.html',
         controller: 'fbCtrl'
       })
-      .otherwise({
-        redirectTo: '/login'
-      });
+
   });
