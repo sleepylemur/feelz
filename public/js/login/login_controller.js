@@ -11,6 +11,11 @@ angular.module('login', [])
       });
     }
     $scope.fbSignIn = function(){
-      
+      $http.get('/login')
+      .success(function(data, status, header, config){
+        console.log(data);
+      }).error(function(data, status, header, config){
+        console.log(data.error);
+      });
     }
   })

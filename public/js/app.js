@@ -24,4 +24,5 @@ angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup'])
       .when('/feed', {
 
       })
+      
   });
