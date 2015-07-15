@@ -1,4 +1,4 @@
-angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup'])
+angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map'])
   .controller('testcontroller', function($scope) {
     $scope.message = 'hi!';
   })
@@ -11,15 +11,13 @@ angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup'])
    $httpProvider.interceptors.push('authInterceptor');
     $routeProvider
       .when('/login', {
-        templateUrl: '../template/login.html',
-        controller: 'LoginCtrl'
+        templateUrl: '../template/login.html'
       })
       .when('/signup', {
-        templateUrl: '../template/signup.html',
-        controller: 'SignUpCtrl'
+        templateUrl: '../template/signup.html'
       })
       .when('/map', {
-        templateUrl: '../template/home.html'
+        templateUrl: '../template/map_view.html'
       })
       .when('/feed', {
 
