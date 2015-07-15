@@ -12,7 +12,6 @@ angular.module('vent', ['ngRoute'])
       }).error(function(data, status, header, config){
         alert(data.error);
       });
-
     }
   })
   .controller('SignUpCtrl', function($scope, $http, $location, $window){
