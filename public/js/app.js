@@ -7,9 +7,10 @@ angular.module('vent', ['ngRoute'])
     $scope.submit = function(){
       $http.post('http://localhost:3000/login', $scope.user)
       .success(function(data, status, header, config){
-        alert(data);
+        $window.sessionStorage.token = data.token;
+        $location.path('/home');
       }).error(function(data, status, header, config){
-        alert(data);
+        alert(data.error);
       });
 
     }
