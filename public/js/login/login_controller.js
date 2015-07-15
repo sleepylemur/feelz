@@ -10,4 +10,7 @@ angular.module('login', [])
         alert(data.error);
       });
     }
+    $scope.fbSignIn = function(){
+      
+    }
   })
