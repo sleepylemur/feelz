@@ -5,7 +5,7 @@ angular.module('signup', [])
       $http.post('/signup', $scope.user)
         .success(function(data, status, header, config){
           $window.sessionStorage.token = data.token;
-          $location.path('/home');
+          $location.path('/map');
         }).error(function(data, status, header, config){
           alert(status);
         });
