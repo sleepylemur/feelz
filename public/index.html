@@ -10,9 +10,12 @@
     <script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?libraries=visualization&sensor=true_or_false"></script>
     <script src="build/app.js"></script>
   </head>
-  <body ng-app="vent">
-    <a href="#/signup">signup</a>
-    <a href="#/login">login</a>
+
+  <body ng-app="vent" ng-controller = "mainCtrl">
+    <a href="#/signup">Sign Up</a>
+    <a href="#/login">Login</a>
+    <button ng-click="signOut()">Sign Out</button>
+
     <ng-view>
     </ng-view>
   </body>
