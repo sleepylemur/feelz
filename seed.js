@@ -1,6 +1,7 @@
 var db = require('./lib/db.js')();
 var models = require('./lib/models.js')(db);
 
+// sync with force=true will drop tables and then rebuild the db from our models
 db.sync({force: true}).then(function() {
   Promise.all([
     models.User.create({email: 'e', password: 'e'}),
