@@ -32,7 +32,7 @@ describe('db.js', function() {
     after(function() {
        process.env.NODE_ENV = oldtarget;
     });
-    it('should initialize a sequelize object for testing when NODE_ENV is "testing"', function(){
+    it('should initialize a sequelize object for testing when NODE_ENV is "development"', function(){
       db = dbFactory();
       return expect(db.authenticate()).to.eventually.be.undefined;
     });
