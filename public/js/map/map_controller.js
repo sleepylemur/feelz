@@ -1,5 +1,5 @@
 angular.module('map', [])
-  .controller('MapCtrl', function($scope){
+  .controller('MapCtrl', function($scope, $http){
     var options = {
       center: {lat: 40.7397645, lng: -73.9894801},
       zoom: 10,
@@ -8,5 +8,27 @@ angular.module('map', [])
 
     $scope.map = new google.maps.Map(document.getElementById('map-canvas'), options);
 
+    // initializes heat layer, GET request to the server.
+    $scope.heatLayer = function(map){
+      $http.get('listposts').success(function(data){
+
+        var locData = [];
+        data.forEach(function(e, i){
+          locData.push(new google.maps.LatLng(e.location[0], e.location[1]))
+        })
+
+        $scope.heatmap = new google.maps.visualization.HeatmapLayer({data: locData});
+        $scope.heatmap.setMap(map);
+      })
+    };
+
+    $scope.checkZoom = function(){
+      if ($scope.map.getZoom() > 15) {
+
+      }
+    };
+    google.maps.event.addListener($scope.map, 'zoom_changed', $scope.checkZoom)
+
+    $scope.heatLayer($scope.map);
     return $scope;
   })

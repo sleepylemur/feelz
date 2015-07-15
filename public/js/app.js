@@ -7,6 +7,12 @@ angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map'])
       console.log(data);
     });
   })
+  .controller('fbCtrl', function($scope) {
+    alert('hi fb!');
+  })
+  .controller('fb2Ctrl', function($scope) {
+    alert('hi fb2!');
+  })
  .config(function($routeProvider, $httpProvider) {
    $httpProvider.interceptors.push('authInterceptor');
     $routeProvider
@@ -19,7 +25,15 @@ angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map'])
       .when('/map', {
         templateUrl: '../template/map_view.html'
       })
-      .when('/feed', {
-
-      })
+      // .when('/feed', {
+      //
+      // })
+      // .when('/fb', {
+      //   templateUrl: '../template/fb.html',
+      //   controller: 'fbCtrl'
+      // })
+      .when('/fb', {
+        templateUrl: '../template/fb.html',
+        controller: 'fbCtrl'
+      });
   });

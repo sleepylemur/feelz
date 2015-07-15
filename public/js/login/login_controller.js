@@ -1,5 +1,7 @@
 angular.module('login', [])
-  .controller('LoginCtrl', function($scope, $http, $window){
+
+  .controller('LoginCtrl', function($scope, $http, $window, $location){
+
     $scope.user = {}
     $scope.submit = function(){
       $http.post('/login', $scope.user)
@@ -10,6 +12,7 @@ angular.module('login', [])
         alert(data.error);
       });
     }
+
 
 
     ////////////////////////////////// FACEBOOK LOGIN STUFFF
@@ -80,5 +83,5 @@ angular.module('login', [])
         document.getElementById('status').innerHTML =
           'Thanks for logging in, ' + response.name + '!';
       });
-    }
+
   })

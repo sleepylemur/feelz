@@ -7,6 +7,12 @@ angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map'])
       console.log(data);
     });
   })
+  .controller('fbCtrl', function($scope) {
+    alert('hi fb!');
+  })
+  .controller('fb2Ctrl', function($scope) {
+    alert('hi fb2!');
+  })
  .config(function($routeProvider, $httpProvider) {
    $httpProvider.interceptors.push('authInterceptor');
     $routeProvider
@@ -19,13 +25,23 @@ angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map'])
       .when('/map', {
         templateUrl: '../template/map_view.html'
       })
-      .when('/feed', {
-
-      })
+      // .when('/feed', {
+      //
+      // })
+      // .when('/fb', {
+      //   templateUrl: '../template/fb.html',
+      //   controller: 'fbCtrl'
+      // })
+      .when('/fb', {
+        templateUrl: '../template/fb.html',
+        controller: 'fbCtrl'
+      });
   });
 
 angular.module('login', [])
-  .controller('LoginCtrl', function($scope, $http, $window){
+
+  .controller('LoginCtrl', function($scope, $http, $window, $location){
+
     $scope.user = {}
     $scope.submit = function(){
       $http.post('/login', $scope.user)
@@ -36,6 +52,7 @@ angular.module('login', [])
         alert(data.error);
       });
     }
+
 
 
     ////////////////////////////////// FACEBOOK LOGIN STUFFF
@@ -106,11 +123,11 @@ angular.module('login', [])
         document.getElementById('status').innerHTML =
           'Thanks for logging in, ' + response.name + '!';
       });
-    }
+
   })
 
 angular.module('map', [])
-  .controller('MapCtrl', function($scope){
+  .controller('MapCtrl', function($scope, $http){
     var options = {
       center: {lat: 40.7397645, lng: -73.9894801},
       zoom: 10,
@@ -119,6 +136,28 @@ angular.module('map', [])
 
     $scope.map = new google.maps.Map(document.getElementById('map-canvas'), options);
 
+    // initializes heat layer, GET request to the server.
+    $scope.heatLayer = function(map){
+      $http.get('listposts').success(function(data){
+
+        var locData = [];
+        data.forEach(function(e, i){
+          locData.push(new google.maps.LatLng(e.location[0], e.location[1]))
+        })
+
+        $scope.heatmap = new google.maps.visualization.HeatmapLayer({data: locData});
+        $scope.heatmap.setMap(map);
+      })
+    };
+
+    $scope.checkZoom = function(){
+      if ($scope.map.getZoom() > 15) {
+
+      }
+    };
+    google.maps.event.addListener($scope.map, 'zoom_changed', $scope.checkZoom)
+
+    $scope.heatLayer($scope.map);
     return $scope;
   })
 var mapStyle = [{"featureType":"all","elementType":"all","stylers":[{"saturation":-100},{"gamma":0.5}]},{"featureType":"administrative.land_parcel","elementType":"geometry","stylers":[{"invert_lightness":true}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"color":"#7a945e"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"saturation":"100"},{"lightness":"0"}]},{"featureType":"road.highway.controlled_access","elementType":"geometry.fill","stylers":[{"saturation":"100"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"saturation":"100"},{"hue":"#ff0000"},{"lightness":"-9"}]},{"featureType":"road.arterial","elementType":"labels.text.fill","stylers":[{"lightness":"0"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"lightness":"-34"},{"saturation":"0"},{"gamma":"3.05"},{"weight":"2.06"},{"invert_lightness":true},{"hue":"#ff0000"}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"saturation":"100"},{"visibility":"on"},{"hue":"#ff0000"},{"lightness":"-8"}]},{"featureType":"road.local","elementType":"geometry.stroke","stylers":[{"saturation":"0"}]},{"featureType":"road.local","elementType":"labels.text.fill","stylers":[{"lightness":"0"}]},{"featureType":"transit.line","elementType":"geometry.fill","stylers":[{"saturation":"100"}]},{"featureType":"transit.line","elementType":"geometry.stroke","stylers":[{"saturation":"100"}]},{"featureType":"transit.station","elementType":"labels.icon","stylers":[{"saturation":"100"}]},{"featureType":"water","elementType":"geometry.fill","stylers":[{"lightness":"-55"}]},{"featureType":"water","elementType":"labels.text","stylers":[{"invert_lightness":true}]},{"featureType":"water","elementType":"labels.text.stroke","stylers":[{"weight":"1.75"},{"color":"#000000"}]}]
@@ -148,7 +187,7 @@ angular.module('signup', [])
       $http.post('/signup', $scope.user)
         .success(function(data, status, header, config){
           $window.sessionStorage.token = data.token;
-          $location.path('/home');
+          $location.path('/map');
         }).error(function(data, status, header, config){
           alert(status);
         });
