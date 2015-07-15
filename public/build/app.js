@@ -7,6 +7,12 @@ angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup'])
       console.log(data);
     });
   })
+  .controller('fbCtrl', function($scope) {
+    alert('hi fb!');
+  })
+  .controller('fb2Ctrl', function($scope) {
+    alert('hi fb2!');
+  })
  .config(function($routeProvider, $httpProvider) {
    $httpProvider.interceptors.push('authInterceptor');
     $routeProvider
@@ -21,13 +27,21 @@ angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup'])
       .when('/map', {
         templateUrl: '../template/home.html'
       })
-      .when('/feed', {
-
-      })
+      // .when('/feed', {
+      //
+      // })
+      // .when('/fb', {
+      //   templateUrl: '../template/fb.html',
+      //   controller: 'fbCtrl'
+      // })
+      .when('/fb', {
+        templateUrl: '../template/fb.html',
+        controller: 'fbCtrl'
+      });
   });
 
 angular.module('login', [])
-  .controller('LoginCtrl', function($scope, $http){
+  .controller('LoginCtrl', function($scope, $http, $window, $location){
     $scope.user = {}
     $scope.submit = function(){
       $http.post('/login', $scope.user)
@@ -38,7 +52,11 @@ angular.module('login', [])
         alert(data.error);
       });
     }
+    $scope.fbSignIn = function(){
+
+    }
   })
+
 angular.module('authinterceptor', [])
   .factory('authInterceptor', function($q, $window, $location) {
    return {
