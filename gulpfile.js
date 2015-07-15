@@ -14,7 +14,7 @@ gulp.task('servertests', function() {
 gulp.task('scripts', function(){
   return gulp.src(['public/js/**/*.js'])
     .pipe(sourcemaps.init())
-    .pipe(concat('app.js'))
+    .pipe(concat('bundle.js'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('public/build/'));
 });

@@ -38,10 +38,6 @@ angular.module('map', [])
       });
     };
 
-    $scope.removeMarkers = function(map){
-     
-    }
-
     $scope.checkZoom = function(){
       if ($scope.map.getZoom() > 15) {
         $scope.addMarkers($scope.map)
