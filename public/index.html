@@ -13,9 +13,15 @@
   <body ng-app="vent">
     <a href="#/signup">signup</a>
     <a href="#/login">login</a>
-    <div ng-controller="testcontroller">
-      {{message}}
-    </div>
+    <form ng-controller = "SignUpCtrl">
+      <label for ="username"> username </label>
+      <input type = "text"  id = "username" ng-model = "user.username">
+      <label for ="email"> email </label>
+      <input type = "text"  id = "email" ng-model = "user.email">
+      <label for ="password"> password </label>
+      <input type = "password" id = "password" ng-model = "user.password">
+      <button ng-click ="signUp()">sign up </button>
+    </form>
     <ng-view>
     </ng-view>
   </body>
