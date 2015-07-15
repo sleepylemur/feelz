@@ -5,7 +5,7 @@ angular.module('vent', ['ngRoute'])
   .controller('LoginCtrl', function($scope, $http){
     $scope.user = {}
     $scope.submit = function(){
-      $http.post('http://localhost:3000/login', $scope.user)
+      $http.post('/login', $scope.user)
       .success(function(data, status, header, config){
         $window.sessionStorage.token = data.token;
         $location.path('/home');
@@ -18,7 +18,7 @@ angular.module('vent', ['ngRoute'])
   .controller('SignUpCtrl', function($scope, $http, $location, $window){
     $scope.user = {}
     $scope.signUp = function(){
-      $http.post('http://localhost:3000/signup', $scope.user)
+      $http.post('/signup', $scope.user)
         .success(function(data, status, header, config){
           // console.log(data);
           $window.sessionStorage.token = data.token;
@@ -29,7 +29,7 @@ angular.module('vent', ['ngRoute'])
     }
   })
   .controller('homeCtrl', function($scope, $http){
-    $http.get('http://localhost:3000/api/secret').success(function(data) {
+    $http.get('/api/secret').success(function(data) {
       console.log(data);
     });
   })
