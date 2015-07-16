@@ -8,10 +8,10 @@ angular.module('newPost',[])
             lng: position.coords.longitude
           }
           console.log("before http post: "+ $scope.post);
-          $http.post('/newPost', $scope.post).success(function(data, status, header, config){
-            console.log(data);
+          $http.post('/api/newPost', $scope.post).success(function(data, status, header, config){
+            console.log("success!!! " + data);
           }).error(function(data, status, header, config){
-            console.log(data);
+            console.log("failed!!!"  + data);
           });
         });
       }
