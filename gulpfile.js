@@ -2,11 +2,17 @@ var gulp = require('gulp');
 var mocha = require('gulp-mocha');
 var concat = require('gulp-concat');
 var sourcemaps = require('gulp-sourcemaps');
+var spawn = require('child_process').spawn;
 
+gulp.task('e2etests', function () {
+  var protractor = spawn('protractor',['protractor.conf.js'],{stdio: 'inherit'});
+});
+
+gulp.task('alltests', ['servertests','e2etests']);
 
 gulp.task('servertests', function() {
   process.env.NODE_ENV = 'testing';
-  return gulp.src('test/**/*.js', {read: false})
+  return gulp.src('test/*.js', {read: false})
     .pipe(mocha());
 });
 

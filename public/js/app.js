@@ -1,4 +1,4 @@
-angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map', 'newPost'])
+angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map', 'newPost', 'post'])
   .controller('mainCtrl', function($scope, $location, $window){
     $scope.signOut = function(){
       delete $window.sessionStorage.token;
@@ -32,6 +32,9 @@ angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map', 
       // })
       .when('/newPost', {
         templateUrl: '../template/new_post.html'
+      })
+      .when('/post', {
+        templateUrl: '../template/post.html'
       })
       .otherwise({
         redirectTo: '/signup'
