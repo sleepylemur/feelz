@@ -44,6 +44,7 @@
     "gulp-sourcemaps": "^1.5.2",
     "mocha": "^2.2.5",
     "protractor": "^2.1.0",
+    "selenium": "^2.20.0",
     "sinon": "^1.15.4",
     "supertest": "^1.0.1"
   }
