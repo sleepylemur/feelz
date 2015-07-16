@@ -1,5 +1,9 @@
 angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map', 'newPost', 'post'])
   .controller('mainCtrl', function($rootScope, $scope, $location, $window){
+    $scope.file = {filename: ""};
+    $scope.testupload = function() {
+      alert($scope.file);
+    }
     $scope.testsocket = function() {
       var socket = io()
       socket.emit('post','hello server');
