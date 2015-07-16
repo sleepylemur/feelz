@@ -12,17 +12,9 @@ angular.module('login', [])
         alert(data.error);
       });
     }
-
-
-
     ////////////////////////////////// FACEBOOK LOGIN STUFFF
-
-    // This is called with the results from from FB.getLoginStatus().
-     function statusChangeCallback(response) {
-      console.log('statusChangeCallback');
-      console.log(response);
-
-      if (response.status === 'connected') {
+  function statusChangeCallback(response) {
+    if (response.status === 'connected') {
         var fbAccount = {
           fbID: response.authResponse.userID,
           token: response.authResponse.accessToken
@@ -47,22 +39,22 @@ angular.module('login', [])
       }
     }
 
-    function checkLoginState() {
+    $scope.checkLoginState = function() {
       FB.getLoginStatus(function(response) {
         statusChangeCallback(response);
+        console.log("function with $scope: " + response);
       });
     }
 
     $window.fbAsyncInit = function() {
       FB.init({
-        appId      : "902314809811684",
-        cookie     : true,  // enable cookies to allow the server to access
-                            // the session
-        xfbml      : true,  // parse social plugins on this page
-        version    : 'v2.3' // use version 2.3
+        appId     : "902314809811684",
+        cookie    : true, // enable cookies to allow the server to access
+        status    : true,
+        xfbml     : true,  // parse social plugins on this page
+        version   : 'v2.3' // use version 2.3
       });
-
-      FB.getLoginStatus(function(response) {
+      FB.getLoginStatus(function(response){
         statusChangeCallback(response);
       });
     };
