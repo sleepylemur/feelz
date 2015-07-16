@@ -1,9 +1,18 @@
 <form ng-controller = "SignUpCtrl" novalidate>
-  <label for ="username"> username </label>
-  <input type = "text"  id = "username" ng-model = "user.username">
-  <label for ="email"> email </label>
-  <input type = "email"  id = "email" ng-model = "user.email">
-  <label for ="password"> password </label>
-  <input type = "password" id = "password" ng-model = "user.password">
-  <button id="signup" ng-click ="signUp()">sign up </button>
+  <div class="form-group">
+  	<span class='h2'>Sign Up</span>
+  </div>
+  <div class="form-group">
+	  <label for ="username"> username </label>
+	  <input type = "text"  class="form-control" id = "username" ng-model = "user.username">
+  </div>
+  <div class="form-group">
+  	<label for ="email"> email </label>
+  	<input type = "email"  class="form-control" id = "email" ng-model = "user.email">
+  </div>
+  <div class="form-group">
+  	<label for ="password"> password </label>
+  	<input type = "password" class="form-control" id = "password" ng-model = "user.password">
+  </div>
+   <button id="signup" class="btn btn-primary" ng-click ="signUp()">sign up </button>
 </form>

@@ -16,11 +16,13 @@
   </head>
 
   <body ng-app="vent" ng-controller = "mainCtrl">
-    <a href="#/signup">Sign Up</a>
-    <a href="#/login">Login</a>
-    <button ng-click="signOut()">Sign Out</button>
+    <div class="container">
+        <a href="#/signup">Sign Up</a>
+        <a href="#/login">Login</a>
+        <button ng-click="signOut()">Sign Out</button>
 
-    <ng-view>
-    </ng-view>
+        <ng-view>
+        </ng-view>
+    </div>
   </body>
 </html>
