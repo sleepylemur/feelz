@@ -8,7 +8,8 @@ db.sync({force: true}).then(function() {
     models.User.create({email: 'dave@dave.com', password: 'password'}),
     models.Post.create({location: ['40.7127', '-74.0059'], message: 'ugh, i have no thoughts', emotion: 'duh'}),
     models.Post.create({location: ['40.7327', '-74.0259'], message: 'do refugees not have place to be?', emotion: 'agro'})
-  ]).then(function() {
+  ]).then(function(arr) {
+    // console.dir(arr[0].dataValues);
     console.log('db seeded');
     models.User.findAll().then(function(data) {
       data.forEach(function(row){console.log(row.dataValues);});
