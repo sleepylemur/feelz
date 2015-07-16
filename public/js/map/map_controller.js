@@ -1,14 +1,15 @@
 angular.module('map', [])
   .controller('MapCtrl', function($scope, $http){
     navigator.geolocation.getCurrentPosition(function(position) {
-      var options = {
-        center: {lat: position.coords.latitude, lng: position.coords.longitude},
-        zoom: 10,
-        styles: mapStyle
-      }
-      $scope.map = new google.maps.Map(document.getElementById('map-canvas'), options);
+      $scope.map.setCenter({lat: position.coords.latitude, lng: position.coords.longitude});
     });
 
+    var options = {
+      center: {lat: 40.7397645, lng: -73.9894801},
+      zoom: 10,
+      styles: mapStyle
+    }
+    $scope.map = new google.maps.Map(document.getElementById('map-canvas'), options);
 
     // initializes heat layer, GET request to the server.
     $scope.heatLayer = function(){

@@ -1,3 +1,6 @@
+# os x stuff
+.DS_STORE
+
 # Logs
 logs
 *.log
