@@ -6,8 +6,13 @@ angular.module('login', [])
     $scope.submit = function(e){
       $http.post('/login', $scope.user)
       .success(function(data, status, header, config){
+        /// grant sesssions token
         $window.sessionStorage.token = data.token;
-        //$rootScope.socket = io();
+        /// initial client socket
+        $rootScope.currentuser = {id: data.id};
+        $rootScope.socket = io();
+        /// add user to socket with session token
+        $rootScope.socket.emit('addUser', $rootScope.currentuser);
         $location.path('/map');
       }).error(function(data, status, header, config){
         alert(data.error);

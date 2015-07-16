@@ -2,12 +2,13 @@ angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map', 
   .controller('mainCtrl', function($rootScope, $scope, $location, $window){
 
     $scope.testsocket = function() {
-      var socket = io()
-      socket.emit('post','hello server');
+      // var socket = io()
+      // socket.emit('post','hello server');
     }
     $scope.signOut = function(){
       delete $window.sessionStorage.token;
       $location.path('/');
+      $rootScope.socket.emit('removeUser', $rootScope.currentuser);
     }
   })
   .controller('testcontroller', function($scope) {
