@@ -5,6 +5,10 @@ angular.module('authinterceptor', [])
        config.headers = config.headers || {};
        if ($window.sessionStorage.token) {
          config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
+
+         // if no token, redirect to login, unless path === signup page.
+       } else if ($location.$$path !== '/signup'){
+        $location.path('login')
        }
        return config;
      },
