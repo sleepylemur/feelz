@@ -9,10 +9,9 @@ angular.module('newPost',[])
           }
 
           $http.post('/api/newPost', $scope.post).success(function(data, status, header, config){
-            console.log(data.id);
             $location.path('/post').search({id: data.id});
           }).error(function(data, status, header, config){
-            console.log("failed!!!"  + data);
+            console.log("post failed!!!"  + data);
           });
       });
     }
