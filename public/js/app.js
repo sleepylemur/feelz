@@ -1,5 +1,9 @@
 angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map', 'newPost', 'post'])
-  .controller('mainCtrl', function($scope, $location, $window){
+  .controller('mainCtrl', function($rootScope, $scope, $location, $window){
+    $scope.testsocket = function() {
+      var socket = io()
+      socket.emit('post','hello server');
+    }
     $scope.signOut = function(){
       delete $window.sessionStorage.token;
       $location.path('/');
