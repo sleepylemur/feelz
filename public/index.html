@@ -11,16 +11,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-route.js"></script>
     <script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?libraries=visualization&sensor=true_or_false"></script>
     <script src="build/bundle.js"></script>
-    <script src="build/ui-bootstrap-tpls-0.11.0.js"></script>
-    
+
+
   </head>
 
   <body ng-app="vent" ng-controller = "mainCtrl">
-    <a href="#/signup">Sign Up</a>
-    <a href="#/login">Login</a>
-    <button ng-click="signOut()">Sign Out</button>
+    <div class="container">
+        <a href="#/signup">Sign Up</a>
+        <a href="#/login">Login</a>
+        <button ng-click="signOut()">Sign Out</button>
 
-    <ng-view>
-    </ng-view>
+        <ng-view>
+        </ng-view>
+    </div>
   </body>
 </html>

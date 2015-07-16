@@ -9,7 +9,7 @@ angular.module('map', [])
     $scope.map = new google.maps.Map(document.getElementById('map-canvas'), options);
 
     // initializes heat layer, GET request to the server.
-    $scope.heatLayer = function(map){
+    $scope.heatLayer = function(){
       $http.get('listposts').success(function(data){
 
         var locData = [];
@@ -18,11 +18,12 @@ angular.module('map', [])
         })
 
         $scope.heatmap = new google.maps.visualization.HeatmapLayer({data: locData});
-        $scope.heatmap.setMap(map);
+        $scope.heatmap.setMap($scope.map);
       })
     };
 
-    $scope.addMarkers = function(map){
+
+    $scope.addMarkers = function(){
       $http.get('listposts').success(function(data){
         $scope.markers = data.map(function(e){
           var marker = new google.maps.Marker({
