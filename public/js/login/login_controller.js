@@ -1,12 +1,13 @@
 angular.module('login', [])
 
-  .controller('LoginCtrl', function($scope, $http, $window, $location){
+  .controller('LoginCtrl', function($rootScope, $scope, $http, $window, $location){
 
     $scope.user = {}
     $scope.submit = function(e){
       $http.post('/login', $scope.user)
       .success(function(data, status, header, config){
         $window.sessionStorage.token = data.token;
+        //$rootScope.socket = io();
         $location.path('/map');
       }).error(function(data, status, header, config){
         alert(data.error);
