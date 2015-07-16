@@ -3,7 +3,7 @@ angular.module('login', [])
   .controller('LoginCtrl', function($scope, $http, $window, $location){
 
     $scope.user = {}
-    $scope.submit = function(){
+    $scope.submit = function(e){
       $http.post('/login', $scope.user)
       .success(function(data, status, header, config){
         $window.sessionStorage.token = data.token;
