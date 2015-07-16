@@ -1,7 +1,7 @@
 <form ng-controller="newPostCtrl">
   <label for ="emotion"> feeling</label>
-  <input type = "radio" name = "post.emotion" value = "rave"> rave 🙌
-  <input type = "radio" name = "post.emotion" value = "rant"> rant 😱
+  <input type = "radio" ng-model = "post.emotion" value = "rave"> rave 🙌
+  <input type = "radio" ng-model = "post.emotion" value = "rant"> rant 😱
   <label for ="message"> message </label>
   <input type = "text"  id = "username" ng-model = "post.message" ng-minlength="10" ng-maxlength="100">
 
