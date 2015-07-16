@@ -26,8 +26,6 @@ describe('my app', function() {
 	describe('signup', function() {
 		beforeEach(function() {
 			return db.sync({force: true}).then(function() {
-				return models.User.create({email:'b',password:'b'});
-			}).then(function() {
 				server.start();
 			});
 
@@ -35,18 +33,25 @@ describe('my app', function() {
 		afterEach(function() {
 			server.stop();
 		});
-		it('should add a user to the db when we signup', function() {
+		it('should add a user to the db and navigate to map page when we signup', function() {
 			browser.get('#/signup');
 			element(by.id('username')).sendKeys('a');
-			element(by.id('email')).sendKeys('a');
+			element(by.id('email')).sendKeys('a@a.com');
 			element(by.id('password')).sendKeys('a');
 			element(by.id('signup')).click();
-			return browser.getCurrentUrl().then(function(url) {
-				return expect(models.User.find({where:{email:'a'}})).to.eventually.be.ok;
+			return browser.wait(protractor.until.elementIsVisible(element(by.id('map-canvas')))).then(function(){
+				return expect(models.User.find({where:{email:'a@a.com'}})).to.eventually.be.ok;
 			});
-
-			// test that we added a user
 		});
+		// it('should show a validation error if the same email signs up twice', function(done) {
+		// 	models.User.create({email: 'a@a.com', password: 'a', username: 'a'});
+		// 	browser.get('#/signup');
+		// 	element(by.id('username')).sendKeys('a');
+		// 	element(by.id('email')).sendKeys('a@a.com');
+		// 	element(by.id('password')).sendKeys('a');
+		// 	element(by.id('signup')).click();
+		// 	expect(element
+		// });
 	});
 });
 	// beforeEach(function () {
