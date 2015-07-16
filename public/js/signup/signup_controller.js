@@ -7,7 +7,7 @@ angular.module('signup', [])
           $window.sessionStorage.token = data.token;
           $location.path('/map');
         }).error(function(data, status, header, config){
-          alert(status);
+          alert(data.error);
         });
       }
     })
