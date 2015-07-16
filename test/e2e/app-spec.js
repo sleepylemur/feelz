@@ -68,7 +68,7 @@ describe('my app', function() {
 				element(by.id('email')).sendKeys('a@a.com');
 				element(by.id('password')).sendKeys('a');
 				element(by.id('login')).click();
-				return browser.wait(protractor.until.elementIsVisible(element(by.id('map-canvas'))))
+				return expect(browser.wait(protractor.until.elementIsVisible(element(by.id('map-canvas')))))
 					.to.eventually.be.ok;
 			});
 		});
