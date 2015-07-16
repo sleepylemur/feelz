@@ -7,12 +7,13 @@ angular.module('newPost',[])
             lat: position.coords.latitude,
             lng: position.coords.longitude
           }
-          console.log("before http post: "+ $scope.post);
+
           $http.post('/api/newPost', $scope.post).success(function(data, status, header, config){
-            console.log("success!!! " + data);
+            console.log(data.id);
+            $location.path('/post').search({id: data.id});
           }).error(function(data, status, header, config){
             console.log("failed!!!"  + data);
           });
-        });
-      }
+      });
+    }
   });
