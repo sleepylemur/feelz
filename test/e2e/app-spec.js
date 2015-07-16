@@ -28,7 +28,6 @@ describe('my app', function() {
 			return db.sync({force: true}).then(function() {
 				server.start();
 			});
-
 		});
 		afterEach(function() {
 			server.stop();
@@ -52,6 +51,27 @@ describe('my app', function() {
 		// 	element(by.id('signup')).click();
 		// 	expect(element
 		// });
+	});
+	describe('login', function() {
+		beforeEach(function() {
+			return db.sync({force: true}).then(function() {
+				server.start();
+			});
+		});
+		afterEach(function() {
+			server.stop();
+		});
+
+		it('should show the map if valid credentials are supplied', function() {
+			return models.User.create({email: 'a@a.com', password: 'a'}).then(function() {
+				browser.get('#/login');
+				element(by.id('email')).sendKeys('a@a.com');
+				element(by.id('password')).sendKeys('a');
+				element(by.id('login')).click();
+				return expect(browser.wait(protractor.until.elementIsVisible(element(by.id('map-canvas')))))
+					.to.eventually.be.ok;
+			});
+		});
 	});
 });
 	// beforeEach(function () {
