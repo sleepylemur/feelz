@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "gulp alltests",
-    "start": "node index.js"
+    "start": "node index.js",
+    "prestart": "gulp scripts"
   },
   "repository": {
     "type": "git",
