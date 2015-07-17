@@ -1,9 +1,10 @@
 angular.module('signup',[])
   .controller('SignUpCtrl', function($rootScope, $scope, $http, $location, $window){
-    $scope.user = {}
-    $scope.usernameerror = "bad name";
-    $scope.validateUsername = function() {
-      delete $scope.usernameerror;
+    $scope.user = {};
+    $scope.validateEmail = function() {
+      // if (!$scope.user.email.match(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)) {
+      //   $scope.emailerror = "invalid email";
+      // }
     };
     $scope.signUp = function(){
       $http.post('/signup', $scope.user)
