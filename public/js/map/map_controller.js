@@ -1,20 +1,18 @@
 angular.module('map', [])
   .controller('MapCtrl', function($scope, $http){
-
-    // gets user geolocation data
     navigator.geolocation.getCurrentPosition(function(position) {
-      $scope.map.setCenter({lat: position.coords.latitude, lng: position.coords.longitude});
+      var options = {
+        center: {lat: position.coords.latitude, lng: position.coords.longitude},
+        zoom: 10,
+        styles: mapStyle
+      }
+      $scope.map = new google.maps.Map(document.getElementById('map-canvas'), options);
     });
 
-    var options = {
-      zoom: 14,
-      styles: mapStyle
-    }
-    $scope.map = new google.maps.Map(document.getElementById('map-canvas'), options);
 
     // initializes heat layer, GET request to the server.
     $scope.heatLayer = function(){
-      $http.get('/api/emotions').success(function(data){
+      $http.get('listposts').success(function(data){
 
         var locData = [];
         data.forEach(function(e, i){
@@ -25,7 +23,6 @@ angular.module('map', [])
         $scope.heatmap.setMap($scope.map);
       })
     };
-
 
 
     $scope.addMarkers = function(){

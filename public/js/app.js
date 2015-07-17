@@ -1,4 +1,4 @@
-angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map', 'newPost', 'post'])
+angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map', 'newPost', 'post', 'feeds'])
   .controller('mainCtrl', function($rootScope, $scope, $location, $window){
 
     $scope.testsocket = function() {
@@ -41,6 +41,9 @@ angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map', 
       })
       .when('/post', {
         templateUrl: '../template/post.html'
+      })
+      .when('/newsfeed', {
+        templateUrl: './template/newsfeed.html'
       })
       .otherwise({
         redirectTo: '/signup'
