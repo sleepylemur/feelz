@@ -1,27 +1,5 @@
-angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map', 'newPost', 'post'])
-  .controller('mainCtrl', function($rootScope, $scope, $location, $window){
-    $scope.file = {filename: ""};
-    $scope.testupload = function() {
-      alert($scope.file);
-    }
-    $scope.testsocket = function() {
-      // var socket = io()
-      // socket.emit('post','hello server');
-    }
-    $scope.signOut = function(){
-      delete $window.sessionStorage.token;
-      $location.path('/');
-      $rootScope.socket.emit('removeUser', $rootScope.currentuser);
-    }
-  })
-  .controller('testcontroller', function($scope) {
-    $scope.message = 'hi!';
-  })
-  .controller('homeCtrl', function($scope, $http){
-    $http.get('/api/secret').success(function(data) {
-      console.log(data);
-    });
-  })
+
+angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map', 'newPost', 'post','scratch','main','feeds'])
 
  .config(function($routeProvider, $httpProvider) {
    $httpProvider.interceptors.push('authInterceptor');
@@ -44,6 +22,12 @@ angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map', 
       })
       .when('/post', {
         templateUrl: '../template/post.html'
+      })
+      .when('/scratch', { // scratch space for running various tests without polluting our pages
+        templateUrl: '../template/scratch.html'
+      })
+      .when('/newsfeed', {
+        templateUrl: './template/newsfeed.html'
       })
       .otherwise({
         redirectTo: '/signup'

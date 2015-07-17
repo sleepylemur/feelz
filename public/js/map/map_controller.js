@@ -1,10 +1,9 @@
 angular.module('map', [])
   .controller('MapCtrl', function($scope, $http){
-
-    // gets user geolocation data
     navigator.geolocation.getCurrentPosition(function(position) {
-      $scope.map.setCenter({lat: position.coords.latitude, lng: position.coords.longitude});
+      $scope.map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude))
     });
+
 
     // initializes map
     var options = {
@@ -13,7 +12,6 @@ angular.module('map', [])
     }
 
     $scope.map = new google.maps.Map(document.getElementById('map-canvas'), options);
-
 
     // getMapBounds used by requestPosts
     $scope.getMapBounds = function(){
@@ -53,7 +51,6 @@ angular.module('map', [])
             raves.push(new google.maps.LatLng(e.location[0], e.location[1]));
           }
         }
-
       });
 
       var gradient = [

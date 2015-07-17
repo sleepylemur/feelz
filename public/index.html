@@ -18,19 +18,12 @@
 
   <body ng-app="vent" ng-controller = "mainCtrl">
     <div class="container">
-        <a href="#/signup">Sign Up</a>
-        <a href="#/login">Login</a>
-        {{socketmessage}}
-        <button ng-click="signOut()">Sign Out</button>
-    <button ng-click="testsocket()">test socket</button>
-    <input type="file" ng-model="file.filename">
-    <button ng-click="testupload()">upload</button>
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
-        <ng-view>
-        </ng-view>
+      <a href="#/signup">Sign Up</a>
+      <a href="#/login">Login</a>
+      <button ng-click="signOut()">Sign Out</button>
+
+      <ng-view></ng-view>
+      <ul id="live_posts"></ul>
     </div>
   </body>
 </html>
