@@ -1,16 +1,20 @@
-<form ng-controller = "LoginCtrl" novalidate>
-  <label for ="email"> email </label>
-  <input type="email" id="email" ng-model = "user.email">
-  <label for ="password"> password </label>
-  <input type="password" id="password" ng-model = "user.password">
+<form class="container col s10 m8 l6" ng-controller = "LoginCtrl" auto-complete = "off">
 
-  <button id="login" ng-click = "submit()">login</button>
+  <div class="input-field col s6">
+  	<label for ="email"><i class = "icon ion-email"></i> email </label>
+  	<input type = "email"  class="validate" id = "email" ng-model = "user.email">
+  </div>
 
-  <br>
+  <div class="input-field col s6">
+  	<label for ="password"><i class = "icon ion-lock-combination"></i> password </label>
+  	<input type = "password" class="validate" id = "password" ng-model = "user.password">
+  </div>
+
+   <a class="waves-effect waves-light btn right" ng-click ="submit()">login</a>
+
   <fb:login-button scope="public_profile,email" ng-click="checkLoginState()">
   </fb:login-button>
-  <a href = "/#signup">sign up</a>
-  <div id="status">
-  </div>
+
+  first time? <a href = "/#signup">let it out ~~~</a>
 
 </form>

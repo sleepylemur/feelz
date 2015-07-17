@@ -1,9 +1,15 @@
-<form ng-controller="newPostCtrl">
-  <label for ="emotion"> feeling</label>
-  <input type = "radio" ng-model = "post.emotion" value = "rave"> rave 🙌
-  <input type = "radio" ng-model = "post.emotion" value = "rant"> rant 😱
-  <label for ="message"> message </label>
-  <input type = "text"  id = "username" ng-model = "post.message" ng-minlength="10" ng-maxlength="100">
+<form class="col s12" ng-controller="newPostCtrl">
+  <p>
+    <input class="with-gap" type="radio" id = "happy" ng-model = "post.emotion" value = "rave"/>
+    <label for="happy"> <i class = "icon ion-happy-outline"></i> rave 🙌</label>
+    <input class="with-gap" type="radio" id = "sad" ng-model = "post.emotion" value = "rant"/>
+    <label for="sad"> <i class = "icon ion-sad-outline"></i> rant 😱</label>
+  </p>
 
-  <button ng-click ="submit()">submit</button>
+  <div class = "input-field col s6">
+  <textarea id="message" class="materialize-textarea" ng-model = "post.message" ng-minlength="10" ng-maxlength="100" length="100"></textarea>
+  <label for ="message"><i class = "icon ion-leaf">message</i></label>
+  </div>
+
+  <a class="waves-effect waves-light btn" ng-click ="submit()"><i class="material-icons left"></i>post</a>
 </form>
