@@ -9,7 +9,7 @@
   </div>
   <div class="form-group">
   	<label for ="email"> email </label>
-  	<input type = "email"  class="form-control" id="email" ng-model="user.email" ng-blur="validateEmail()">
+  	<input type = "text"  class="form-control" id="email" ng-model="user.email" ng-change="emailerror = ''" ng-blur="validateEmail()">
     <div class="formerror">{{emailerror}}</div>
   </div>
   <div class="form-group">
