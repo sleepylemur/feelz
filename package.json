@@ -42,6 +42,7 @@
     "node-uuid": "^1.4.3",
     "pg": "^4.4.0",
     "pg-hstore": "^2.3.2",
+    "pg-promise": "^1.7.7",
     "sequelize": "^3.3.2",
     "socket.io": "^1.2",
     "superagent": "^1.2.0"
