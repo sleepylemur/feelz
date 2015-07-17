@@ -1,5 +1,5 @@
 angular.module('map', [])
-  .controller('MapCtrl', function($scope, $http){
+  .controller('MapCtrl', function($scope, $http, $rootScope){
     navigator.geolocation.getCurrentPosition(function(position) {
       $scope.map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude))
     });
@@ -26,12 +26,12 @@ angular.module('map', [])
     $scope.requestPosts = function() {
 
       var bounds = $scope.getMapBounds();
-      
+
       $http.get('/api/emotions?n=' + bounds.n + '&e=' + bounds.e + '&s=' + bounds.s + '&w=' + bounds.w)
         .then(function(data){
           $scope.dataPoints = data.data;
           disposeHeatLayers();
-          disposeMarkers();  
+          disposeMarkers();
         })
     }
 
@@ -115,16 +115,20 @@ angular.module('map', [])
     $scope.addData = function(data){
       // ensures initial trip to the server has been made
       if ($scope.dataPoints) {
-        $scope.dataPoints.push(data);
-        disposeHeatLayers();
-        disposeMarkers();
+        $rootScope.socket.on('list new post', function(data){
+          // any new post will be added & $apply will update scope
+          $scope.dataPoints.push(data);
+          disposeHeatLayers();
+          disposeMarkers();
+          // $scope.$apply();
+        });
       }
     }
 
 
     // makes initial api call
     google.maps.event.addListenerOnce($scope.map, 'tilesloaded', $scope.requestPosts);
-    
+
     google.maps.event.addListener($scope.map, 'zoom_changed', disposeMarkers);
 
     return $scope;
