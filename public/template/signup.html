@@ -4,15 +4,21 @@
   </div>
   <div class="form-group">
 	  <label for ="username"> username </label>
-	  <input type = "text"  class="form-control" id = "username" ng-model = "user.username">
+	  <input type = "text"  class="form-control" id="username" ng-model="user.username"  ng-change="usernameerror = ''">
+    <div class="formerror">{{usernameerror}}</div>
   </div>
   <div class="form-group">
   	<label for ="email"> email </label>
-  	<input type = "email"  class="form-control" id = "email" ng-model = "user.email">
+  	<input type = "email"  class="form-control" id="email" ng-model="user.email" ng-blur="validateEmail()">
+    <div class="formerror">{{emailerror}}</div>
   </div>
   <div class="form-group">
   	<label for ="password"> password </label>
-  	<input type = "password" class="form-control" id = "password" ng-model = "user.password">
+  	<input type = "password" class="form-control" id="password" ng-model="user.password">
+    <br>
+  	<label for ="confirm password"> confirm password </label>
+  	<input type = "password" class="form-control" id="confirmpassword" ng-model="user.confirmpassword">
+    <div class="formerror">{{passworderror}}</div>
   </div>
    <button id="signup" class="btn btn-primary" ng-click ="signUp()">sign up </button>
 </form>

@@ -1,6 +1,10 @@
-angular.module('signup', [])
+angular.module('signup',[])
   .controller('SignUpCtrl', function($rootScope, $scope, $http, $location, $window){
     $scope.user = {}
+    $scope.usernameerror = "bad name";
+    $scope.validateUsername = function() {
+      delete $scope.usernameerror;
+    };
     $scope.signUp = function(){
       $http.post('/signup', $scope.user)
         .success(function(data, status, header, config){
