@@ -1,4 +1,5 @@
-angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map', 'newPost', 'post','scratch','main'])
+
+angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map', 'newPost', 'post','scratch','main','feeds'])
 
  .config(function($routeProvider, $httpProvider) {
    $httpProvider.interceptors.push('authInterceptor');
@@ -22,8 +23,11 @@ angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map', 
       .when('/post', {
         templateUrl: '../template/post.html'
       })
-      .when('/scratch', {
+      .when('/scratch', { // scratch space for running various tests without polluting our pages
         templateUrl: '../template/scratch.html'
+      })
+      .when('/newsfeed', {
+        templateUrl: './template/newsfeed.html'
       })
       .otherwise({
         redirectTo: '/signup'

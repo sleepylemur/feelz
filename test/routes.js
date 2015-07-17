@@ -17,11 +17,6 @@ describe('routes.js', function() {
         .expect(200, done);
     });
   });
-  describe('GET /test', function() {
-    it('should return test', function(done) {
-      request(server.app).get('/test').expect('test',done);
-    });
-  });
 
   describe('routes involving db', function() {
     beforeEach(function() {
