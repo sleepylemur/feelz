@@ -1,41 +1,26 @@
 <form class="container col s10 m8 l6" ng-controller = "SignUpCtrl" autocomplete="off">
 
-  <div class="input-field col s6">
+  <div class="input-field col s6 m6 l6">
 	  <label for ="username"><i class = "icon ion-umbrella"></i> username </label>
-	  <input type = "text"  class="validate" id = "username" ng-model = "user.username">
-  </div>
-<<<<<<< HEAD
-
-  <div class="input-field col s6">
-  	<label for ="email"><i class = "icon ion-email"></i> email </label>
-  	<input type = "email"  class="validate" id = "email" ng-model = "user.email">
-  </div>
-
-  <div class="input-field col s6">
-  	<label for ="password"><i class = "icon ion-lock-combination"></i> password </label>
-  	<input type = "password" class="validate" id = "password" ng-model = "user.password">
-  </div>
-  already Rrrar? <a class="waves-effect waves-light" href = "/#login">login</a>
-   <a class="waves-effect waves-light btn right" ng-click ="signUp()">join</a>
-=======
-  <div class="form-group">
-	  <label for ="username"> username </label>
-	  <input type = "text"  class="form-control" id="username" ng-model="user.username"  ng-change="usernameerror = ''">
+	  <input type = "text"  id="username" ng-model="user.username"  ng-change="usernameerror = ''">
     <div class="formerror">{{usernameerror}}</div>
   </div>
-  <div class="form-group">
-  	<label for ="email"> email </label>
-  	<input type = "email"  class="form-control" id="email" ng-model="user.email" ng-blur="validateEmail()">
+
+  <div class="input-field col s6 m6 l6">
+  	<label for ="email"><i class = "icon ion-email"></i> email </label>
+  	<input type = "email"  id="email" ng-model="user.email" ng-blur="validateEmail()">
     <div class="formerror">{{emailerror}}</div>
   </div>
-  <div class="form-group">
-  	<label for ="password"> password </label>
-  	<input type = "password" class="form-control" id="password" ng-model="user.password">
+  <div class="input-field col s6 m6 l6">
+  	<label for ="password"><i class = "icon ion-lock-combination"></i> password </label>
+  	<input type = "password" id="password" ng-model="user.password">
     <br>
-  	<label for ="confirm password"> confirm password </label>
-  	<input type = "password" class="form-control" id="confirmpassword" ng-model="user.confirmpassword">
+  	<label for ="confirm password"><i class = "icon ion-lock-combination"></i> password </label>
+  	<input type = "password" id="confirmpassword" ng-model="user.confirmpassword">
     <div class="formerror">{{passworderror}}</div>
   </div>
-   <button id="signup" class="btn btn-primary" ng-click ="signUp()">sign up </button>
->>>>>>> 9bc5190772d19735f8e01e62300b8504fc6b268a
+
+  already Rrrar? <a class="waves-effect waves-light" href = "/#login">login</a>
+   <a class="waves-effect waves-light btn right" ng-click ="signUp()">join</a>
+   
 </form>
