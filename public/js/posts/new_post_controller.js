@@ -10,8 +10,6 @@ angular.module('newPost',[])
 
           $http.post('/api/newPost', $scope.post).success(function(data, status, header, config){
             //tell socket new post has been made
-            console.log(data);
-            console.log($rootScope.socket);
             $rootScope.socket.emit('new post', data);
             $location.path('/post').search({id: data.id});
           }).error(function(data, status, header, config){
