@@ -3,13 +3,14 @@
   <head>
     <!-- style to be deleted once we have real css file -->
     <style>#map-canvas {height:500px;}</style>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Emotional Graffiti</title>
 
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css" media="screen,projection">
     <link rel="stylesheet" href="/css/styles.css">
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-route.js"></script>
     <script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?libraries=visualization&sensor=true_or_false"></script>
@@ -25,13 +26,7 @@
   </head>
 
   <body ng-app="vent" ng-controller = "mainCtrl">
-    <div class="container">
-      <a href="#/signup">Sign Up</a>
-      <a href="#/login">Login</a>
-      <button ng-click="signOut()">Sign Out</button>
+      <ng-view> <button ng-click="signOut()">Sign Out</button> </ng-view>
 
-      <ng-view></ng-view>
-      <ul id="live_posts"></ul>
-    </div>
   </body>
 </html>

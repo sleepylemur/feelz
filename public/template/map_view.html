@@ -1,5 +1,13 @@
 <div ng-controller="MapCtrl">
   <div id="map-canvas"></div>
+  
+  <nav class="navbar-fixed-bottom navbar">
+      <ul class="col s6 m6 l6 container" id = "nav_items">
+        <li><a href="#/newsfeed"><i class="small icon ion-ios-flask"></i></a></li>
+        <li><a href="#/newPost"><i class = "small icon ion-paper-airplane"></i></a></li>
+        <li><a href= "#/map"><i class = "active small icon ion-map"></i></a></li>
+      </ul>
+
   <div id="modal1" class="modal bottom-sheet">
     <div class="modal-content">
       <h4>{{emotiondata.emotion}}</h4>
@@ -9,13 +17,5 @@
       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
     </div>
   </div>
-  <nav class="navbar-fixed-bottom navbar navbar-default">
-    <div class="col-md-offset-4 col-md-4">
-      <div class="container-fluid">
-        <a href="#/newsfeed">new</a>
-        <a href="#/newPost">emote!</a>
-        <button type="button" class="btn btn-default navbar-btn">hot</button>
-      </div>
-    </div>
-  </nav>
+
 </div>
