@@ -8,10 +8,14 @@ angular.module('map', [])
     // initializes map
     var options = {
       zoom: 14,
-      styles: mapStyle
+      styles: mapStyle,
+      disableDefaultUI: true
     }
 
     $scope.map = new google.maps.Map(document.getElementById('map-canvas'), options);
+
+    // toggle for map qualities according to zoom level
+    $scope.zoomedIn = false;
 
     // getMapBounds used by requestPosts
     $scope.getMapBounds = function(){
@@ -30,8 +34,7 @@ angular.module('map', [])
       $http.get('/api/emotions?n=' + bounds.n + '&e=' + bounds.e + '&s=' + bounds.s + '&w=' + bounds.w)
         .then(function(data){
           $scope.dataPoints = data.data;
-          disposeHeatLayers();
-          disposeMarkers();
+          toggleZoomedOut();
         })
     }
 
@@ -70,35 +73,65 @@ angular.module('map', [])
         'rgba(255, 0, 0, 1)'
       ];
 
-      $scope.rantHeat = new google.maps.visualization.HeatmapLayer({data: rants});
-      $scope.raveHeat = new google.maps.visualization.HeatmapLayer({data: raves, gradient: gradient});
+      $scope.rantHeat = new google.maps.visualization.HeatmapLayer({data: rants, radius: 0.004, dissipating: false});
+      $scope.raveHeat = new google.maps.visualization.HeatmapLayer({data: raves, gradient: gradient, radius: 0.004, dissipating: false});
 
       $scope.rantHeat.setMap($scope.map);
       $scope.raveHeat.setMap($scope.map);
     }
 
-    // checks to see whether markers should be added or removed
-    var disposeMarkers = function() {
-      if ($scope.map.getZoom() > 15) {
-        addMarkers();
-      } else if ($scope.markers && $scope.markers.length > 0) {
-        removeMarkers();
+    var removeHeatLayers = function(){
+      $scope.rantHeat.setMap(null);
+      $scope.raveHeat.setMap(null);
+    }
+
+    // checks zoom and toggles map options accordingly
+    var checkZoom = function(){
+      if ($scope.map.getZoom() > 15){
+        if (!$scope.zoomedIn) toggleZoomedIn();
+      } else {
+        if ($scope.zoomedIn) toggleZoomedOut();
       }
+    }
+
+    // called by checkZoom
+    var toggleZoomedIn = function(){
+      removeHeatLayers();
+      addMarkers();
+      $scope.map.set('styles', null);
+      $scope.zoomedIn = true;
+    }
+
+    // called initially and by checkZoom
+    var toggleZoomedOut = function() {
+      removeMarkers();
+      disposeHeatLayers();
+      $scope.map.set('styles', mapStyle);
+      $scope.zoomedIn = false;
     }
 
     var addMarkers = function() {
 
       $scope.markers = [];
 
-      angular.forEach($scope.dataPoints, function(e){
+      angular.forEach($scope.dataPoints, function(pin){
         var marker = new google.maps.Marker({
-          position: new google.maps.LatLng(e.location[0], e.location[1]),
+          position: new google.maps.LatLng(pin.location[0], pin.location[1]),
           map: $scope.map
         });
+        marker.setIcon({
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 9,
+          fillOpacity: 1,
+          strokeColor: '#000000',
+          fillColor: '#ffffff'
+        })
 
         // sets a click event on each individual marker
         google.maps.event.addListener(marker, 'click', function(){
-          console.log(e.message)
+          $scope.emotiondata = pin;
+          $scope.$apply();
+          $('#modal1').openModal();
         });
 
         // holds the markers on $scope so they can be removed later
@@ -110,6 +143,7 @@ angular.module('map', [])
       angular.forEach($scope.markers, function(e){
         e.setMap(null);
       });
+      $scope.markers = [];
     }
 
     $scope.addData = function(data){
@@ -118,8 +152,7 @@ angular.module('map', [])
         $rootScope.socket.on('list new post', function(data){
           // any new post will be added & $apply will update scope
           $scope.dataPoints.push(data);
-          disposeHeatLayers();
-          disposeMarkers();
+          checkZoom();
           // $scope.$apply();
         });
       }
@@ -129,7 +162,7 @@ angular.module('map', [])
     // makes initial api call
     google.maps.event.addListenerOnce($scope.map, 'tilesloaded', $scope.requestPosts);
 
-    google.maps.event.addListener($scope.map, 'zoom_changed', disposeMarkers);
+    google.maps.event.addListener($scope.map, 'zoom_changed', checkZoom);
 
     return $scope;
   })
