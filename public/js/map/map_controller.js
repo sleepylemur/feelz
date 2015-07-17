@@ -79,9 +79,10 @@ angular.module('map', [])
 
     // checks to see whether markers should be added or removed
     var disposeMarkers = function() {
-      if ($scope.map.getZoom() > 15) {
+      if ($scope.markers) console.log($scope.markers.length)
+      if ($scope.map.getZoom() > 15 && (!$scope.markers || $scope.markers.length === 0)) {
         addMarkers();
-      } else if ($scope.markers && $scope.markers.length > 0) {
+      } else if ($scope.map.getZoom() < 16 && $scope.markers && $scope.markers.length > 0) {
         removeMarkers();
       }
     }
@@ -110,6 +111,7 @@ angular.module('map', [])
       angular.forEach($scope.markers, function(e){
         e.setMap(null);
       });
+      $scope.markers = [];
     }
 
     $scope.addData = function(data){
