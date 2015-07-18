@@ -1,4 +1,4 @@
-<form class="col s12" ng-controller="newPostCtrl">
+<form class="col s12" ng-controller="newPostCtrl" ng-submit="submit()">
   <p>
     <input class="with-gap" type="radio" id = "happy" ng-model = "post.emotion" value = "rave"/>
     <label for="happy"> <i class = "icon ion-happy-outline"></i> rave 🙌</label>
@@ -11,5 +11,5 @@
   <label for ="message"><i class = "icon ion-leaf">message</i></label>
   </div>
 
-  <a class="waves-effect waves-light btn" ng-click ="submit()"><i class="material-icons left"></i>post</a>
+  <button type="submit" class="waves-effect waves-light btn"><i class="material-icons left"></i>post</button>
 </form>

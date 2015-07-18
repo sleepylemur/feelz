@@ -37,8 +37,9 @@ describe('routes.js', function() {
             if (err) throw(err);
             var arr = res.body;
             expect(arr).to.have.length(2);
-            expect(arr[0].email).to.equal('sam@sam.com');
-            expect(arr[1].email).to.equal('dave@dave.com');
+            var emails = arr.map(function(e) {return e.email;});
+            expect(emails).to.include('sam@sam.com');
+            expect(emails).to.include('dave@dave.com');
             done();
           });
       });
