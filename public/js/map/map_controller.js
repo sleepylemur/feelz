@@ -35,19 +35,16 @@ angular.module('map', [])
         .then(function(data){
           $scope.dataPoints = data.data;
           toggleZoomedOut();
+          $scope.addData();
         })
     }
-
-    var disposeHeatLayers = function() {
-
+    var updateHeatmap = function() {
       var rants = [];
       var raves = [];
 
       // create google maps latlng objects split by emotion
       angular.forEach($scope.dataPoints, function(e){
-
         if (e.lat && e.lng){
-
           if (e.emotion === 'rant'){
             rants.push(new google.maps.LatLng(e.lat, e.lng));
           } else {
@@ -55,6 +52,27 @@ angular.module('map', [])
           }
         }
       });
+
+      $scope.rantHeat.setData(rants);
+      $scope.raveHeat.setData(raves);
+    };
+
+    var disposeHeatLayers = function() {
+      console.log('disposing');
+      var rants = [];
+      var raves = [];
+
+      // create google maps latlng objects split by emotion
+      angular.forEach($scope.dataPoints, function(e){
+        if (e.lat && e.lng){
+          if (e.emotion === 'rant'){
+            rants.push(new google.maps.LatLng(e.lat, e.lng));
+          } else {
+            raves.push(new google.maps.LatLng(e.lat, e.lng));
+          }
+        }
+      });
+
 
       var gradient = [
         'rgba(0, 255, 255, 0)',
@@ -73,10 +91,12 @@ angular.module('map', [])
         'rgba(255, 0, 0, 1)'
       ];
 
-      $scope.rantHeat = new google.maps.visualization.HeatmapLayer({data: rants, radius: 0.004, dissipating: false});
-      $scope.raveHeat = new google.maps.visualization.HeatmapLayer({data: raves, gradient: gradient, radius: 0.004, dissipating: false});
+
+      $scope.rantHeat = new google.maps.visualization.HeatmapLayer({data: rants, radius: 30, dissipating: true});
+      $scope.raveHeat = new google.maps.visualization.HeatmapLayer({data: raves, gradient: gradient, radius: 0.003, dissipating: false});
 
       $scope.rantHeat.setMap($scope.map);
+      console.log($scope.rantHeat);
       $scope.raveHeat.setMap($scope.map);
     }
 
@@ -152,7 +172,8 @@ angular.module('map', [])
         $rootScope.socket.on('list new post', function(data){
           // any new post will be added & $apply will update scope
           $scope.dataPoints.push(data);
-          checkZoom();
+          updateHeatmap();
+          // checkZoom();
           // $scope.$apply();
         });
       }

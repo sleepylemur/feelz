@@ -32,7 +32,7 @@ Db.reset().then(function() {
     var fakePosts = [];
 
     // randomly create the data
-    for (var i = 0; i < 300; i++){
+    for (var i = 0; i < 5; i++){
       fakePosts.push([
         /*user_id*/ Math.floor(Math.random() * 98 + 1),
         /*lat*/ Math.random() * 0.3 + 40.553,

@@ -1,0 +1,3 @@
+angular.module('postService', [])
+  .factory('postService', function($q, $window, $location) {
+  });
