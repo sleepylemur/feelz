@@ -4,11 +4,9 @@ angular.module('login', [])
 
     $scope.user = {}
     $scope.submit = function(e){
-      console.log($scope.user);
       $http.post('/login', $scope.user)
         .success(function(data, status, header, config){
           if (status === 200) {
-            console.log(data);
             /// grant sesssions token
             $window.sessionStorage.token = data.token;
             /// initial client socket

@@ -46,12 +46,12 @@ angular.module('map', [])
       // create google maps latlng objects split by emotion
       angular.forEach($scope.dataPoints, function(e){
 
-        if (e.location){
+        if (e.lat && e.lng){
 
           if (e.emotion === 'rant'){
-            rants.push(new google.maps.LatLng(e.location[0], e.location[1]));
+            rants.push(new google.maps.LatLng(e.lat, e.lng));
           } else {
-            raves.push(new google.maps.LatLng(e.location[0], e.location[1]));
+            raves.push(new google.maps.LatLng(e.lat, e.lng));
           }
         }
       });
@@ -116,7 +116,7 @@ angular.module('map', [])
 
       angular.forEach($scope.dataPoints, function(pin){
         var marker = new google.maps.Marker({
-          position: new google.maps.LatLng(pin.location[0], pin.location[1]),
+          position: new google.maps.LatLng(pin.lat, pin.lng),
           map: $scope.map
         });
         marker.setIcon({
