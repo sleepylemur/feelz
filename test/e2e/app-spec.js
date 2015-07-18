@@ -11,21 +11,21 @@ var sinon = require('sinon');
 /* https://github.com/angular/protractor/blob/master/docs/getting-started.md */
 
 var oldEnv = process.env.NODE_ENV;
-var server,models,db;
+var server,Db,db;
 
 describe('my app', function() {
 	before(function() {
 		process.env.NODE_ENV = 'testing';
 		server = require('../../lib/server.js');
-		models = server.models;
-		db = server.db;
+		Db = server.Db;
+		db = Db.db;
 	});
 	after(function() {
 		process.env = oldEnv;
 	});
 	describe('signup', function() {
 		beforeEach(function() {
-			return db.sync({force: true}).then(function() {
+			return Db.reset().then(function() {
 				server.start();
 			});
 		});
@@ -37,9 +37,10 @@ describe('my app', function() {
 			element(by.id('username')).sendKeys('a');
 			element(by.id('email')).sendKeys('a@a.com');
 			element(by.id('password')).sendKeys('a');
+			element(by.id('confirmpassword')).sendKeys('a');
 			element(by.id('signup')).click();
 			return browser.wait(protractor.until.elementIsVisible(element(by.id('map-canvas')))).then(function(){
-				return expect(models.User.find({where:{email:'a@a.com'}})).to.eventually.be.ok;
+				return expect(db.one("select * from users where email = $1",'a@a.com')).to.eventually.be.ok;
 			});
 		});
 		// it('should show a validation error if the same email signs up twice', function(done) {
@@ -54,7 +55,7 @@ describe('my app', function() {
 	});
 	describe('login', function() {
 		beforeEach(function() {
-			return db.sync({force: true}).then(function() {
+			return Db.reset().then(function() {
 				server.start();
 			});
 		});
@@ -63,7 +64,9 @@ describe('my app', function() {
 		});
 
 		it('should show the map if valid credentials are supplied', function() {
-			return models.User.create({email: 'a@a.com', password: 'a'}).then(function() {
+			return Db.digestPassword('a').then(function(password_digest) {
+				return db.none("insert into users (email,password) values ($1,$2)",['a@a.com',password_digest]);
+			}).then(function() {
 				browser.get('#/login');
 				element(by.id('email')).sendKeys('a@a.com');
 				element(by.id('password')).sendKeys('a');

@@ -1,4 +1,4 @@
-<form class="container col s10 m8 l6" ng-controller = "SignUpCtrl" autocomplete="off" novalidate>
+<form class="container col s10 m8 l6" ng-controller = "SignUpCtrl" ng-submit="signUp()" autocomplete="off" novalidate>
 
   <div class="input-field col s6 m6 l6">
 	  <label for ="username"><i class = "icon ion-umbrella"></i> username </label>
@@ -22,6 +22,6 @@
   </div>
 
   already Rrrar? <a class="waves-effect waves-light" href = "/#login">login</a>
-   <a class="waves-effect waves-light btn right" ng-click ="signUp()">join</a>
+   <button type="submit" id="signup" class="waves-effect waves-light btn right">join</a>
 
 </form>

@@ -5,7 +5,7 @@ var assert = chai.assert;
 var request = require('supertest');
 
 var server = require('../lib/server.js');
-var models = require('../lib/models.js')(server.db);
+var Db = server.Db;
 
 describe('routes.js', function() {
   describe('GET /', function() {
@@ -21,10 +21,10 @@ describe('routes.js', function() {
   describe('routes involving db', function() {
     beforeEach(function() {
       // drop tables and reseed db
-      return server.db.sync({force: true}).then(function() {
+      return Db.reset().then(function() {
         return Promise.all([
-          models.User.create({email: 'sam@sam.com', password: 'password'}),
-          models.User.create({email: 'dave@dave.com', password: 'password'})
+          Db.db.none("insert into users (email,password) values ($1,$2)",['sam@sam.com','password']),
+          Db.db.none("insert into users (email,password) values ($1,$2)",['dave@dave.com','password'])
         ]);
       });
     });

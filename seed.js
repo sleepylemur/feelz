@@ -1,6 +1,5 @@
-var Db = require('./lib/db2.js')();
+var Db = require('./lib/db.js')();
 var db = Db.db;
-// var models = require('./lib/models.js')(db);
 var faker = require('faker');
 var Promise = require('bluebird');
 

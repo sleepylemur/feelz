@@ -1,4 +1,4 @@
-var Db = require('./lib/db2.js')();
+var Db = require('./lib/db.js')();
 var db = Db.db;
 
-console.log(new Date());
+console.log(typeof db.one === 'function');
