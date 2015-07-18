@@ -8,7 +8,7 @@ angular.module('newPost',[])
 
           $http.post('/api/posts', $scope.post).success(function(data, status, header, config){
             //tell socket new post has been made
-            $rootScope.socket.emit('new post', data);
+            // $rootScope.socket.emit('new post', data);
             $location.path('/map');
           }).error(function(data, status, header, config){
             console.log("post failed!!!"  + data);

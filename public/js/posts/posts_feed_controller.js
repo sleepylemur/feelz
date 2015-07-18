@@ -7,6 +7,7 @@ angular.module('feeds', [])
         console.log("feeds fetch err: "  + data);
       });
     $rootScope.socket.on('list new post', function(data){
+      console.log("message!",data);
       // any new post will be added & $apply will update scope
       $scope.feeds.push(data);
       $scope.$apply();
