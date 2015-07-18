@@ -3,6 +3,7 @@ var mocha = require('gulp-mocha');
 var concat = require('gulp-concat');
 var sourcemaps = require('gulp-sourcemaps');
 var spawn = require('child_process').spawn;
+var sass = require('gulp-sass');
 
 gulp.task('e2etests', function () {
   var protractor = spawn('protractor',['protractor.conf.js'],{stdio: 'inherit'});
@@ -25,9 +26,19 @@ gulp.task('scripts', function(){
     .pipe(gulp.dest('public/build/'));
 });
 
+gulp.task('styles', function(){
+  return gulp.src(['public/css/materialize-src/sass/components/*.scss'])
+    .pipe(sourcemaps.init())
+    .pipe(sass().on('error', sass.logError))
+    .pipe(concat('mstyles.css'))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('public/css/'));
+});
+
 gulp.task('watch_scripts', function(){
   gulp.watch(['public/js/**/*.js'], ['scripts']);
-})
+  gulp.watch(['public/css/materialize-src/sass/components/*.scss'], ['styles']);
+});
 
 gulp.task('watch', function() {
   gulp.watch(['lib/**/*.js','test/**/*.js'], ['servertests']);

@@ -51,6 +51,7 @@
   "devDependencies": {
     "chai": "^3.0.0",
     "chai-as-promised": "^5.1.0",
+    "gulp-sass": "^2.0.4",
     "mocha": "^2.2.5",
     "protractor": "^2.1.0",
     "selenium": "^2.20.0",
