@@ -1,4 +1,4 @@
-<form class="container col s10 m8 l6" ng-controller = "SignUpCtrl" autocomplete="off">
+<form class="container col s10 m8 l6" ng-controller = "SignUpCtrl" autocomplete="off" novalidate>
 
   <div class="input-field col s6 m6 l6">
 	  <label for ="username"><i class = "icon ion-umbrella"></i> username </label>
@@ -8,16 +8,16 @@
 
   <div class="input-field col s6 m6 l6">
   	<label for ="email"><i class = "icon ion-email"></i> email </label>
-  	<input type = "email"  id="email" ng-model="user.email" ng-change="emailerror = ''" ng-blur="validateEmail()">
+  	<input type = "text"  id="email" ng-model="user.email" ng-change="emailerror = ''" ng-blur="validateEmail()">
     <div class="formerror">{{emailerror}}</div>
   </div>
-  
+
   <div class="input-field col s6 m6 l6">
   	<label for ="password"><i class = "icon ion-lock-combination"></i> password </label>
-  	<input type = "password" id="password" ng-model="user.password">
+  	<input type = "password" id="password" ng-model="user.password" ng-change="validatePassword()" ng-blur="passwordblur = true;validatePassword()">
     <br>
   	<label for ="confirm password"><i class = "icon ion-lock-combination"></i> password </label>
-  	<input type = "password" id="confirmpassword" ng-model="user.confirmpassword">
+  	<input type = "password" id="confirmpassword" ng-model="user.confirmpassword" ng-change="validatePassword()" ng-blur="confirmblur = true;validatePassword()">
     <div class="formerror">{{passworderror}}</div>
   </div>
 
