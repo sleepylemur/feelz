@@ -7,4 +7,4 @@ angular.module('post',[])
       }).error(function(data, status, header, config){
         alert("post failed!!!"  + data.error);
       });
-  })
+  });

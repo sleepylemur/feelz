@@ -32,18 +32,19 @@ Db.reset().then(function() {
     var fakePosts = [];
 
     // randomly create the data
-    for (var i = 0; i < 5; i++){
+    for (var i = 0; i < 300; i++){
       fakePosts.push([
         /*user_id*/ Math.floor(Math.random() * 98 + 1),
         /*lat*/ Math.random() * 0.3 + 40.553,
         /*lng*/ Math.random() * 0.15 - 73.999,
         /*message*/ faker.lorem.sentence(),
-        /*emotion*/ (Math.floor(Math.random() * 2) === 0)? 'rant' : 'rave'
+        /*emotion*/ (Math.floor(Math.random() * 2) === 0)? 'rant' : 'rave',
+        /*timestamp*/ new Date(new Date() - Math.floor(Math.random() * 1000*60*60*6))
       ]);
     }
     // and feed into the database
     return Promise.map(fakePosts, function(e){
-      return db.none("INSERT INTO posts (user_id,lat,lng,message,emotion) VALUES ($1,$2,$3,$4,$5)",e);
+      return db.none("INSERT INTO posts (user_id,lat,lng,message,emotion,timestamp) VALUES ($1,$2,$3,$4,$5,$6)",e);
     })
   }).then(function() {
     console.log("added posts");
