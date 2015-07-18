@@ -23,6 +23,7 @@
   "homepage": "https://github.com/sleepylemur/fronting-pandas#readme",
   "dependencies": {
     "aws-sdk": "^2.1.39",
+    "bcrypt": "^0.8.3",
     "bluebird": "^2.9.33",
     "body-parser": "^1.13.2",
     "connect-session-sequelize": "^2.2.1",

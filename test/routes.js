@@ -28,10 +28,10 @@ describe('routes.js', function() {
         ]);
       });
     });
-    describe('GET /listusers', function() {
+    describe('GET /users', function() {
       it('should return a list of the users that we added', function(done) {
         request(server.app)
-          .get('/listusers')
+          .get('/users')
           .accept('json')
           .end(function(err,res) {
             if (err) throw(err);

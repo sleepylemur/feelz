@@ -8,7 +8,7 @@ angular.module('newPost',[])
             lng: position.coords.longitude
           }
 
-          $http.post('/api/newPost', $scope.post).success(function(data, status, header, config){
+          $http.post('/api/posts', $scope.post).success(function(data, status, header, config){
             //tell socket new post has been made
             $rootScope.socket.emit('new post', data);
             $location.path('/post').search({id: data.id});

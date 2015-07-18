@@ -4,20 +4,26 @@ angular.module('login', [])
 
     $scope.user = {}
     $scope.submit = function(e){
+      console.log($scope.user);
       $http.post('/login', $scope.user)
-      .success(function(data, status, header, config){
-        /// grant sesssions token
-        $window.sessionStorage.token = data.token;
-        /// initial client socket
-        $rootScope.currentuser = {id: data.id};
-        $rootScope.socket = io();
-        /// add user to socket with session token
-        $rootScope.socket.emit('addUser', $rootScope.currentuser);
-        $location.path('/map');
-      }).error(function(data, status, header, config){
-        alert(data.error);
-      });
-    }
+        .success(function(data, status, header, config){
+          if (status === 200) {
+            console.log(data);
+            /// grant sesssions token
+            $window.sessionStorage.token = data.token;
+            /// initial client socket
+            $rootScope.currentuser = {id: data.id};
+            $rootScope.socket = io();
+            /// add user to socket with session token
+            $rootScope.socket.emit('addUser', $rootScope.currentuser);
+            $location.path('/map');
+          } else {
+            alert(data.error);
+          }
+        }).error(function(data, status, header, config){
+          alert(data.error);
+        });
+    };
     ////////////////////////////////// FACEBOOK LOGIN STUFFF
   function statusChangeCallback(response) {
     if (response.status === 'connected') {
