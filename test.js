@@ -1,23 +1,15 @@
-var A = {
-  a:1,
-  b:2,
-  props: function() {
-    for (var p in this) {
-      console.log(p, this[p], typeof this[p]);
-    }
-  }
+var A = function(){
+  this[0]=5;
+  this[1]=3;
+  this[2]=15;
+  this[4]=8;
+  this.length = 3;
 };
+A.prototype = Object.create(Array.prototype);
+A.prototype.forEach = function() {console.log(3);};
 
-var B = {
-  c:3,
-  d:4
-};
-B.__proto__ = A;
+b = [1,2,3];
+b.forEach(console.log);
 
-var C = {
-  e:5,
-  f:6
-};
-C.__proto__ = B;
-
-C.props();
+a = new A();
+a.forEach(console.log);

@@ -27,12 +27,12 @@ gulp.task('scripts', function(){
 });
 
 gulp.task('styles', function(){
-  return gulp.src(['public/css/materialize-src/sass/components/*.scss'])
+  return gulp.src(['public/css/materialize-src/sass/*.scss'])
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(concat('mstyles.css'))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('public/css/'));
+    .pipe(gulp.dest('public/css'));
 });
 
 // gulp.task('watch_scripts', function(){
