@@ -35,13 +35,13 @@ gulp.task('styles', function(){
     .pipe(gulp.dest('public/css/'));
 });
 
-gulp.task('watch_scripts', function(){
-  gulp.watch(['public/js/**/*.js'], ['scripts']);
-  gulp.watch(['public/css/materialize-src/sass/components/*.scss'], ['styles']);
-});
+// gulp.task('watch_scripts', function(){
+// });
 
 gulp.task('watch', function() {
-  gulp.watch(['lib/**/*.js','test/**/*.js'], ['servertests']);
+  // gulp.watch(['lib/**/*.js','test/**/*.js'], ['servertests']);
+  gulp.watch(['public/js/**/*.js'], ['scripts']);
+  gulp.watch(['public/css/materialize-src/sass/components/*.scss'], ['styles']);
 });
 
 gulp.task('seed', function() {
