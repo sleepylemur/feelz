@@ -118,35 +118,44 @@ angular.module('map', [])
 
     var addMarkers = function() {
       $scope.markers = [];
+      var bounds = $scope.getMapBounds();
 
+      // iterates over current data points--if data points are near current map bounds,
+      // markers are instantiated and placed on the map.
       angular.forEach($scope.dataPoints, function(pin){
-        var marker = new google.maps.Marker({
-          position: new google.maps.LatLng(pin.lat, pin.lng),
-          map: $scope.map
-        });
-        marker.setIcon({
-          path: google.maps.SymbolPath.CIRCLE,
-          scale: 9,
-          fillOpacity: 1,
-          strokeColor: '#000000',
-          fillColor: '#ffffff'
-        })
 
-        // sets a click event on each individual marker
-        google.maps.event.addListener(marker, 'click', function(){
-          $scope.emotiondata = pin;
-          $scope.$apply();
-          $('#modal1').openModal();
-        });
+        if (pin.lat < bounds.n + 0.01 && pin.lat > bounds.s - 0.01 &&
+          pin.lng < bounds.e + 0.01 && pin.lng > bounds.w - 0.01) {
 
-        // holds the markers on $scope so they can be removed later
-        $scope.markers.push(marker);
+          var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(pin.lat, pin.lng),
+            map: $scope.map
+          });
+          marker.setIcon({
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 9,
+            fillOpacity: 1,
+            strokeColor: '#000000',
+            fillColor: '#ffffff'
+          })
+
+          // sets a click event on each individual marker
+          google.maps.event.addListener(marker, 'click', function(){
+            $scope.emotiondata = pin;
+            $scope.$apply();
+            $('#modal1').openModal();
+          });
+
+          // holds the markers on $scope so they can be removed later
+          $scope.markers.push(marker);
+        }
       })
     }
 
     var removeMarkers = function() {
       angular.forEach($scope.markers, function(e){
         e.setMap(null);
+        google.maps.event.clearListeners(e);
       });
       $scope.markers = [];
     }
