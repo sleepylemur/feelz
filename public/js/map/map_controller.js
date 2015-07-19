@@ -155,6 +155,7 @@ angular.module('map', [])
     var removeMarkers = function() {
       angular.forEach($scope.markers, function(e){
         e.setMap(null);
+        google.maps.event.clearListeners(e);
       });
       $scope.markers = [];
     }
