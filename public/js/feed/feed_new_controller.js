@@ -1,5 +1,8 @@
 angular.module('feedNew', ['momentfilter','postService'])
   .controller('feedNewCtrl', function(postService, $http,$location, $routeParams, $rootScope, $scope, $window){
+    // google analytics
+    ga('send', 'pageview', '/#/feednew');
+
     // console.log(moment(new Date() - 1000*60*60*3).fromNow());
     // console.log($rootScope.socket.listeners('list new post'));
     postService.getPosts().then(function(data) {
