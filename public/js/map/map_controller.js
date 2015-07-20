@@ -158,10 +158,11 @@ angular.module('map', ['postService'])
 
       $scope.map = new google.maps.Map(document.getElementById('map-canvas'), options);
       navigator.geolocation.getCurrentPosition(function(position) {
-        $scope.map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude))
+        $scope.map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
       });
 
       if ($routeParams.detail) {
+      }
 
       // makes initial api call
       google.maps.event.addListener($scope.map, 'zoom_changed', checkZoom);
