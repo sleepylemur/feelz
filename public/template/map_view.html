@@ -1,8 +1,8 @@
-<div class="mapview-div" ng-controller="MapCtrl">
+<div class="maincontent" ng-controller="MapCtrl">
   <div id="map-canvas"></div>
 
   <nav class="navbar-fixed-bottom navbar">
-    <ul class="col s6 m6 l6 container" id = "nav_items">
+    <ul class="container" id = "nav_items">
       <li><a href="#/newsfeed"><i class="small icon ion-ios-flask"></i></a></li>
       <li><a ng-click="newPost()"><i class = "small icon ion-paper-airplane"></i></a></li>
       <li><a href= "#/map"><i class = "active small icon ion-map"></i></a></li>
@@ -20,11 +20,9 @@
   </div>
 
   <div id="modalNewPost" class="modal bottom-sheet">
-    <div class="modal-content">
-      <div class="container">
+    <div class="modal-content postmodalcontent">
         <form ng-submit="submitNewPost()">
-          <div class="row">
-            <div class="col s6" style="text-align: center;">
+            <div class="postmodalform">
               <div class="switch">
                 <label>
                   <span class="deep-orange-text">Rant</span>
@@ -45,7 +43,7 @@
                 {{post.rantrave ? "rave" : "rant"}}
               </button>
             </div>
-            <div class="col s5 offset-s1" style="position:relative;">
+            <div class="postmodalimagepane">
               <div class="imagebox">
                 <input type="hidden" ng-model="post.imageurl">
                 <image id="imagepreview" src="images/placeholder.png" width="160" height="160">
@@ -63,9 +61,7 @@
                 <input id="filepicker" type="file" onchange="angular.element(this).scope().uploadFile()" style="position:absolute;left:-9999px">
               </div>
             </div>
-          </div>
         </form>
-      </div>
     </div>
   </div>
 </div>

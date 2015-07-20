@@ -36,6 +36,21 @@ h1, h2, h3, h4, h5, h6{
    color: #000;
  }
 
+.postmodalcontent {
+  position: relative;
+  max-width: 800px;
+  margin: auto;
+}
+.postmodalform {
+  text-align: center;
+  margin: 0px calc(10% + 140px) 0px 0px;
+  padding: 0px 0px;
+}
+.postmodalimagepane {
+  position: absolute;
+  right: 5%;
+  top: 40px;
+}
 .imagebox {
   border: solid 1px rgba(51, 51, 51, 0.12);
   width: 160px;
@@ -48,7 +63,7 @@ h1, h2, h3, h4, h5, h6{
 html,body {
   height: 100%;
 }
-.mapview-div {
+.maincontent {
   height: calc(100% - (64px + 64px));
 }
 #map-canvas {
