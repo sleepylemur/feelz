@@ -62,12 +62,19 @@ angular.module('map', ['postService'])
       $scope.raveHeat.setMap(null);
     }
 
+    var isloaded = false;
     // checks zoom and toggles map options accordingly
-    var checkZoom = function(){
-      if ($scope.map.getZoom() > 15){
-        if (!$scope.zoomedIn) toggleZoomedIn();
-      } else {
-        if ($scope.zoomedIn) toggleZoomedOut();
+    function markloaded() {
+      isloaded = true;
+      checkZoom();
+    }
+    function checkZoom(){
+      if (isloaded) {
+        if ($scope.map.getZoom() > 15){
+          if (!$scope.zoomedIn) toggleZoomedIn();
+        } else {
+          if ($scope.zoomedIn) toggleZoomedOut();
+        }
       }
     }
 
@@ -113,11 +120,7 @@ angular.module('map', ['postService'])
 
             // sets a click event on each individual marker
             google.maps.event.addListener(marker, 'click', function(){
-              $scope.$apply(function(){
-                $scope.emotiondata = pin;
-              });
-              $scope.map.panTo(new google.maps.LatLng(pin.lat, pin.lng));
-              $('#modalPostDetail').openModal();
+              triggerDetail(pin);
             });
 
             // holds the markers on $scope so they can be removed later
@@ -125,6 +128,14 @@ angular.module('map', ['postService'])
           }
         });
       });
+    }
+
+    function triggerDetail(pin) {
+      // $scope.$apply(function(){
+        $scope.emotiondata = pin;
+      // });
+      $scope.map.panTo(new google.maps.LatLng(pin.lat, pin.lng));
+      $('#modalPostDetail').openModal();
     }
 
     var removeMarkers = function() {
@@ -154,17 +165,15 @@ angular.module('map', ['postService'])
         disableDefaultUI: true
       }
       // toggle for map qualities according to zoom level
-      $scope.zoomedIn = false;
 
       $scope.map = new google.maps.Map(document.getElementById('map-canvas'), options);
+
       navigator.geolocation.getCurrentPosition(function(position) {
         $scope.map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
       });
 
-      if ($routeParams.detail) {
-      }
-
       // makes initial api call
+      google.maps.event.addListenerOnce($scope.map, 'tilesloaded', markloaded);
       google.maps.event.addListener($scope.map, 'zoom_changed', checkZoom);
 
       postService.getPosts().then(function(posts) {
@@ -172,7 +181,35 @@ angular.module('map', ['postService'])
         $scope.map.set('styles', mapStyle);
         $scope.zoomedIn = false;
         initHeatLayers();
+
+        handleCentering();
       });
+    } else {
+      isloaded = true;
+      handleCentering();
+    }
+
+    function handleCentering() {
+      // if we have a target, then zoom map to that
+      if ($routeParams.detail) {
+        postService.getPosts().then(function(posts) {
+          for (var i=0;i<posts.length;i++) {
+            if (posts[i].id == $routeParams.detail) break;
+          }
+          if (i < posts.length) {
+            var targetpost = posts[i];
+            // $scope.map.setZoom(16);
+            setTimeout(function() {
+              setTimeout(function() {
+                $scope.map.setZoom(16);
+              },0);
+              triggerDetail(targetpost);
+            }, 500);
+          } else {
+            console.log("no post found with id: "+$routeParams.detail);
+          }
+        });
+      }
     }
 
 

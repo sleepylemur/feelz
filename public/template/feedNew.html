@@ -1,7 +1,7 @@
 <div class="maincontent" ng-controller = "feedNewCtrl">
   <div class="container">
     <ul id = "feed" class="collection">
-      <li class="collection-item" ng-click="loadDetail()" ng-repeat="feed in feeds track by $index">
+      <li class="collection-item" ng-click="loadDetail(feed.id)" ng-repeat="feed in feeds track by $index">
         {{feed.timestamp | fromNow}} — {{feed.emotion}} — {{feed.location_name}} — {{feed.message}}
         <div class='imagebox' style="display: inline-block">
           <image ng-src="{{feed.image_url || 'images/placeholder.png'}}" width="160" height="160">

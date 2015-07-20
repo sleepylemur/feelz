@@ -34,15 +34,22 @@ angular.module('postService', [])
       } else {
         return $q(function(resolve,reject) {
           $http.get('/api/posts').then(function(data){
+            if (data.status !== 200) {
+              console.log(arguments);
+              console.log(data.data);
+              posts = [];
+              resolve(posts);
+            } else {
               posts = data.data;
               // reverse posts so the most recent is at the end
               // to be consistant with our pushing new posts on the end later
               posts.reverse();
               resolve(posts);
-            }).catch(function(err) {
-              console.log('postService had trouble loading posts: '+err.error);
-              reject(err);
-            });
+            }
+          }).catch(function(err) {
+            console.log('postService had trouble loading posts: '+err.error);
+            reject(err);
+          });
         });
       }
     }

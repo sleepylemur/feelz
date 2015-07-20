@@ -16,7 +16,7 @@ angular.module('feedNew', ['momentfilter','postService'])
     });
 
 
-    $scope.loadDetail = function() {
-      $location.path('/scratch').search({name: 'dave'});
+    $scope.loadDetail = function(id) {
+      $location.path('/map').search({detail: id});
     }
   });
