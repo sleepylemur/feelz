@@ -1,5 +1,6 @@
 angular.module('scratch',[])
-  .controller('scratchCtrl', function($scope,$http) {
+  .controller('scratchCtrl', function($scope,$http,$routeParams) {
+    console.log($routeParams);
     $scope.testupload = function() {
       var file = document.getElementById('file').files[0];
       var fd = new FormData(); // FormData requires >= ie10
@@ -21,14 +22,4 @@ angular.module('scratch',[])
         alert('not an image file');
       }
     }
-
-    $scope.list = [1,2,3];
-    var timer = setInterval(function() {
-      $scope.$apply(function() {
-        $scope.list.push(Math.floor(Math.random()*100));
-        if ($scope.list.length > 100) {
-          clearInterval(timer);
-        }
-      });
-    },1000);
   });

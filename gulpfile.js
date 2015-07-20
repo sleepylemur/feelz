@@ -34,6 +34,7 @@ gulp.task('styles', function(){
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('public/build'));
 });
+gulp.task('build', ['styles','scripts']);
 
 // gulp.task('watch_scripts', function(){
 // });

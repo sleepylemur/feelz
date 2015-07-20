@@ -1,16 +1,5 @@
 angular.module('map', ['postService'])
-  .controller('MapCtrl', function(postService, $scope, $http, $rootScope){
-
-    // google analytics
-    ga('send', 'pageview', '/#/map');
-
-    // client's geolocation
-    navigator.geolocation.getCurrentPosition(function(position) {
-      $scope.map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude))
-    });
-
-    // toggle for map qualities according to zoom level
-    $scope.zoomedIn = false;
+  .controller('MapCtrl', function(postService, $scope, $http, $rootScope, $routeParams){
 
     // getMapBounds used by requestPosts
     $scope.getMapBounds = function(){
@@ -127,6 +116,7 @@ angular.module('map', ['postService'])
               $scope.$apply(function(){
                 $scope.emotiondata = pin;
               });
+              $scope.map.panTo(new google.maps.LatLng(pin.lat, pin.lng));
               $('#modalPostDetail').openModal();
             });
 
@@ -163,9 +153,17 @@ angular.module('map', ['postService'])
         styles: mapStyle,
         disableDefaultUI: true
       }
+      // toggle for map qualities according to zoom level
+      $scope.zoomedIn = false;
+
       $scope.map = new google.maps.Map(document.getElementById('map-canvas'), options);
+      navigator.geolocation.getCurrentPosition(function(position) {
+        $scope.map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude))
+      });
+
+      if ($routeParams.detail) {
+
       // makes initial api call
-      // google.maps.event.addListenerOnce($scope.map, 'tilesloaded', $scope.requestPosts);
       google.maps.event.addListener($scope.map, 'zoom_changed', checkZoom);
 
       postService.getPosts().then(function(posts) {
@@ -183,16 +181,10 @@ angular.module('map', ['postService'])
     $scope.post = {};
     // open modal to write new post
     $scope.newPost = function() {
-      // google analytics
-      ga('send', 'event', 'button', 'click', 'opens new post modal')
-
       $('#modalNewPost').openModal();
     };
     // submit our post to the server
     $scope.submitNewPost = function() {
-      // google analytics
-      ga('send', 'event', 'form', 'submit', 'new post submit')
-
       navigator.geolocation.getCurrentPosition(function(position) {
         $scope.post.lat = position.coords.latitude;
         $scope.post.lng = position.coords.longitude;
