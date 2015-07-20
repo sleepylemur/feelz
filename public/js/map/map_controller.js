@@ -1,18 +1,8 @@
-angular.module('map', [])
-  .controller('MapCtrl', function($scope, $http, $rootScope){
+angular.module('map', ['postService'])
+  .controller('MapCtrl', function(postService, $scope, $http, $rootScope){
     navigator.geolocation.getCurrentPosition(function(position) {
       $scope.map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude))
     });
-
-
-    // initializes map
-    var options = {
-      zoom: 14,
-      styles: mapStyle,
-      disableDefaultUI: true
-    }
-
-    $scope.map = new google.maps.Map(document.getElementById('map-canvas'), options);
 
     // toggle for map qualities according to zoom level
     $scope.zoomedIn = false;
@@ -24,19 +14,6 @@ angular.module('map', [])
       var southWest = bounds.getSouthWest();
 
       return {n: northEast.lat(), e: northEast.lng(), s: southWest.lat(), w: southWest.lng()}
-    }
-
-    // GET request to server
-    $scope.requestPosts = function() {
-      var bounds = $scope.getMapBounds();
-      $http.get('/api/emotions?n=' + bounds.n + '&e=' + bounds.e + '&s=' + bounds.s + '&w=' + bounds.w)
-        .then(function(data){
-          $scope.dataPoints = data.data;
-          $scope.map.set('styles', mapStyle);
-          $scope.zoomedIn = false;
-          initHeatLayers();
-          $scope.addData();
-        })
     }
 
     var showHeatLayers= function() {
@@ -122,34 +99,36 @@ angular.module('map', [])
 
       // iterates over current data points--if data points are near current map bounds,
       // markers are instantiated and placed on the map.
-      angular.forEach($scope.dataPoints, function(pin){
+      postService.getPosts().then(function(posts) {
+        posts.forEach(function(pin){
 
-        if (pin.lat < bounds.n + 0.01 && pin.lat > bounds.s - 0.01 &&
-          pin.lng < bounds.e + 0.01 && pin.lng > bounds.w - 0.01) {
+          if (pin.lat < bounds.n + 0.01 && pin.lat > bounds.s - 0.01 &&
+            pin.lng < bounds.e + 0.01 && pin.lng > bounds.w - 0.01) {
 
-          var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(pin.lat, pin.lng),
-            map: $scope.map
-          });
-          marker.setIcon({
-            path: google.maps.SymbolPath.CIRCLE,
-            scale: 9,
-            fillOpacity: 1,
-            strokeColor: '#000000',
-            fillColor: '#ffffff'
-          })
+            var marker = new google.maps.Marker({
+              position: new google.maps.LatLng(pin.lat, pin.lng),
+              map: $scope.map
+            });
+            marker.setIcon({
+              path: google.maps.SymbolPath.CIRCLE,
+              scale: 9,
+              fillOpacity: 1,
+              strokeColor: '#000000',
+              fillColor: '#ffffff'
+            })
 
-          // sets a click event on each individual marker
-          google.maps.event.addListener(marker, 'click', function(){
-            $scope.emotiondata = pin;
-            $scope.$apply();
-            $('#modal1').openModal();
-          });
+            // sets a click event on each individual marker
+            google.maps.event.addListener(marker, 'click', function(){
+              $scope.emotiondata = pin;
+              $scope.$apply();
+              $('#modal1').openModal();
+            });
 
-          // holds the markers on $scope so they can be removed later
-          $scope.markers.push(marker);
-        }
-      })
+            // holds the markers on $scope so they can be removed later
+            $scope.markers.push(marker);
+          }
+        });
+      });
     }
 
     var removeMarkers = function() {
@@ -160,20 +139,40 @@ angular.module('map', [])
       $scope.markers = [];
     }
 
-    $scope.addData = function(data){
-      // ensures initial trip to the server has been made
-      if ($scope.dataPoints) {
-        $rootScope.socket.on('list new post', function(data){
-          // any new post will be added & $apply will update scope
-          $scope.dataPoints.push(data);
-          if (data.emotion === "rant") {
-            $scope.rantHeat.data.push(new google.maps.LatLng(data.lat, data.lng));
-          } else {
-            $scope.raveHeat.data.push(new google.maps.LatLng(data.lat, data.lng));
-          }
-        });
+    // update heatmap as new posts come in
+    $scope.$on('newpost', function(event,post) {
+      $scope.$apply(function() {
+        if (post.emotion === "rant") {
+          $scope.rantHeat.data.push(new google.maps.LatLng(post.lat, post.lng));
+        } else {
+          $scope.raveHeat.data.push(new google.maps.LatLng(post.lat, post.lng));
+        }
+      });
+    });
+
+    // initializes map
+    if (!$scope.map) {
+      var options = {
+        zoom: 14,
+        styles: mapStyle,
+        disableDefaultUI: true
       }
-    };
+      $scope.map = new google.maps.Map(document.getElementById('map-canvas'), options);
+      // makes initial api call
+      google.maps.event.addListenerOnce($scope.map, 'tilesloaded', $scope.requestPosts);
+      google.maps.event.addListener($scope.map, 'zoom_changed', checkZoom);
+
+      postService.getPosts().then(function(posts) {
+        $scope.dataPoints = posts;
+        $scope.map.set('styles', mapStyle);
+        $scope.zoomedIn = false;
+        initHeatLayers();
+      });
+    }
+
+
+
+
 
     $scope.post = {};
     // open modal to write new post
@@ -214,7 +213,7 @@ angular.module('map', [])
         })
         .success(function(url){
           console.log('uploaded',url);
-          $scope.post.imageurl = url;
+          $scope.post.image_url = url;
           $('#imagepreview').attr('src',url);
         })
         .error(function(e){
@@ -224,11 +223,4 @@ angular.module('map', [])
         alert('not an image file');
       }
     };
-
-
-    // makes initial api call
-    google.maps.event.addListenerOnce($scope.map, 'tilesloaded', $scope.requestPosts);
-    google.maps.event.addListener($scope.map, 'zoom_changed', checkZoom);
-
-    return $scope;
   })

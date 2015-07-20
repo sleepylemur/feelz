@@ -19,7 +19,7 @@ gulp.task('servertests', function() {
 
 //concatenates front-end js files into a single file so the browser needs only one require
 gulp.task('scripts', function(){
-  return gulp.src(['public/js/**/*.js'])
+  return gulp.src(['public/js/**/*.js', '!public/js/vendor/*'])
     .pipe(sourcemaps.init())
     .pipe(concat('bundle.js'))
     .pipe(sourcemaps.write())

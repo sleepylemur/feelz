@@ -1,9 +1,9 @@
 <div class="maincontent" ng-controller="MapCtrl">
   <div id="map-canvas"></div>
 
-  <nav class="navbar-fixed-bottom navbar">
+  <nav class="navbar bottomfixed">
     <ul class="container" id = "nav_items">
-      <li><a href="#/newsfeed"><i class="small icon ion-ios-flask"></i></a></li>
+      <li><a href="#/feedNew"><i class="small icon ion-ios-flask"></i></a></li>
       <li><a ng-click="newPost()"><i class = "small icon ion-paper-airplane"></i></a></li>
       <li><a href= "#/map"><i class = "active small icon ion-map"></i></a></li>
     </ul>
@@ -32,8 +32,8 @@
                 </label>
               </div>
               <div class="input-field">
-                <label for="nickname">location nickname</label>
-                <input id="nickname" type="text" ng-model="post.nickname">
+                <label for="location_name">location nickname</label>
+                <input id="location_name" type="text" ng-model="post.location_name">
               </div>
               <div class="input-field">
                 <label for="message">message</label>
@@ -45,7 +45,6 @@
             </div>
             <div class="postmodalimagepane">
               <div class="imagebox">
-                <input type="hidden" ng-model="post.imageurl">
                 <image id="imagepreview" src="images/placeholder.png" width="160" height="160">
               </div>
 

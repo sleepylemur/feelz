@@ -1,5 +1,7 @@
 <div ng-controller="scratchCtrl">
   <input type="file" id="file">
   <button ng-click="testupload()">upload</button>
-
+  <ul>
+    <li ng-repeat="item in list"> {{item}} </li>
+  </ul>
 </div>

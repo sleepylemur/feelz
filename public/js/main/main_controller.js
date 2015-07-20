@@ -1,8 +1,9 @@
-angular.module('main',[])
-  .controller('mainCtrl', function($rootScope, $scope, $location, $window, $http){
+angular.module('main',['postService'])
+  .controller('mainCtrl', function(postService, $scope, $location, $window, $http){
     $scope.signOut = function(){
+      postService.clear();
       delete $window.sessionStorage.token;
+      delete $window.sessionStorage.user_id;
       $location.path('/');
-      $rootScope.socket.emit('removeUser', $rootScope.currentuser);
     }
   })

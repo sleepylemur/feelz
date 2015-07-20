@@ -1,0 +1,18 @@
+<div class="maincontent" ng-controller = "feedNewCtrl">
+  <div class="container">
+    <ul id = "feed" class="collection">
+      <li class="collection-item" ng-repeat = "feed in feeds track by $index">
+        {{feed.timestamp | fromNow}} — {{feed.emotion}} — {{feed.location_name}} — {{feed.message}}
+        <div class='imagebox' style="display: inline-block">
+          <image ng-src="{{feed.image_url || 'images/placeholder.png'}}" width="160" height="160">
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <nav class="navbar bottomfixed">
+    <ul class="container" id = "nav_items">
+      <li><a href= "#/map"><i class = "active small icon ion-map"></i></a></li>
+    </ul>
+  </nav>
+</div>

@@ -1,15 +1,20 @@
-var A = function(){
-  this[0]=5;
-  this[1]=3;
-  this[2]=15;
-  this[4]=8;
-  this.length = 3;
-};
-A.prototype = Object.create(Array.prototype);
-A.prototype.forEach = function() {console.log(3);};
+function a() {
+  function happy() {
+    console.log(5);
+  };
 
-b = [1,2,3];
-b.forEach(console.log);
+  return happy;
+}
 
-a = new A();
-a.forEach(console.log);
+function sad() {
+  console.log(1);
+}
+
+
+
+var b = a();
+var c = a();
+
+console.log(b === c);
+console.log(b == c);
+console.log(b,c);

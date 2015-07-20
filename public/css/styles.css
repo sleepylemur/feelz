@@ -73,3 +73,7 @@ html,body {
 header {
   height: 64px;
 }
+.bottomfixed {
+  position: fixed;
+  bottom: 0;
+}

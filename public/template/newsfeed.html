@@ -1,6 +1,0 @@
-<div class="maincontent" ng-controller = "newsfeedCtrl">
-  <ul id = "feed" class="collection">
-    <li class="collection-item" ng-repeat = "feed in feeds | orderBy: '-timestamp' | limitTo: 21">
-      {{feed.message}} {{feed.emotion}} {{feed.timestamp}}</li>
-  </ul>
-</div>

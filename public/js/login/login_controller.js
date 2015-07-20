@@ -9,11 +9,12 @@ angular.module('login', [])
           if (status === 200) {
             /// grant sesssions token
             $window.sessionStorage.token = data.token;
+            $window.sessionStorage.user_id = data.id;
             /// initial client socket
             $rootScope.currentuser = {id: data.id};
             $rootScope.socket = io();
             /// add user to socket with session token
-            $rootScope.socket.emit('addUser', $rootScope.currentuser);
+            // $rootScope.socket.emit('addUser', $rootScope.currentuser);
             $location.path('/map');
           } else {
             alert(data.error);

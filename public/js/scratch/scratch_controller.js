@@ -21,4 +21,14 @@ angular.module('scratch',[])
         alert('not an image file');
       }
     }
+
+    $scope.list = [1,2,3];
+    var timer = setInterval(function() {
+      $scope.$apply(function() {
+        $scope.list.push(Math.floor(Math.random()*100));
+        if ($scope.list.length > 100) {
+          clearInterval(timer);
+        }
+      });
+    },1000);
   });
