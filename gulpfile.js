@@ -30,9 +30,9 @@ gulp.task('styles', function(){
   return gulp.src(['public/css/materialize-src/sass/*.scss', 'public/css/sass/*.scss'])
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
-    .pipe(concat('mstyles.css'))
+    .pipe(concat('styles.css'))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('public/css'));
+    .pipe(gulp.dest('public/build'));
 });
 
 // gulp.task('watch_scripts', function(){

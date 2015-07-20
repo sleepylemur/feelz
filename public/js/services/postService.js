@@ -35,6 +35,9 @@ angular.module('postService', [])
         return $q(function(resolve,reject) {
           $http.get('/api/posts').then(function(data){
               posts = data.data;
+              // reverse posts so the most recent is at the end
+              // to be consistant with our pushing new posts on the end later
+              posts.reverse();
               resolve(posts);
             }).catch(function(err) {
               console.log('postService had trouble loading posts: '+err.error);
