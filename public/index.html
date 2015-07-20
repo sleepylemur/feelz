@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- style to be deleted once we have real css file -->
-    <style>#map-canvas {height:500px;}</style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Emotional Graffiti</title>
@@ -28,17 +26,9 @@
   </head>
 
   <body ng-app="vent" ng-controller = "mainCtrl">
-     <button ng-click="signOut()">Sign Out</button>
-
-    <section>
-        <header>
-          <h2> Bacon ipsum dolor amet sint pig eiusmod qui.</h2>
-          <p> Bacon ipsum dolor amet sint pig eiusmod qui. Biltong ipsum laboris enim eu magna porchetta cillum. Bacon pork belly ad, pork reprehenderit incididunt porchetta ham shank in. Ipsum reprehenderit occaecat, laboris leberkas ut tempor kevin et pancetta duis bresaola sausage ham pig. Boudin exercitation lorem short loin capicola velit short ribs do. Aliqua rump alcatra, sausage proident kielbasa magna occaecat shank drumstick shankle tail. Ad filet mignon ut incididunt jowl shoulder in dolore sed frankfurter.
-
-        </header>
-    </section>
-
-      <ng-view></ng-view>
-
+    <header>
+      <button ng-click="signOut()">Sign Out</button>
+    </header>
+    <ng-view></ng-view>
   </body>
 </html>
