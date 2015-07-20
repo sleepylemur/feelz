@@ -27,7 +27,7 @@ gulp.task('scripts', function(){
 });
 
 gulp.task('styles', function(){
-  return gulp.src(['public/css/materialize-src/sass/*.scss'])
+  return gulp.src(['public/css/materialize-src/sass/*.scss', 'public/css/sass/*.scss'])
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(concat('mstyles.css'))
@@ -41,7 +41,7 @@ gulp.task('styles', function(){
 gulp.task('watch', function() {
   // gulp.watch(['lib/**/*.js','test/**/*.js'], ['servertests']);
   gulp.watch(['public/js/**/*.js'], ['scripts']);
-  gulp.watch(['public/css/materialize-src/sass/components/*.scss'], ['styles']);
+  gulp.watch(['public/css/materialize-src/sass/components/*.scss', 'public/css/sass/*.scss'], ['styles']);
 });
 
 gulp.task('seed', function() {

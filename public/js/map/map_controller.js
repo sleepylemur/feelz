@@ -119,9 +119,10 @@ angular.module('map', ['postService'])
 
             // sets a click event on each individual marker
             google.maps.event.addListener(marker, 'click', function(){
-              $scope.emotiondata = pin;
-              $scope.$apply();
-              $('#modal1').openModal();
+              $scope.$apply(function(){
+                $scope.emotiondata = pin;
+              });
+              $('#modalPostDetail').openModal();
             });
 
             // holds the markers on $scope so they can be removed later
@@ -159,7 +160,7 @@ angular.module('map', ['postService'])
       }
       $scope.map = new google.maps.Map(document.getElementById('map-canvas'), options);
       // makes initial api call
-      google.maps.event.addListenerOnce($scope.map, 'tilesloaded', $scope.requestPosts);
+      // google.maps.event.addListenerOnce($scope.map, 'tilesloaded', $scope.requestPosts);
       google.maps.event.addListener($scope.map, 'zoom_changed', checkZoom);
 
       postService.getPosts().then(function(posts) {

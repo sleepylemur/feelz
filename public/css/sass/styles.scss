@@ -1,3 +1,21 @@
+$ravecolor : #009688;
+$ravecolorlight : #81C784;
+$rantcolor : #ff5722;
+$rantcolorlight : #ff8a65;
+
+.rantcolor {
+  color: $rantcolor;
+}
+.ravecolor {
+  color: $ravecolor;
+}
+.rantcolorlight {
+  color: $rantcolorlight;
+}
+.ravecolorlight {
+  color: $ravecolorlight;
+}
+
 h1, h2, h3, h4, h5, h6{
   font-family: quantum mechanics
 }
@@ -58,6 +76,34 @@ h1, h2, h3, h4, h5, h6{
 }
 .imageuploadbutton {
   width: 160px;
+}
+
+.detailModalContent {
+  position: relative;
+  max-width: 800px;
+  margin: auto;
+}
+.detailModalTextPane {
+  /*background: lightblue;*/
+  margin: 0px calc(10% + 140px) 0px 0px;
+  min-height: 200px;
+}
+.detailModalImagePane {
+  width: 160px;
+  height: 160px;
+  position: absolute;
+  right: 5%;
+  top: 40px;
+}
+.detailModalEmotion {
+  text-align:center;
+  font-size: 2em;
+}
+.detailModalLabel {
+  margin-top: .7em;
+}
+.detailModalText {
+  font-size: 1.2em;
 }
 
 html,body {
