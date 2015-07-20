@@ -2,6 +2,9 @@ angular.module('newPost',[])
   .controller('newPostCtrl', function($http, $location, $rootScope, $scope, $window){
       $scope.post = {};
       $scope.submit = function(){
+      // google analytics
+      ga('send', 'event', 'form', 'submit', 'new post form submit')
+
         navigator.geolocation.getCurrentPosition(function(position) {
           $scope.post.lat = position.coords.latitude;
           $scope.post.lng = position.coords.longitude;

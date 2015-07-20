@@ -1,5 +1,10 @@
 angular.module('map', ['postService'])
   .controller('MapCtrl', function(postService, $scope, $http, $rootScope){
+
+    // google analytics
+    ga('send', 'pageview', '/#/map');
+
+    // client's geolocation
     navigator.geolocation.getCurrentPosition(function(position) {
       $scope.map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude))
     });
@@ -177,10 +182,16 @@ angular.module('map', ['postService'])
     $scope.post = {};
     // open modal to write new post
     $scope.newPost = function() {
+      // google analytics
+      ga('send', 'event', 'button', 'click', 'opens new post modal')
+
       $('#modalNewPost').openModal();
     };
     // submit our post to the server
     $scope.submitNewPost = function() {
+      // google analytics
+      ga('send', 'event', 'form', 'submit', 'new post submit')
+
       navigator.geolocation.getCurrentPosition(function(position) {
         $scope.post.lat = position.coords.latitude;
         $scope.post.lng = position.coords.longitude;

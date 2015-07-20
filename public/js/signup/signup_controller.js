@@ -1,5 +1,8 @@
 angular.module('signup',[])
   .controller('SignUpCtrl', function($rootScope, $scope, $http, $location, $window){
+    // google analytics
+    ga('send', 'pageview', '/#/signup');
+
     $scope.user = {};
     $scope.validateEmail = function() {
       if (!$scope.user.email) {
@@ -16,6 +19,9 @@ angular.module('signup',[])
       }
     };
     $scope.signUp = function(){
+      // google analytics
+      ga('send', 'event', 'form', 'submit', 'signup form submit')
+
       if ($scope.passworderror || !$scope.user.password || $scope.user.password !== $scope.user.confirmpassword) {
         $scope.passwordblur = true;
         $scope.confirmblur = true;
@@ -27,6 +33,7 @@ angular.module('signup',[])
       } else {
         $http.post('/signup', $scope.user)
           .success(function(data, status, header, config){
+
             $window.sessionStorage.token = data.token;
             $window.sessionStorage.user_id = data.id;
             /// initial client socket

@@ -2,8 +2,14 @@ angular.module('login', [])
 
   .controller('LoginCtrl', function($rootScope, $scope, $http, $window, $location){
 
+    // google analytics
+    ga('send', 'pageview', '/#/login');
+
     $scope.user = {}
     $scope.submit = function(e){
+      // google analytics
+      ga('send', 'event', 'form', 'submit', 'login form submit');
+
       $http.post('/login', $scope.user)
         .success(function(data, status, header, config){
           if (status === 200) {
