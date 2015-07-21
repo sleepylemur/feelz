@@ -78,6 +78,51 @@ h1, h2, h3, h4, h5, h6{
   width: 160px;
 }
 
+.feedList {
+  // background: blue;
+  max-width: 600px;
+    margin: auto;
+
+}
+.feedRow {
+  position: relative;
+  // background: pink;
+  border-top: solid 1px rgba(51, 51, 51, 0.12);
+  padding-left: 5%;
+}
+.feedTextPane {
+  margin: 0px calc(10% + 120px) 0px 0px;
+  min-height: 140px;
+}
+.feedImagePane {
+  position: absolute;
+  right: 5%;
+  top: 10px;
+}
+.feedImageBox {
+  border: solid 1px rgba(51, 51, 51, 0.12);
+  width: 120px;
+  height: 120px;
+}
+.feedLine {
+  margin-top: .4em;
+}
+.feedLabel {
+  text-align: right;
+  display: inline-block;
+  margin-top: 3px;
+  margin-right: 8px;
+  width: 60px;
+  vertical-align: text-top;
+}
+.feedText {
+  display: inline-block;
+  font-size: 1.2em;
+  width: calc(100% - 80px);
+  vertical-align: text-top;
+  // background: pink;
+}
+
 .detailModalContent {
   position: relative;
   max-width: 800px;

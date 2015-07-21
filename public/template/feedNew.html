@@ -1,14 +1,27 @@
 <div class="maincontent" ng-controller = "feedNewCtrl">
-  <div class="container">
-    <ul id = "feed" class="collection">
-      <li class="collection-item" ng-click="loadDetail(feed.id)" ng-repeat="feed in feeds track by $index">
-        {{feed.timestamp | fromNow}} — {{feed.emotion}} — {{feed.location_name}} — {{feed.message}}
-        <div class='imagebox' style="display: inline-block">
-          <image ng-src="{{feed.image_url || 'images/placeholder.png'}}" width="160" height="160">
+  <ul id = "feed" class="feedList">
+    <li class="feedRow" ng-click="loadDetail(feed.id)" ng-repeat="feed in feeds track by $index">
+      <div class="feedTextPane">
+        <div class="feedLine">
+          <span class="feedLabel {{feed.emotion}}colorlight">when</span>
+          <span class="feedText">{{feed.timestamp | fromNow}}</span>
         </div>
-      </li>
-    </ul>
-  </div>
+        <div class="feedLine">
+          <span class="feedLabel {{feed.emotion}}colorlight">where</span>
+          <span class="feedText">{{feed.location_name}}</span>
+        </div>
+        <div class="feedLine">
+          <span class="feedLabel {{feed.emotion}}colorlight">message</span>
+          <span class="feedText">{{feed.message}}</span>
+        </div>
+      </div>
+      <div class="feedImagePane">
+        <div class='feedImageBox' style="display: inline-block">
+          <image ng-src="{{feed.image_url}}" width="120" height="120">
+        </div>
+      </div>
+    </li>
+  </ul>
 
   <nav class="navbar bottomfixed">
     <ul class="container" id = "nav_items">

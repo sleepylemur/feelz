@@ -131,9 +131,9 @@ angular.module('map', ['postService'])
     }
 
     function triggerDetail(pin) {
-      // $scope.$apply(function(){
+      $scope.$apply(function(){
         $scope.emotiondata = pin;
-      // });
+      });
       $scope.map.panTo(new google.maps.LatLng(pin.lat, pin.lng));
       $('#modalPostDetail').openModal();
     }
