@@ -256,7 +256,7 @@ angular.module('map', ['postService'])
         .success(function(url){
           console.log('uploaded',url);
           $scope.post.image_url = url;
-          $('#imagepreview').attr('src',url);
+          // $('#imagepreview').attr('src',url);
         })
         .error(function(e){
           alert('error '+e);

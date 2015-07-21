@@ -165,6 +165,15 @@ header {
   height: 64px;
 }
 .bottomfixed {
+  text-align:center;
   position: fixed;
   bottom: 0;
+}
+
+.navlist {
+  width: 100%;
+  // background: blue;
+  li {
+    width: 100px;
+  }
 }

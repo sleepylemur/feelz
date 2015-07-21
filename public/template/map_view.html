@@ -2,10 +2,12 @@
   <div id="map-canvas"></div>
 
   <nav class="navbar bottomfixed">
-    <ul class="container" id = "nav_items">
-      <li><a href="#/feedNew"><i class="small icon ion-ios-flask"></i></a></li>
-      <li><a ng-click="newPost()"><i class = "small icon ion-paper-airplane"></i></a></li>
-      <li><a href= "#/map"><i class = "active small icon ion-map"></i></a></li>
+    <ul class="navlist" id = "nav_items">
+      <!-- <li><a href="#/feedNew"><i class="small icon ion-ios-flask"></i></a></li>
+      <li><a ng-click="newPost()"><i class = "small icon ion-paper-airplane"></i></a></li> -->
+      <li><a href="#/feedNew">RECENT</i></a></li>
+      <li><a ng-click="newPost()">POST</i></a></li>
+      <!-- <li><a href= "#/map"><i class = "active small icon ion-map"></i></a></li> -->
     </ul>
   </nav>
 
@@ -52,7 +54,7 @@
             </div>
             <div class="postmodalimagepane">
               <div class="imagebox">
-                <image id="imagepreview" src="images/placeholder.png" width="160" height="160">
+                <image id="imagepreview" ng-src="{{post.image_url}}" width="160" height="160">
               </div>
 
               <div class="btn {{post.rantrave ? 'teal' : 'deep-orange'}} imageuploadbutton waves-effect waves-light" ng-click="fileDialog()">
