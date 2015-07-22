@@ -1,7 +1,9 @@
 <div class="maincontent" ng-controller = "feedNewCtrl">
   <ul id = "feed" class="feedList">
-    <li class="feedRow" ng-click="loadDetail(feed.id)" ng-repeat="feed in feeds track by $index">
-      <div class="feedTextPane">
+    <li class="feedRow" ng-repeat="feed in feeds track by $index">
+      {{feed.numvotes}}
+      <button ng-hide="votes[feed.id]" ng-click="upVote(feed.id)">upvote</button>
+      <div class="feedTextPane" ng-click="loadDetail(feed.id)">
         <div class="feedLine">
           <span class="feedLabel {{feed.emotion}}colorlight">when</span>
           <span class="feedText">{{feed.timestamp | fromNow}}</span>
@@ -15,7 +17,7 @@
           <span class="feedText">{{feed.message}}</span>
         </div>
       </div>
-      <div class="feedImagePane">
+      <div class="feedImagePane" ng-click="loadDetail(feed.id)">
         <div class='feedImageBox' style="display: inline-block">
           <image ng-src="{{feed.image_url}}" width="120" height="120">
         </div>

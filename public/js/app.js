@@ -1,5 +1,5 @@
 
-angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map','scratch','main','feedNew','momentfilter','postService'])
+angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map','scratch','main','feedNew','momentfilter','postService','voteService'])
 
  .config(function($routeProvider, $httpProvider) {
    $httpProvider.interceptors.push('authInterceptor');

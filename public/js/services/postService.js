@@ -6,7 +6,7 @@ angular.module('postService', [])
       getPosts();
     }
 
-    function listenToSocket(data) {
+    function newPostFromSocket(data) {
       if (posts) {
         // $rootScope.$apply(function() {
         //   posts.push(data);
@@ -15,11 +15,27 @@ angular.module('postService', [])
         $rootScope.$broadcast('newpost', data);
       }
     }
+    function updatePostFromSocket(data) {
+      // using linear search for now. because our posts are sorted by date, it should be possible to do a smarter lookup
+      for (var i = 0; i< posts.length; i++) {
+        if (posts[i].id == data.id) break;
+      }
+      if (i < posts.length) {
+        // we found our post so update it
+        $rootScope.$apply(function() {
+          posts[i].numvotes = data.count;
+        });
+      } else {
+        // for some reason we didn't find our post... maybe a concurrency issue?
+        // just ignore it because numvotes isn't really that important to be accurate
+      }
+    }
 
     function clear() {
       posts = undefined;
       if (socket) {
-        socket.removeListener('list new post', listenToSocket);
+        socket.removeListener('list new post', newPostFromSocket);
+        socket.removeListener('update postvotes', updatePostFromSocket);
         socket = undefined;
       }
     }
@@ -27,7 +43,8 @@ angular.module('postService', [])
     function getPosts() {
       if (!socket) {
         socket = io();
-        socket.on('list new post', listenToSocket);
+        socket.on('list new post', newPostFromSocket);
+        socket.on('update postvotes', updatePostFromSocket);
       }
       if (posts) {
         return $q.when(posts);
