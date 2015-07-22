@@ -1,5 +1,7 @@
-angular.module('map', ['postService'])
-  .controller('MapCtrl', function(postService, $scope, $http, $rootScope, $routeParams){
+angular.module('map', ['postService', 'mapinitializer'])
+  .controller('MapCtrl', function(postService, $scope, $http, $rootScope, $routeParams, mapinitializer){
+
+    $('#map-container').css('display', 'inline');
 
     // getMapBounds used by requestPosts
     $scope.getMapBounds = function(){
@@ -157,16 +159,11 @@ angular.module('map', ['postService'])
       });
     });
 
+    $scope.map = mapinitializer.pandaMap;
     // initializes map
-    if (!$scope.map) {
-      var options = {
-        zoom: 14,
-        styles: mapStyle,
-        disableDefaultUI: true
-      }
-      // toggle for map qualities according to zoom level
+    if (!mapinitializer.loadedOnController) {
 
-      $scope.map = new google.maps.Map(document.getElementById('map-canvas'), options);
+      mapinitializer.loadedOnController = true;
 
       navigator.geolocation.getCurrentPosition(function(position) {
         $scope.map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));

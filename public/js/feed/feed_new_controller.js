@@ -3,6 +3,8 @@ angular.module('feedNew', ['momentfilter','postService'])
     // google analytics
     ga('send', 'pageview', '/#/feednew');
 
+    $('#map-container').css('display', 'none');
+
     postService.getPosts().then(function(data) {
       var arr = data.slice(-21);
       arr.reverse();
