@@ -1,6 +1,6 @@
-<div class="maincontent" ng-controller = "feedNewCtrl">
+<div class="maincontent" ng-controller = "feedHotCtrl">
   <ul id = "feed" class="feedList">
-    <li class="feedRow" ng-repeat="feed in feeds track by $index">
+    <li class="feedRow" ng-repeat="feed in feeds | orderBy:'-numvotes'">
       {{feed.numvotes}}
       <button ng-hide="votes[feed.id]" ng-click="upVote(feed.id)">upvote</button>
       <div class="feedTextPane" ng-click="loadDetail(feed.id)">
@@ -28,7 +28,7 @@
   <nav class="navbar bottomfixed">
     <ul class="navlist" id = "nav_items">
       <li><a href= "#/map">MAP</a></li>
-      <li><a href= "#/feedHot">HOT</a></li>
+      <li><a href= "#/feedNew">NEW</a></li>
     </ul>
   </nav>
 </div>

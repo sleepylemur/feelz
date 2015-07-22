@@ -1,5 +1,5 @@
-angular.module('feedNew', ['momentfilter','postService','voteService'])
-  .controller('feedNewCtrl', function(voteService, postService, $window, $http, $location, $routeParams, $rootScope, $scope, $window){
+angular.module('feedHot', ['momentfilter','postService','voteService'])
+  .controller('feedHotCtrl', function(voteService, postService, $window, $http, $location, $routeParams, $rootScope, $scope, $window){
     // google analytics
     ga('send', 'pageview', '/#/feednew');
 
