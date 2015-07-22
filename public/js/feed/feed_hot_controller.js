@@ -12,9 +12,9 @@ angular.module('feedHot', ['momentfilter','postService','voteService'])
     };
 
     postService.getPosts().then(function(data) {
-      var arr = data.slice(-21);
-      arr.reverse();
-      $scope.feeds = arr;
+      var arr = data.slice();
+      arr.sort(function(a,b) {return b.numvotes - a.numvotes;});
+      $scope.feeds = arr.slice(0,21);
     });
 
     // receive message from postService to add a post to our list
