@@ -3,6 +3,8 @@ angular.module('feedHot', ['momentfilter','postService','voteService'])
     // google analytics
     ga('send', 'pageview', '/#/feednew');
 
+    $rootScope.title = "Hot";
+
     voteService.getVotes().then(function(data) {
       $scope.votes = data;
     });

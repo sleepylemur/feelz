@@ -3,6 +3,8 @@ angular.module('feedNew', ['momentfilter','postService','voteService'])
     // google analytics
     ga('send', 'pageview', '/#/feednew');
 
+    $rootScope.title = "New";
+
     voteService.getVotes().then(function(data) {
       $scope.votes = data;
     });

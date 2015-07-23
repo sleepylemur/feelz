@@ -163,7 +163,14 @@ html,body {
 }
 header {
   height: 64px;
+  .title {
+    position: absolute;
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+  }
 }
+
 .bottomfixed {
   text-align:center;
   position: fixed;

@@ -1,6 +1,8 @@
 angular.module('map', ['postService'])
   .controller('MapCtrl', function(postService, $scope, $http, $rootScope, $routeParams){
 
+    $rootScope.title = "Map";
+
     // getMapBounds used by requestPosts
     $scope.getMapBounds = function(){
       var bounds = $scope.map.getBounds();
