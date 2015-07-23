@@ -15,7 +15,6 @@ angular.module('authinterceptor', [])
      responseError: function(response) {
       console.log(response)
        if (response.status === 401) {
-         console.log('in here')
          delete $window.sessionStorage.token;
          $location.path('login');
        }
