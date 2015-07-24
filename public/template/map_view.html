@@ -16,7 +16,15 @@
     <div class="modal-content detailModalContent">
       <div class="detailModalTextPane">
         <div class="detailModalEmotion {{emotiondata.emotion}}color">{{emotiondata.emotion}}</div>
-        <div class="detailModalLabel {{emotiondata.emotion}}colorlight">location</div>
+        <div>
+          {{emotiondata.numvotes}}
+          <button ng-hide="votes[emotiondata.id]" ng-click="voteService.addVote(emotiondata.id)">upvote</button>
+        </div>
+        <div class="detailModalLabel {{emotiondata.emotion}}colorlight">who</div>
+        <div class="detailModalText">{{emotiondata.username}}</div>
+        <div class="detailModalLabel {{emotiondata.emotion}}colorlight">when</div>
+        <div class="detailModalText">{{emotiondata.timestamp | fromNow}}</div>
+        <div class="detailModalLabel {{emotiondata.emotion}}colorlight">where</div>
         <div class="detailModalText">{{emotiondata.location_name}}</div>
         <div class="detailModalLabel {{emotiondata.emotion}}colorlight">message</div>
         <div class="detailModalText">{{emotiondata.message}}</div>

@@ -8,10 +8,11 @@ angular.module('feedNew', ['momentfilter','postService','voteService'])
     voteService.getVotes().then(function(data) {
       $scope.votes = data;
     });
-
-    $scope.upVote = function(post_id) {
-      voteService.addVote(post_id);
-    };
+    $scope.voteService = voteService;
+    //
+    // $scope.upVote = function(post_id) {
+    //   voteService.addVote(post_id);
+    // };
 
     postService.getPosts().then(function(data) {
       var arr = data.slice(-21);

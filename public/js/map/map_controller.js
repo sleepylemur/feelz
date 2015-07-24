@@ -1,7 +1,12 @@
-angular.module('map', ['postService'])
-  .controller('MapCtrl', function(postService, $scope, $http, $rootScope, $routeParams){
+angular.module('map', ['voteService','postService'])
+  .controller('MapCtrl', function(voteService, postService, $scope, $http, $rootScope, $routeParams){
 
     $rootScope.title = "Map";
+
+    voteService.getVotes().then(function(data) {
+      $scope.votes = data;
+    });
+    $scope.voteService = voteService;
 
     // getMapBounds used by requestPosts
     $scope.getMapBounds = function(){

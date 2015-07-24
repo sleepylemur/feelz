@@ -16,6 +16,7 @@ angular.module('postService', [])
       }
     }
     function updatePostFromSocket(data) {
+      data.numvotes = Number(data.numvotes);
       // using linear search for now. because our posts are sorted by date, it should be possible to do a smarter lookup
       for (var i = 0; i< posts.length; i++) {
         if (posts[i].id == data.id) break;
@@ -23,8 +24,9 @@ angular.module('postService', [])
       if (i < posts.length) {
         // we found our post so update it
         $rootScope.$apply(function() {
-          posts[i].numvotes = data.count;
+          posts[i].numvotes = data.numvotes;
         });
+        $rootScope.$broadcast('updatevote', data);
       } else {
         // for some reason we didn't find our post... maybe a concurrency issue?
         // just ignore it because numvotes isn't really that important to be accurate

@@ -1,9 +1,13 @@
 <div class="maincontent" ng-controller = "feedHotCtrl">
   <ul id = "feed" class="feedList">
-    <li class="feedRow" ng-repeat="feed in feeds | orderBy:'-numvotes'">
+    <li class="feedRow" ng-repeat="feed in feeds">
       {{feed.numvotes}}
-      <button ng-hide="votes[feed.id]" ng-click="upVote(feed.id)">upvote</button>
+      <button ng-hide="votes[feed.id]" ng-click="voteService.addVote(feed.id)">upvote</button>
       <div class="feedTextPane" ng-click="loadDetail(feed.id)">
+        <div class="feedLine">
+          <span class="feedLabel {{feed.emotion}}colorlight">who</span>
+          <span class="feedText">{{feed.username}}</span>
+        </div>
         <div class="feedLine">
           <span class="feedLabel {{feed.emotion}}colorlight">when</span>
           <span class="feedText">{{feed.timestamp | fromNow}}</span>
