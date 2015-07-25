@@ -8,7 +8,6 @@ angular.module('feedHot', ['momentfilter','postService','voteService'])
     $(window).scroll(function(event) {
 
       var scrollTopVal = $(this).scrollTop();
-      console.log(scrollTopVal);
       if (scrollTopVal < 40) {
         $('header').css({top: '0px'});
         $('#feedToggleBar').css({top: '40px'});
