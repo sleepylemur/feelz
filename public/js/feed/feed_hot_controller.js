@@ -3,9 +3,24 @@ angular.module('feedHot', ['momentfilter','postService','voteService'])
     // google analytics
     ga('send', 'pageview', '/#/feednew');
 
-    $rootScope.title = "Hot";
+    $rootScope.title = "FEED";
+    var lastscroll = 0;
+    $(window).scroll(function(event) {
 
-
+      var scrollTopVal = $(this).scrollTop();
+      console.log(scrollTopVal);
+      if (scrollTopVal < 40) {
+        $('header').css({top: '0px'});
+        $('#feedToggleBar').css({top: '40px'});
+      } else if(scrollTopVal > 40 && scrollTopVal - lastscroll < 0){
+        $('header').css({top: '-64px'});
+        $('#feedToggleBar').css({top: '0px'});
+      }else{
+        $('header').css({top: '-64px'});
+        $('#feedToggleBar').css({top: '-64px'});
+      }
+      lastscroll = scrollTopVal;
+    });
 
     voteService.getVotes().then(function(data) {
       $scope.votes = data;

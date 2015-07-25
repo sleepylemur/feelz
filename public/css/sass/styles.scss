@@ -163,9 +163,15 @@ html,body {
   width: 100%;
   height: 100%;
 }
-<<<<<<< HEAD
+
 header {
   height: 64px;
+  position: fixed;
+  transition: top .2s linear;
+  top: 0px;
+  width: 100%;
+  z-index: 10;
+  background: white;
   .title {
     position: absolute;
     width: 100%;
@@ -174,16 +180,17 @@ header {
   }
 }
 
-.bottomfixed {
-  text-align:center;
-=======
+
 .topfixed{
+  position: absolute;
+  transition: top .2s linear;
+  top: 40px;
+
   position: fixed; 
   background-color: white; 
   z-index: 10; 
 }
 .bottomfixed{
->>>>>>> upvoting
   position: fixed;
   bottom: 0;
   background-color: $rantcolor;
