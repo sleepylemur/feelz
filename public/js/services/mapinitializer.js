@@ -17,6 +17,10 @@ angular.module('mapinitializer', ['postService'])
 
       var options = {
         zoom: 14,
+        zoomControl: true,
+        zoomControlOptions: {
+          position: google.maps.ControlPosition.LEFT_CENTER
+        },
         styles: mapStyle,
         disableDefaultUI: true
       }
