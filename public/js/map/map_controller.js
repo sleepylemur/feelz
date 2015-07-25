@@ -7,21 +7,24 @@ angular.module('map', ['postService', 'mapinitializer', 'voteService'])
       $scope.votes = data;
     });
 
-    $('#map-container').css('display', 'inline');
     $scope.map = mapinitializer.pandaMap;
+    // google.maps.event.trigger(mapinitializer.pandaMap,'resize')
+    // $('#map-container').css('display: inline');
 
-    handleResize();
+    // handleResize();
     if (!mapinitializer.dataFetched) mapinitializer.fetchData();
 
     mapinitializer.triggerDetail = triggerDetail;
 
     function handleResize() {
+      console.log('handleResize');
       var center = $scope.map.getCenter();
       google.maps.event.trigger($scope.map, 'resize');
       $scope.map.setCenter(center);
     }
 
     function handleCentering() {
+      console.log('handleCentering');
       // if we have a target, then zoom map to that
       if ($routeParams.detail) {
         postService.getPosts().then(function(posts) {
@@ -45,6 +48,7 @@ angular.module('map', ['postService', 'mapinitializer', 'voteService'])
     }
 
     function triggerDetail(pin) {
+      console.log('triggerDetail');
       $scope.emotiondata = pin;
       $scope.map.panTo(new google.maps.LatLng(pin.lat, pin.lng));
       $('#modalPostDetail').openModal();

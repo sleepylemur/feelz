@@ -10,7 +10,7 @@ $rantcolorlight : #7986cb;
   color: $ravecolor;
 }
 .rantBorder{
-  border: solid .1em $rantcolorlight; 
+  border: solid .1em $rantcolorlight;
 }
 .rantcolorlight {
   color: $rantcolorlight;
@@ -19,7 +19,7 @@ $rantcolorlight : #7986cb;
   color: $ravecolorlight;
 }
 .raveBorder{
-  border: solid .1em $ravecolorlight; 
+  border: solid .1em $ravecolorlight;
 }
 h1, h2, h3, h4, h5, h6{
   font-family: quantum mechanics
@@ -177,7 +177,12 @@ html,body {
 }
 #map-container {
   height: calc(100% - (64px + 64px));
+}
+.maphide {
   display: none;
+}
+.mapshow {
+  display: inline;
 }
 
 #map-canvas {
@@ -207,9 +212,9 @@ header {
   transition: top .2s linear;
   top: 40px;
 
-  position: fixed; 
-  background-color: white; 
-  z-index: 10; 
+  position: fixed;
+  background-color: white;
+  z-index: 10;
 }
 .bottomfixed{
   position: fixed;
@@ -241,7 +246,7 @@ header {
   }
 }
 .cta{
-  background-color: $ravecolorlight; 
+  background-color: $ravecolorlight;
   .icon, small{
     color: $rantcolor;
   }

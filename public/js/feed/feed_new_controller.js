@@ -4,6 +4,7 @@ angular.module('feedNew', ['momentfilter','postService','voteService'])
     ga('send', 'pageview', '/#/feednew');
 
     $rootScope.title = "FEED";
+    // $('#map-container').css({display: 'none'});
 
     var lastscroll = 0;
     $(window).scroll(function(event) {
@@ -30,7 +31,6 @@ angular.module('feedNew', ['momentfilter','postService','voteService'])
     // $scope.upVote = function(post_id) {
     //   voteService.addVote(post_id);
     // };
-    $('#map-container').css('display', 'none');
 
     postService.getPosts().then(function(data) {
       var arr = data.slice(-21);

@@ -42,6 +42,12 @@ angular.module('postService', [])
       }
     }
 
+    function getPost(post_id) {
+      for (var i=0; i<posts.length; i++) {
+        if (posts[i].id = post_id) return posts[i];
+      }
+    }
+
     function getPosts() {
       if (!socket) {
         socket = io();
@@ -75,6 +81,7 @@ angular.module('postService', [])
 
     return {
       clear: clear,
-      getPosts: getPosts
+      getPosts: getPosts,
+      getPost: getPost
     };
   });
