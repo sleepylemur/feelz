@@ -1,5 +1,5 @@
 
-angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map','scratch','main','feedNew','feedHot','momentfilter','postService','voteService'])
+angular.module('feelz', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map','scratch','main','profile','feedNew','feedHot','momentfilter','postService','voteService'])
 
  .config(function($routeProvider, $httpProvider) {
    $httpProvider.interceptors.push('authInterceptor');
@@ -21,6 +21,9 @@ angular.module('vent', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map','
       })
       .when('/feedHot', {
         templateUrl: './template/feedHot.html'
+      })
+      .when('/profile', {
+        templateUrl: './template/profile.html'
       })
       .otherwise({
         redirectTo: '/login'
