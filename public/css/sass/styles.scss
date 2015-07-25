@@ -159,6 +159,11 @@ html,body {
 .maincontent {
   height: calc(100% - (4em + 4em));
 }
+#map-container {
+  height: calc(100% - (64px + 64px));
+  display: none;
+}
+
 #map-canvas {
   width: 100%;
   height: 100%;

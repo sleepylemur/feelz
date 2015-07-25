@@ -3,6 +3,8 @@ angular.module('signup',[])
     // google analytics
     ga('send', 'pageview', '/#/signup');
 
+    $('#map-container').css('display', 'none');
+
     $scope.user = {};
     $scope.validateEmail = function() {
       if (!$scope.user.email) {
