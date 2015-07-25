@@ -1,17 +1,6 @@
 <div class="maincontent" ng-controller="MapCtrl">
   <div id="map-canvas"></div>
-
-  <nav class="navbar bottomfixed">
-    <ul class="navlist" id = "nav_items">
-      <!-- <li><a href="#/feedNew"><i class="small icon ion-ios-flask"></i></a></li>
-      <li><a ng-click="newPost()"><i class = "small icon ion-paper-airplane"></i></a></li> -->
-      <li><a href="#/feedHot">HOT</i></a></li>
-      <li><a ng-click="newPost()">POST</i></a></li>
-      <li><a href="#/feedNew">NEW</i></a></li>
-      <!-- <li><a href= "#/map"><i class = "active small icon ion-map"></i></a></li> -->
-    </ul>
-  </nav>
-
+  <div ng-include src="'template/navbar.html'"></div>
   <div id="modalPostDetail" class="modal bottom-sheet">
     <div class="modal-content detailModalContent">
       <div class="detailModalTextPane">
