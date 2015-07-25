@@ -1,6 +1,9 @@
 angular.module('main',['postService', 'mapinitializer'])
-  .controller('mainCtrl', function(postService, mapinitializer, $scope, $location, $window, $http, mapinitializer){
+  .controller('mainCtrl', function($rootScope, postService, mapinitializer, $scope, $location, $window, $http, mapinitializer){
+
+    $rootScope.$location = $location;
     mapinitializer.mapInit();
+
     // listens to new post arriving by socket
     $scope.$on('newpost', function(event, post) {
       $scope.$apply(function() {

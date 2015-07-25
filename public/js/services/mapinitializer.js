@@ -7,6 +7,7 @@ angular.module('mapinitializer', ['postService'])
 
     // to be called in the main controller
     mappy.mapInit = function(){
+      console.log('mapInit');
       // obtains user geolocation data
       navigator.geolocation.getCurrentPosition(function(position) {
         mappy.clientLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
@@ -34,6 +35,7 @@ angular.module('mapinitializer', ['postService'])
     }
 
     mappy.fetchData = function() {
+      console.log('fetchData');
       postService.getPosts().then(function(posts) {
         mappy.dataPoints = posts;
         mappy.pandaMap.set('styles', mapStyle);
@@ -42,10 +44,11 @@ angular.module('mapinitializer', ['postService'])
       })
         .catch(function(err){
           if (err[0].data.status === '401') mappy.dataFetched = false;
-        });     
+        });
     }
 
     var getMapBounds = function(){
+      console.log('getMapBounds');
       var bounds = mappy.pandaMap.getBounds();
       var northEast = bounds.getNorthEast();
       var southWest = bounds.getSouthWest();
@@ -54,11 +57,13 @@ angular.module('mapinitializer', ['postService'])
     };
 
     var showHeatLayers= function() {
+      console.log('showHeatLayers');
       mappy.rantHeat.setMap(mappy.pandaMap);
       mappy.raveHeat.setMap(mappy.pandaMap);
     };
 
     var initHeatLayers = function(){
+      console.log('initHeatLayers');
       // two heat layers
       var rants = [];
       var raves = [];
@@ -101,12 +106,14 @@ angular.module('mapinitializer', ['postService'])
     }
 
     var removeHeatLayers = function(){
+      console.log('removeHeatLayers');
       mappy.rantHeat.setMap(null);
       mappy.raveHeat.setMap(null);
     }
 
     // called by checkZoom
     var toggleZoomedIn = function(){
+      console.log('toggleZoomedIn');
       removeHeatLayers();
       addMarkers();
       mappy.pandaMap.set('styles', null);
@@ -114,6 +121,7 @@ angular.module('mapinitializer', ['postService'])
     }
 
     mappy.checkZoom = function(){
+      console.log('checkZoom');
       if (mappy.pandaMap.getZoom() > 15){
         if (!mappy.zoomedIn) toggleZoomedIn();
       } else {
@@ -123,6 +131,7 @@ angular.module('mapinitializer', ['postService'])
 
     // called initially and by checkZoom
     var toggleZoomedOut = function() {
+      console.log('toggleZoomedOut');
       removeMarkers();
       showHeatLayers();
       mappy.pandaMap.set('styles', mapStyle);
@@ -130,6 +139,7 @@ angular.module('mapinitializer', ['postService'])
     }
 
     var addMarkers = function() {
+      console.log('addMarkers');
       mappy.markers = [];
       var bounds = getMapBounds();
 
@@ -166,6 +176,8 @@ angular.module('mapinitializer', ['postService'])
     }
 
     var removeMarkers = function() {
+
+        console.log('removeMarkers');
       mappy.markers.forEach(function(e){
         e.setMap(null);
         google.maps.event.clearListeners(e);

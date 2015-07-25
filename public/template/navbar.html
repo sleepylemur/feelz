@@ -5,9 +5,10 @@
     <a href="#/feedNew"><li><i class="small icon ion-ios-flask"></i><br><small>feed</small></li></a>
 
     <a ng-click="newPost()"><li class="cta"><i class = "small icon ion-paper-airplane"></i><br><small>post</small></li></a>
-    
+
     <a href="#/profile"><li><i class= "small icon ion-ios-paw"></i><br><small>profile</small></li></a>
 
     <a href= "#/about"><li><i class="small icon ion-ios-glasses"></i><br><small>info</small></li></a>
+    <li ng-hide="$location.$$path != '/map'">{{$location.$$path}}</li>
   </ul>
 </div>

@@ -5,8 +5,6 @@ angular.module('login', [])
     // google analytics
     ga('send', 'pageview', '/#/login');
 
-    $('#map-container').css('display', 'none');
-
     $scope.user = {}
     $scope.submit = function(e){
       // google analytics

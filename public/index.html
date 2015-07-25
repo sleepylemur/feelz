@@ -42,7 +42,7 @@
     <header>
       <div class="title">{{title}}</div>
     </header>
-    <div id="map-container">
+    <div class="{{$location.$$path == '/map' ? 'mapshow' : 'maphide'}}" id="map-container">
       <div id="map-canvas"></div>
     </div>
     <ng-view></ng-view>
