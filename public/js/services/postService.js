@@ -43,9 +43,21 @@ angular.module('postService', [])
     }
 
     function getPost(post_id) {
-      for (var i=0; i<posts.length; i++) {
-        if (posts[i].id = post_id) return posts[i];
+      function searchPosts(post_id) {
+        for (var i=0; i<posts.length; i++) {
+          if (posts[i].id = post_id) return posts[i];
+        }
       }
+
+      return $q(function(resolve,reject) {
+        if (posts) {
+          resolve(searchPosts(post_id));
+        } else {
+          getPosts().then(function() {
+            resolve(searchPosts(post_id));
+          });
+        }
+      });
     }
 
     function getPosts() {
