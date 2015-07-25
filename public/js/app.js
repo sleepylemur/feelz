@@ -1,5 +1,5 @@
 
-angular.module('feelz', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map','scratch','main','profile','feedNew','feedHot','momentfilter','postService','voteService'])
+angular.module('feelz', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map','scratch','main','profile','feedNew','feedHot','post','momentfilter','postService','voteService'])
 
  .config(function($routeProvider, $httpProvider) {
    $httpProvider.interceptors.push('authInterceptor');
@@ -21,6 +21,9 @@ angular.module('feelz', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map',
       })
       .when('/feedHot', {
         templateUrl: './template/feedHot.html'
+      })
+      .when('/post', {
+        templateUrl: './template/postDetail.html'
       })
       .when('/profile', {
         templateUrl: './template/profile.html'

@@ -48,6 +48,11 @@ angular.module('feedNew', ['momentfilter','postService','voteService'])
 
 
     $scope.loadDetail = function(id) {
+      $location.path('/post').search({detail: id});
+    }
+
+    $scope.goToMap = function(id) {
       $location.path('/map').search({detail: id});
     }
+    
   });

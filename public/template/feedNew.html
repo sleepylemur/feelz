@@ -1,8 +1,8 @@
 <div class="maincontent" ng-controller = "feedNewCtrl">
 
   <ul id="feedToggleBar" class="topfixed tabs center" tabs>
-    <li class="tab col s3"><a href="#/feedHot">trending</a></li>
-    <li class="tab col s3"><a class="active" href="#/feedNew">new</a></li>
+    <li class="tab col s6 l3"><a href="#/feedHot">trending</a></li>
+    <li class="tab col s6 l3"><a class="active" href="#/feedNew">new</a></li>
   </ul>
 
   <ul class="feedList">
@@ -11,7 +11,6 @@
         <i class = "{{feed.emotion}}colorlight waves-effect icon-large ion-ios-bolt" ng-click="upVote(feed.id)"></i>
         {{feed.numvotes}}
         <small> strikes </small>
-
       </div>
       <div class="feedMessage" ng-click="loadDetail(feed.id)">
           <div class="{{feed.image_url ? 'truncatedText' : ''}} {{feed.emotion}}color">{{feed.message}}</div>
