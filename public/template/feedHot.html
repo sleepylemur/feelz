@@ -1,34 +1,24 @@
 <div class="maincontent" ng-controller = "feedHotCtrl">
-  <ul id = "feed" class="feedList">
+
+  <ul class="topfixed tabs center" tabs>
+    <li class="tab col s6 l3"><a class="active" href="#/feedNew">trending</a></li>
+    <li class="tab col s6 l3"><a href="#/feedNew">new</a></li>
+  </ul>
+
+  <ul class="feedList">
     <li class="feedRow" ng-repeat="feed in feeds | orderBy:'-numvotes'">
-      {{feed.numvotes}}
-      <button ng-hide="votes[feed.id]" ng-click="upVote(feed.id)">upvote</button>
-      <div class="feedTextPane" ng-click="loadDetail(feed.id)">
-        <div class="feedLine">
-          <span class="feedLabel {{feed.emotion}}colorlight">when</span>
-          <span class="feedText">{{feed.timestamp | fromNow}}</span>
-        </div>
-        <div class="feedLine">
-          <span class="feedLabel {{feed.emotion}}colorlight">where</span>
-          <span class="feedText">{{feed.location_name}}</span>
-        </div>
-        <div class="feedLine">
-          <span class="feedLabel {{feed.emotion}}colorlight">message</span>
-          <span class="feedText">{{feed.message}}</span>
-        </div>
+      <div class="listVote">
+        <i class = "{{feed.emotion}}colorlight waves-effect icon-large ion-ios-bolt" ng-click="upVote(feed.id)"></i>
+        {{feed.numvotes}} 
+        <small> strikes </small>
       </div>
-      <div class="feedImagePane" ng-click="loadDetail(feed.id)">
-        <div class='feedImageBox' style="display: inline-block">
-          <image ng-src="{{feed.image_url}}" width="120" height="120">
-        </div>
+      <div class="feedMessage" ng-click="loadDetail(feed.id)">
+          <div class="{{feed.emotion}}color">{{feed.message}}</div>
+          <image class="{{feed.emotion}}Border" ng-src="{{feed.image_url}}"/>
+          <p><a ng-click="goToMap(feed.id)"><i class = "icon ion-android-locate"></i> {{feed.location_name}} </a> <i class= "icon ion-android-time"></i>{{feed.timestamp | fromNow}}</p>
       </div>
     </li>
   </ul>
 
-  <nav class="navbar bottomfixed">
-    <ul class="navlist" id = "nav_items">
-      <li><a href= "#/map">MAP</a></li>
-      <li><a href= "#/feedNew">NEW</a></li>
-    </ul>
-  </nav>
+  <div ng-include src="'template/navbar.html'"></div>
 </div>
