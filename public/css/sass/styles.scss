@@ -173,6 +173,8 @@ html,body {
   height: 100%;
 }
 .maincontent {
+  position: relative;
+  top:64px;
   height: calc(100% - (4em + 4em));
 }
 #map-container {

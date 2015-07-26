@@ -1,4 +1,21 @@
-<div ng-controller = "postCtrl">
-  <div style="height:64px"></div>
-  {{post.message}}
+<div class="maincontent" ng-controller = "postCtrl">
+
+  <div class = "postAuthor">
+    <image src=""/>
+    <h3><a ng-click= "fetchProfile(post.user_id)">{{post.username}}</a></h3>
+    <p><i class= "icon ion-android-time"></i> {{post.timestamp | fromNow}}</p>
+  </div>
+
+  <image ng-hide="{{post.image_url == null}}" ng-src="{{post.image_url}}"/>
+
+  <div class = "postDetails">
+      <div class="{{post.emotion}}color">{{post.message}}</div>
+      <a ng-click="goToMap(post.id)"><i class = "icon ion-android-locate"></i> {{post.location_name}} </a> 
+  </div>
+
+  <div class ="postVote">
+    <i class = "{{post.emotion}}colorlight waves-effect icon-large ion-ios-bolt" ng-click="upVote(feed.id)"></i> {{post.numvotes}}
+    <small> strikes </small>
+  </div>
+
 </div>
