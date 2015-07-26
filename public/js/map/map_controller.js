@@ -16,6 +16,8 @@ angular.module('map', ['postService', 'mapinitializer', 'voteService'])
 
     mapinitializer.triggerDetail = triggerDetail;
 
+    handleCentering();
+
     function handleResize() {
       console.log('handleResize');
       var center = $scope.map.getCenter();

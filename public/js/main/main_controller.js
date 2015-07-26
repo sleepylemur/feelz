@@ -1,5 +1,5 @@
 angular.module('main',['postService', 'mapinitializer'])
-  .controller('mainCtrl', function($rootScope, postService, mapinitializer, $scope, $location, $window, $http, mapinitializer){
+  .controller('mainCtrl', ['$rootScope','postService','mapinitializer','$scope','$location','$window','$http',function($rootScope, postService, mapinitializer, $scope, $location, $window, $http){
 
     $rootScope.$location = $location;
     mapinitializer.mapInit();
@@ -22,4 +22,4 @@ angular.module('main',['postService', 'mapinitializer'])
       delete $window.sessionStorage.user_id;
       $location.path('/');
     }
-  })
+  }])
