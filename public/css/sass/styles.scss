@@ -12,6 +12,9 @@ $rantcolorlight : #7986cb;
 .rantBorder{
   border: solid .1em $rantcolorlight;
 }
+.rantHover:hover{
+  color: $rantcolor;
+}
 .rantcolorlight {
   color: $rantcolorlight;
 }
@@ -20,6 +23,9 @@ $rantcolorlight : #7986cb;
 }
 .raveBorder{
   border: solid .1em $ravecolorlight;
+}
+.raveHover:hover{
+  color: $ravecolor;
 }
 h1, h2, h3, h4, h5, h6{
   font-family: quantum mechanics
@@ -141,7 +147,35 @@ h1, h2, h3, h4, h5, h6{
     top:-2em;
   }
 }
+.postContent{
+  position: relative;
+  width: 80%;
+  margin: auto 10%;
+}
 
+.postAuthor{
+  a{
+    border-bottom: solid 1px #cccccc;
+    font-size: 2em;
+    color:#aaaaaa;
+  }
+  img{
+    width: 8em;
+    float: right;
+  }
+  
+  p{
+    display: inline-block;
+    margin-top:0;
+    color:#cccccc;
+  }
+}
+.postMessage{
+  
+  .postImage{
+    max-width: 90%;
+  }
+}
 .detailModalContent {
   position: relative;
   max-width: 800px;
@@ -173,9 +207,10 @@ html,body {
   height: 100%;
 }
 .maincontent {
-  position: relative;
-  top:64px;
-  height: calc(100% - (4em + 4em));
+  position:relative;
+  top: 64px;
+  height: calc(100% - (64px + 64px));
+  overflow: scroll;
 }
 #map-container {
   height: calc(100% - (64px + 64px));

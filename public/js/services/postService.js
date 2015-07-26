@@ -45,7 +45,7 @@ angular.module('postService', [])
     function getPost(post_id) {
       function searchPosts(post_id) {
         for (var i=0; i<posts.length; i++) {
-          if (posts[i].id = post_id) return posts[i];
+          if (posts[i].id == post_id) return posts[i];
         }
       }
 
