@@ -10,6 +10,7 @@ angular.module('mapinitializer', ['postService'])
       console.log('mapInit');
       // obtains user geolocation data
       navigator.geolocation.getCurrentPosition(function(position) {
+        console.log('geolocated');
         mappy.clientLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
         mappy.pandaMap.setCenter(mappy.clientLatLng);
       });
@@ -17,6 +18,7 @@ angular.module('mapinitializer', ['postService'])
       mappy.zoomedIn = false;
 
       var options = {
+        center: new google.maps.LatLng(40.7281131,-73.9969843),
         zoom: 14,
         zoomControl: true,
         zoomControlOptions: {
@@ -41,14 +43,15 @@ angular.module('mapinitializer', ['postService'])
     mappy.fetchData = function() {
       console.log('fetchData');
       postService.getPosts().then(function(posts) {
+        console.log('data fetched');
         mappy.dataPoints = posts;
         mappy.pandaMap.set('styles', mapStyle);
         initHeatLayers();
         mappy.dataFetched = true;
-      })
-        .catch(function(err){
-          if (err[0].data.status === '401') mappy.dataFetched = false;
-        });
+      }).catch(function(err){
+        console.log('data fetch failed');
+        if (err[0].data.status === '401') mappy.dataFetched = false;
+      });
     }
 
     var getMapBounds = function(){
@@ -181,7 +184,7 @@ angular.module('mapinitializer', ['postService'])
 
     var removeMarkers = function() {
 
-        console.log('removeMarkers');
+      console.log('removeMarkers');
       mappy.markers.forEach(function(e){
         e.setMap(null);
         google.maps.event.clearListeners(e);

@@ -98,7 +98,7 @@ h1, h2, h3, h4, h5, h6{
   max-height: 15em;
   display: inline-block;
   position: relative;
-  border: solid 1px rgba(51, 51, 51, 0.12); 
+  border: solid 1px rgba(51, 51, 51, 0.12);
   border-bottom: solid 1px rgba(51, 51, 51, 0.12);
   box-sizing: border-box;
   margin: 1em;
@@ -176,13 +176,16 @@ html,body {
   height: calc(100% - (4em + 4em));
 }
 #map-container {
+  position: absolute;
+  top: 64px;
   height: calc(100% - (64px + 64px));
+  width: 100%;
 }
 .maphide {
-  display: none;
+  left: -9999px;
 }
 .mapshow {
-  display: inline;
+  left: 0;
 }
 
 #map-canvas {
