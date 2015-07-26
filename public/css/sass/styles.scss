@@ -179,6 +179,7 @@ html,body {
 }
 #map-container {
   position: absolute;
+  z-index: 1;
   top: 64px;
   height: calc(100% - (64px + 64px));
   width: 100%;

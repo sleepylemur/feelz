@@ -12,7 +12,7 @@ angular.module('mapinitializer', ['postService'])
       navigator.geolocation.getCurrentPosition(function(position) {
         console.log('geolocated');
         mappy.clientLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
-        mappy.pandaMap.setCenter(mappy.clientLatLng);
+        mappy.pandaMap.panTo(mappy.clientLatLng);
       });
 
       mappy.zoomedIn = false;

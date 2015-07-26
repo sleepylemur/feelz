@@ -16,7 +16,7 @@ angular.module('map', ['postService', 'mapinitializer', 'voteService'])
 
     mapinitializer.triggerDetail = triggerDetail;
 
-    handleCentering();
+    // handleCentering();
     // handleResize();
 
     // $scope.map.setCenter(new google.maps.LatLng(40.7281131,-73.9969843));
