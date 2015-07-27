@@ -10,7 +10,7 @@
 
   <div class = "postDetails">
       <div class="{{post.emotion}}color">{{post.message}}</div>
-      <a ng-click="goToMap(post.id)"><i class = "icon ion-android-locate"></i> {{post.location_name}} </a> 
+      <a ng-click="goToMap(post.id)"><i class = "icon ion-android-locate"></i> {{post.location_name}} </a>
   </div>
 
   <div class ="postVote">
@@ -18,4 +18,5 @@
     <small> strikes </small>
   </div>
 
+  <div ng-include src="'template/navbar.html'"></div>
 </div>
