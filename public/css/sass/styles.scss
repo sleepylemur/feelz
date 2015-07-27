@@ -2,7 +2,12 @@ $ravecolor : #ffd54f;
 $ravecolorlight : #ffecb3;
 $rantcolor : #3f51b5;
 $rantcolorlight : #7986cb;
-
+.rantBG{
+  background-color: $rantcolorlight;
+}
+.raveBG{
+  background-color: $ravecolorlight;
+}
 .rantcolor {
   color: $rantcolor;
 }
@@ -12,20 +17,20 @@ $rantcolorlight : #7986cb;
 .rantBorder{
   border: solid .1em $rantcolorlight;
 }
+.raveBorder{
+  border: solid .1em $ravecolorlight;
+}
 .rantHover:hover{
   color: $rantcolor;
+}
+.raveHover:hover{
+  color: $ravecolor;
 }
 .rantcolorlight {
   color: $rantcolorlight;
 }
 .ravecolorlight {
   color: $ravecolorlight;
-}
-.raveBorder{
-  border: solid .1em $ravecolorlight;
-}
-.raveHover:hover{
-  color: $ravecolor;
 }
 h1, h2, h3, h4, h5, h6{
   font-family: quantum mechanics
@@ -72,21 +77,19 @@ h1, h2, h3, h4, h5, h6{
 }
 .postmodalform {
   text-align: center;
-  margin: 0px calc(10% + 140px) 0px 0px;
-  padding: 0px 0px;
+  padding: 1em;
 }
 .postmodalimagepane {
-  position: absolute;
+  position: relative;
   right: 5%;
-  top: 40px;
 }
 .imagebox {
-  border: solid 1px rgba(51, 51, 51, 0.12);
+  // border: solid 1px rgba(51, 51, 51, 0.12);
   width: 10em;
   height: 10em;
 }
 .imageuploadbutton {
-  width: 10em;
+  // width: 10em;
 }
 .icon-large{
   font-size: 3.5em;
@@ -171,7 +174,7 @@ h1, h2, h3, h4, h5, h6{
   }
 }
 .postMessage{
-  
+  margin: 2em;
   .postImage{
     max-width: 90%;
   }

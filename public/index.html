@@ -34,9 +34,8 @@
       ga('send', 'pageview');
 
     </script>
-
-
   </head>
+
 
   <body ng-app="feelz" ng-controller = "mainCtrl">
     <header>
@@ -46,6 +45,7 @@
       <div id="map-canvas"></div>
     </div>
     <ng-view></ng-view>
+    <div ng-include src="'template/newPost.html'"></div>
   </body>
 
 

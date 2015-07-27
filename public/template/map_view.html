@@ -25,41 +25,5 @@
     </div>
   </div>
 
-  <div id="modalNewPost" class="modal bottom-sheet">
-    <div class="modal-content postmodalcontent">
-        <form ng-submit="submitNewPost()">
-            <div class="postmodalform">
-              <div class="switch">
-                <label>
-                  <span class="deep-orange-text">Rant</span>
-                  <input id="rantrave" type="checkbox" ng-model="post.rantrave">
-                  <span class="lever"></span>
-                  <span class="teal-text">Rave</span>
-                </label>
-              </div>
-              <div class="input-field">
-                <label for="location_name">location nickname</label>
-                <input id="location_name" type="text" ng-model="post.location_name">
-              </div>
-              <div class="input-field">
-                <label for="message">message</label>
-                <textarea id="message" class="materialize-textarea" ng-model="post.message"></textarea>
-              </div>
-              <button class="btn {{post.rantrave ? 'teal' : 'deep-orange'}} waves-effect waves-light" type="submit" name="action">
-                {{post.rantrave ? "rave" : "rant"}}
-              </button>
-            </div>
-            <div class="postmodalimagepane">
-              <div class="imagebox">
-                <image id="imagepreview" ng-src="{{post.image_url}}" width="160" height="160">
-              </div>
-
-              <div class="btn {{post.rantrave ? 'teal' : 'deep-orange'}} imageuploadbutton waves-effect waves-light" ng-click="fileDialog()">
-                <span>upload</span>
-                <input id="filepicker" type="file" onchange="angular.element(this).scope().uploadFile()" style="position:absolute;left:-9999px">
-              </div>
-            </div>
-        </form>
-    </div>
-  </div>
+  
 </div>
