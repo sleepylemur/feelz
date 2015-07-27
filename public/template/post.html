@@ -1,14 +1,13 @@
 <div class="maincontent" ng-controller = "postCtrl">
   <div class="postContent">
     <div class = "postAuthor">
-      <a ng-click= "fetchProfile(post.user_id" class="{{post.emotion}}Hover">{{post.username}}</a>
+      <a ng-click= "fetchProfile(post.user_id)" class="{{post.emotion}}Hover">{{post.username}}</a>
       <image ng-src="{{post.avatar_image_url}}"/>
       <p><i class= "icon ion-android-time"></i> {{post.timestamp | fromNow}}</p>
     </div>
 
 
     <div class = "postMessage">
-      <!-- <div class="{{post.emotion}}Border postImage" style="background-image: url('{{post.image_url}}')"></div> -->
       <image class="{{post.emotion}}Border postImage" ng-src="{{post.image_url}}">
       <div class="{{post.emotion}}color">{{post.message}}</div>
       <a ng-click="goToMap(post.id)"><i class = "icon ion-android-locate"></i> {{post.location_name}} </a>

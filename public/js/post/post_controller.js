@@ -6,4 +6,8 @@ angular.module('post', [])
     $scope.post = data;
   });
   console.log('postctrl ',$scope.post);
+
+  $scope.fetchProfile = function(user_id) {
+      $location.path('/profile').search({detail: user_id});
+  }
 }])

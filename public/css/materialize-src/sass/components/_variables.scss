@@ -61,7 +61,7 @@ $radio-empty-color: #5a5a5a !default;
 // Switches
 $switch-bg-color: $secondary-color !default;
 $switch-checked-lever-bg: desaturate(lighten($secondary-color, 25%), 25%) !default;
-$switch-unchecked-bg: #ff5722 !default;
+$switch-unchecked-bg: $primary-color !default;
 $switch-unchecked-lever-bg: desaturate(lighten($switch-unchecked-bg, 25%), 25%) !default;
 
 // Date Picker

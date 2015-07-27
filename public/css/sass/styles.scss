@@ -3,10 +3,10 @@ $ravecolorlight : #ffecb3;
 $rantcolor : #3f51b5;
 $rantcolorlight : #7986cb;
 .rantBG{
-  background-color: $rantcolorlight;
+  background-color: $rantcolor;
 }
 .raveBG{
-  background-color: $ravecolorlight;
+  background-color: $ravecolor;
 }
 .rantcolor {
   color: $rantcolor;
@@ -15,10 +15,10 @@ $rantcolorlight : #7986cb;
   color: $ravecolor;
 }
 .rantBorder{
-  border: solid .1em $rantcolorlight;
+  border: solid 1em $rantcolorlight;
 }
 .raveBorder{
-  border: solid .1em $ravecolorlight;
+  border: solid 1em $ravecolorlight;
 }
 .rantHover:hover{
   color: $rantcolor;
@@ -84,12 +84,11 @@ h1, h2, h3, h4, h5, h6{
   right: 5%;
 }
 .imagebox {
-  // border: solid 1px rgba(51, 51, 51, 0.12);
-  width: 10em;
-  height: 10em;
+  width: 161px;
+  height: 161px;
 }
-.imageuploadbutton {
-  // width: 10em;
+.imageUploadtab:hover{
+  background-color: pink;
 }
 .icon-large{
   font-size: 3.5em;
@@ -107,7 +106,6 @@ h1, h2, h3, h4, h5, h6{
   display: inline-block;
   position: relative;
   border: solid 1px rgba(51, 51, 51, 0.12);
-  border-bottom: solid 1px rgba(51, 51, 51, 0.12);
   box-sizing: border-box;
   margin: 1em;
 }
@@ -173,7 +171,6 @@ h1, h2, h3, h4, h5, h6{
   }
 }
 .postMessage{
-  
   margin: 2em;
 
   .postImage{
@@ -300,4 +297,17 @@ header {
   .icon, small{
     color: $rantcolor;
   }
+}
+.option{
+  padding: .2em;
+  transform:translateY(50%);
+}
+
+.popOut{
+  position: absolute;
+  z-index: 1000; 
+  width: 100%; 
+  height: 100%; 
+  color:white;
+  background-color: black;
 }

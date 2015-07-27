@@ -25,14 +25,18 @@ angular.module('main',['postService', 'mapinitializer'])
     $scope.post = {};
     // open modal to write new post
     $scope.newPost = function() {
-      $('#modalNewPost').openModal();
+      $('#modalNewPost').openModal({
+        complete: function(){
+          $scope.post={};
+        }
+      });
     };
     // submit our post to the server
     $scope.submitNewPost = function() {
       navigator.geolocation.getCurrentPosition(function(position) {
         $scope.post.lat = position.coords.latitude;
         $scope.post.lng = position.coords.longitude;
-        $scope.post.emotion = $scope.post.rantrave ? 'rave' : 'rant';
+        // $scope.post.emotion = $scope.post.rantrave ? 'rave' : 'rant';
 
         $http.post('/api/posts', $scope.post).success(function(data, status, header, config){
           $('#modalNewPost').closeModal();
@@ -72,5 +76,6 @@ angular.module('main',['postService', 'mapinitializer'])
         alert('not an image file');
       }
     };
+
     
   }])
