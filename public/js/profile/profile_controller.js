@@ -1,5 +1,6 @@
 angular.module('profile', [])
 .controller('profileCtrl', ['$scope', 'profileService',function($scope) {
+
     $scope.msg = 'heya';
 
     console.log('detail:',$routeParams.detail);
