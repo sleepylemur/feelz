@@ -1,5 +1,5 @@
 angular.module('voteService', [])
-  .factory('voteService', function($rootScope, $q, $window, $http) {
+  .factory('voteService', ['$rootScope', '$q', '$window', '$http', function($rootScope, $q, $window, $http) {
     var votes;
     function getVotes() {
       if (votes) {
@@ -53,4 +53,4 @@ angular.module('voteService', [])
       // checkVote: checkVote,
       clear: clear //used for clearing cache during logout
     };
-  });
+  }]);

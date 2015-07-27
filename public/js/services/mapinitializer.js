@@ -1,5 +1,5 @@
 angular.module('mapinitializer', ['postService'])
-  .factory('mapinitializer', function($rootScope, postService, $window){
+  .factory('mapinitializer', ['$rootScope', 'postService', '$window', function($rootScope, postService, $window){
 
     // object to export
     var mappy = {};
@@ -193,4 +193,4 @@ angular.module('mapinitializer', ['postService'])
     }
 
     return mappy;
-  })
+  }]);

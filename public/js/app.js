@@ -1,7 +1,7 @@
 
 angular.module('feelz', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map','scratch','main','profile','feedNew','feedHot','post','momentfilter','postService','voteService'])
 
- .config(function($routeProvider, $httpProvider) {
+ .config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
    $httpProvider.interceptors.push('authInterceptor');
     $routeProvider
       .when('/login', {
@@ -32,4 +32,4 @@ angular.module('feelz', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map',
         redirectTo: '/login'
       })
 
-  });
+  }]);

@@ -1,5 +1,5 @@
 angular.module('map', ['postService', 'mapinitializer', 'voteService'])
-  .controller('MapCtrl', function(voteService, postService, $scope, $http, $rootScope, $routeParams, mapinitializer){
+  .controller('MapCtrl', ['voteService', 'postService', '$scope', '$http', '$rootScope', '$routeParams', 'mapinitializer', function(voteService, postService, $scope, $http, $rootScope, $routeParams, mapinitializer){
 
     $rootScope.title = "Map";
     $scope.voteService = voteService;
@@ -110,4 +110,4 @@ angular.module('map', ['postService', 'mapinitializer', 'voteService'])
         alert('not an image file');
       }
     };
-  })
+  }])

@@ -1,5 +1,5 @@
 angular.module('authinterceptor', [])
-  .factory('authInterceptor', function($q, $window, $location) {
+  .factory('authInterceptor', ['$q', '$window', '$location', function($q, $window, $location) {
    return {
      request: function(config) {
        config.headers = config.headers || {};
@@ -21,4 +21,4 @@ angular.module('authinterceptor', [])
        return response || $q.when(response);
      }
    };
- })
+ }])

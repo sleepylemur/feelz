@@ -1,5 +1,5 @@
 angular.module('signup',[])
-  .controller('SignUpCtrl', function($rootScope, $scope, $http, $location, $window){
+  .controller('SignUpCtrl', ['$rootScope', '$scope', '$http', '$location', '$window', function($rootScope, $scope, $http, $location, $window){
     // google analytics
     ga('send', 'pageview', '/#/signup');
 
@@ -45,4 +45,4 @@ angular.module('signup',[])
           });
       }
     };
-  });
+  }]);
