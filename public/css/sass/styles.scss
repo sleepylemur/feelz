@@ -283,10 +283,10 @@ header {
     width: 5em;
   }
   .selected {
-    background-color: pink;
+    background-color: $rantcolorlight;
   }
   li:hover {
-    background-color: pink;
+    background-color: $rantcolorlight;
     transition: .2s;
   }
   .icon{
