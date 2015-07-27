@@ -1,4 +1,4 @@
 angular.module('profile', [])
-  .controller('profileCtrl', function($scope) {
+  .controller('profileCtrl', ['$scope',function($scope) {
     $scope.msg = 'heya';
-  });
+  }]);

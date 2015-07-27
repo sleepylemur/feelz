@@ -1,5 +1,5 @@
 angular.module('postService', [])
-  .factory('postService', function($rootScope, $q, $window, $http) {
+  .factory('postService', ['$rootScope', '$q', '$window', '$http', function($rootScope, $q, $window, $http) {
     var socket;
     var posts;
     if ($window.sessionStorage.token) {
@@ -96,4 +96,4 @@ angular.module('postService', [])
       getPosts: getPosts,
       getPost: getPost
     };
-  });
+  }]);

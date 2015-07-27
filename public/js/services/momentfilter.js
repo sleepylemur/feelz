@@ -1,5 +1,5 @@
 angular.module('momentfilter', [])
-  .filter('fromNow', function() {
+  .filter('fromNow', [function() {
     return function(input) {
       if (input) {
         // return "dogs";
@@ -8,4 +8,4 @@ angular.module('momentfilter', [])
         return input;
       }
     };
-  });
+  }]);

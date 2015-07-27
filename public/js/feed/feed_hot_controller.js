@@ -1,5 +1,5 @@
 angular.module('feedHot', ['momentfilter','postService','voteService'])
-  .controller('feedHotCtrl', function(voteService, postService, $window, $http, $location, $routeParams, $rootScope, $scope, $window){
+  .controller('feedHotCtrl', ['voteService', 'postService', '$window', '$http', '$location', '$routeParams', '$rootScope', '$scope', '$window', function(voteService, postService, $window, $http, $location, $routeParams, $rootScope, $scope, $window){
     // google analytics
     ga('send', 'pageview', '/#/feednew');
 
@@ -80,5 +80,5 @@ angular.module('feedHot', ['momentfilter','postService','voteService'])
     $scope.goToMap = function(id) {
       $location.path('/map').search({detail: id});
     }
-    
-  });
+
+  }]);

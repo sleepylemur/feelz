@@ -4,6 +4,7 @@ var concat = require('gulp-concat');
 var sourcemaps = require('gulp-sourcemaps');
 var spawn = require('child_process').spawn;
 var sass = require('gulp-sass');
+var uglify = require('gulp-uglify');
 
 gulp.task('e2etests', function () {
   var protractor = spawn('protractor',['protractor.conf.js'],{stdio: 'inherit'});
@@ -19,11 +20,18 @@ gulp.task('servertests', function() {
 
 //concatenates front-end js files into a single file so the browser needs only one require
 gulp.task('scripts', function(){
-  return gulp.src(['public/js/**/*.js', '!public/js/vendor/*'])
-    .pipe(sourcemaps.init())
-    .pipe(concat('bundle.js'))
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest('public/build/'));
+  if (process.env.NODE_ENV === 'production') {
+    return gulp.src(['public/js/**/*.js', '!public/js/vendor/*'])
+      .pipe(concat('bundle.js'))
+      .pipe(uglify())
+      .pipe(gulp.dest('public/build/'));
+  } else {
+    return gulp.src(['public/js/**/*.js', '!public/js/vendor/*'])
+      .pipe(sourcemaps.init())
+      .pipe(concat('bundle.js'))
+      .pipe(sourcemaps.write())
+      .pipe(gulp.dest('public/build/'));
+  }
 });
 
 gulp.task('styles', function(){

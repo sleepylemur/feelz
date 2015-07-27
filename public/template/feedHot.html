@@ -1,4 +1,4 @@
-<div class="maincontent" ng-controller = "feedHotCtrl">
+<div class="feedcontent" ng-controller = "feedHotCtrl">
 
   <ul id="feedToggleBar" class="topfixed tabs center" tabs>
     <li class="tab col s6 l3"><a class="active" href="#/feedNew">trending</a></li>
@@ -8,7 +8,8 @@
   <ul class="feedList">
     <li class="feedRow" ng-repeat="feed in feeds | orderBy:'-numvotes'">
       <div class="listVote">
-        <i class = "{{feed.emotion}}colorlight waves-effect icon-large ion-ios-bolt" ng-click="upVote(feed.id)"></i>
+        <i ng-hide="votes[feed.id]" class="{{feed.emotion}}color waves-effect icon-large ion-ios-bolt" ng-click="voteService.addVote(feed.id)"></i>
+        <i ng-show="votes[feed.id]" class="{{feed.emotion}}colorlight icon-large ion-ios-bolt"></i>
         {{feed.numvotes}}
         <small> strikes </small>
       </div>

@@ -1,5 +1,5 @@
 angular.module('feedNew', ['momentfilter','postService','voteService'])
-  .controller('feedNewCtrl', function(voteService, postService, $window, $http, $location, $routeParams, $rootScope, $scope, $window){
+  .controller('feedNewCtrl', ['voteService', 'postService', '$window', '$http', '$location', '$routeParams', '$rootScope', '$scope', '$window', function(voteService, postService, $window, $http, $location, $routeParams, $rootScope, $scope, $window){
     // google analytics
     ga('send', 'pageview', '/#/feednew');
 
@@ -8,7 +8,6 @@ angular.module('feedNew', ['momentfilter','postService','voteService'])
 
     var lastscroll = 0;
     $(window).scroll(function(event) {
-
       var scrollTopVal = $(this).scrollTop();
       if (scrollTopVal < 40) {
         $('header').css({top: '0px'});
@@ -54,5 +53,5 @@ angular.module('feedNew', ['momentfilter','postService','voteService'])
     $scope.goToMap = function(id) {
       $location.path('/map').search({detail: id});
     }
-    
-  });
+
+  }]);

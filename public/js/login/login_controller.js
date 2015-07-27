@@ -1,6 +1,6 @@
 angular.module('login', [])
 
-  .controller('LoginCtrl', function($rootScope, $scope, $http, $window, $location){
+  .controller('LoginCtrl', ['$rootScope', '$scope', '$http', '$window', '$location', function($rootScope, $scope, $http, $window, $location){
 
     // google analytics
     ga('send', 'pageview', '/#/login');
@@ -96,4 +96,4 @@ angular.module('login', [])
     //   });
     // }
 
-});
+}]);

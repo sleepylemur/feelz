@@ -1,5 +1,5 @@
 angular.module('scratch',[])
-  .controller('scratchCtrl', function($scope,$http,$routeParams) {
+  .controller('scratchCtrl', ['$scope','$http','$routeParams', function($scope,$http,$routeParams) {
     console.log($routeParams);
     $scope.testupload = function() {
       var file = document.getElementById('file').files[0];
@@ -22,4 +22,4 @@ angular.module('scratch',[])
         alert('not an image file');
       }
     }
-  });
+  }]);
