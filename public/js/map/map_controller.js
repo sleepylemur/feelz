@@ -1,7 +1,5 @@
-angular.module('map', ['postService', 'mapinitializer', 'voteService', 'navbar'])
-  .controller('MapCtrl', ['voteService', 'postService', '$scope', '$http', '$rootScope', '$routeParams', 'mapinitializer', 'navbar', function(voteService, postService, $scope, $http, $rootScope, $routeParams, mapinitializer, navbar){
-
-    navbar.highlight(0);
+angular.module('map', ['postService', 'mapinitializer', 'voteService'])
+  .controller('MapCtrl', ['voteService', 'postService', '$scope', '$http', '$rootScope', '$routeParams', 'mapinitializer', function(voteService, postService, $scope, $http, $rootScope, $routeParams, mapinitializer){
 
     $rootScope.title = "Map";
     $scope.voteService = voteService;

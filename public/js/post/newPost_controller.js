@@ -1,7 +1,7 @@
 angular.module('newPost', [])
 .controller('newPostCtrl', function($scope, $http, $location, $routeParams, postService){
 
-  console.log("newPostCtrl connected");
+
     $scope.post = {};
     // open modal to write new post
     $scope.newPost = function() {
