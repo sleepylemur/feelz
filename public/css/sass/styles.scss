@@ -282,6 +282,9 @@ header {
     box-sizing: border-box;
     width: 5em;
   }
+  .navlist-selected {
+    background-color: pink;
+  }
   li:hover {
     background-color: pink;
     transition: .2s;
