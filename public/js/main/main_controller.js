@@ -1,5 +1,5 @@
 angular.module('main',['postService', 'mapinitializer'])
-  .controller('mainCtrl', ['$rootScope','postService','mapinitializer','$scope','$location','$window','$http',function($rootScope, postService, mapinitializer, $scope, $location, $window, $http){
+  .controller('mainCtrl', ['$rootScope','voteService','postService','mapinitializer','$scope','$location','$window','$http',function($rootScope, voteService, postService, mapinitializer, $scope, $location, $window, $http){
 
     $rootScope.$location = $location;
     mapinitializer.mapInit();

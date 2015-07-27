@@ -146,6 +146,9 @@ angular.module('mapinitializer', ['postService'])
     }
 
     var addMarkers = function() {
+      var ravecolor = '#ffd54f';
+      var rantcolor = '#3f51b5';
+
       console.log('addMarkers');
       mappy.markers = [];
       var bounds = getMapBounds();
@@ -166,7 +169,7 @@ angular.module('mapinitializer', ['postService'])
               path: google.maps.SymbolPath.CIRCLE,
               scale: 9,
               fillOpacity: 1,
-              strokeColor: '#000000',
+              strokeColor: pin.emotion == 'rave' ? ravecolor : rantcolor,
               fillColor: '#ffffff'
             })
 

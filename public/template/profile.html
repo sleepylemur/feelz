@@ -1,6 +1,6 @@
 <div ng-controller="profileCtrl">
   <div style="height:64px"></div>
-  <a href="#/logout" class="btn">logout</a>
+  <button ng-click="signOut()" class="btn">logout</button>
   profile!
   {{msg}}
   <div ng-include src="'template/navbar.html'"></div>
