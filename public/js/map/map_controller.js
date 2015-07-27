@@ -1,5 +1,7 @@
-angular.module('map', ['postService', 'mapinitializer', 'voteService'])
-  .controller('MapCtrl', ['voteService', 'postService', '$scope', '$http', '$rootScope', '$routeParams', 'mapinitializer', function(voteService, postService, $scope, $http, $rootScope, $routeParams, mapinitializer){
+angular.module('map', ['postService', 'mapinitializer', 'voteService', 'navbar'])
+  .controller('MapCtrl', ['voteService', 'postService', '$scope', '$http', '$rootScope', '$routeParams', 'mapinitializer', 'navbar', function(voteService, postService, $scope, $http, $rootScope, $routeParams, mapinitializer, navbar){
+
+    navbar.highlight(0);
 
     $rootScope.title = "Map";
     $scope.voteService = voteService;
@@ -8,7 +10,7 @@ angular.module('map', ['postService', 'mapinitializer', 'voteService'])
     });
 
     $scope.map = mapinitializer.pandaMap;
-    
+
     if (!mapinitializer.dataFetched) mapinitializer.fetchData();
 
     mapinitializer.triggerDetail = triggerDetail;
