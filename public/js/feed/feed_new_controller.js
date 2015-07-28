@@ -3,15 +3,13 @@ angular.module('feedNew', ['momentfilter','postService','voteService'])
     // google analytics
     ga('send', 'pageview', '/#/feednew');
 
-    $rootScope.title = "FEED";
-    // $('#map-container').css({display: 'none'});
 
     var lastscroll = 0;
     $(window).scroll(function(event) {
       var scrollTopVal = $(this).scrollTop();
       if (scrollTopVal < 40) {
         $('header').css({top: '0px'});
-        $('#feedToggleBar').css({top: '40px'});
+        $('#feedToggleBar').css({top: '64px'});
       } else if(scrollTopVal > 40 && scrollTopVal - lastscroll < 0){
         $('header').css({top: '-64px'});
         $('#feedToggleBar').css({top: '0px'});
@@ -21,6 +19,10 @@ angular.module('feedNew', ['momentfilter','postService','voteService'])
       }
       lastscroll = scrollTopVal;
     });
+
+    $scope.triggerVote = function(post_id) {
+      voteService.addVote(post_id);
+    };
 
     voteService.getVotes().then(function(data) {
       $scope.votes = data;

@@ -6,14 +6,14 @@
   </ul>
 
   <ul class="feedList">
-    <li class="feedRow" ng-repeat="feed in feeds | orderBy:'-numvotes'">
+    <li class="feedRow" ng-repeat="feed in feeds" ng-click="loadDetail(feed.id)">
       <div class="listVote">
-        <i ng-hide="votes[feed.id]" class="{{feed.emotion}}color waves-effect icon-large ion-ios-bolt" ng-click="voteService.addVote(feed.id)"></i>
+        <i ng-hide="votes[feed.id]" class="{{feed.emotion}}color waves-effect icon-large ion-ios-bolt" ng-click="voteService.addVote(feed.id); $event.stopPropagation()"></i>
         <i ng-show="votes[feed.id]" class="{{feed.emotion}}colorlight icon-large ion-ios-bolt"></i>
         {{feed.numvotes}}
         <small> strikes </small>
       </div>
-      <div class="feedMessage" ng-click="loadDetail(feed.id)">
+      <div class="feedMessage">
           <div class="{{feed.image_url ? 'truncatedText' : ''}} {{feed.emotion}}color">{{feed.message}}</div>
           <image ng-hide="{{feed.image_url == null}}" ng-src="{{feed.image_url}}"/>
           <p><a ng-click="goToMap(feed.id)"><i class = "icon ion-android-locate"></i> {{feed.location_name}} </a> <i class= "icon ion-android-time"></i>{{feed.timestamp | fromNow}}</p>
