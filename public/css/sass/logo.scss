@@ -1,6 +1,5 @@
 svg{
-  transform-origin: 50% 50%; 
-  animation: change 10s ease 1 backwards; 
+  animation: change 10s 5s ease 1 backwards; 
 }
 
 @keyframes change{
@@ -11,14 +10,15 @@ svg{
   100%{fill: #ffd54f;}
 }
 
-#firstE, #secondE, #lll{
-  animation: flood 10s ease 1;
+#firstE, #secondE{
+  transform-origin:50% 50%;
+  animation: flood 10s 5s ease 1;
 }
 
 @keyframes flood{
   0%  {stroke: #3f51b5;}
-  25% {stroke: #ffecb3; fill: #7986cb;}
+  25% {stroke: #ffecb3; fill: #7986cb; transform: rotate(180deg);}
   50% {stroke: #3f51b5;}
-  75% {stroke: #7986cb; fill: #ffecb3;}
+  75% {stroke: #7986cb; fill: #ffecb3; transform: rotate(180deg);}
   100%{stroke: #ffd54f;}
 }
