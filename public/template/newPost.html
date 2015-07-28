@@ -8,29 +8,29 @@
   </div>
 
   <div class="modal-content postmodalcontent  {{post.emotion == 'rave' ? 'raveBorder' : 'rantBorder'}}">
-      <form ng-submit="submitNewPost()">
-          <div class="postmodalform">
-            <div class="input-field">
-              <label for="location_name">where are you ?</label>
-              <input id="location_name" type="text" ng-model="post.location_name">
-            </div>
-            <div class="input-field">
-              <label for="message">what is happening ?</label>
-              <textarea id="message" class="materialize-textarea" ng-model="post.message"></textarea>
-            </div>
-            <button class="btn {{post.emotion == 'rave' ? 'raveBG' : 'rantBG'}} waves-effect waves-light" type="submit" name="action">
-              {{post.emotion == 'rave' ? "rave" : "rant"}}
-            </button>
+    <form ng-submit="submitNewPost()">
+      <div class="postmodalform">
+        <div class="input-field">
+          <label for="location_name">where are you ?</label>
+          <input id="location_name" type="text" ng-model="post.location_name">
+        </div>
+        <div class="input-field">
+          <label for="message">what is happening ?</label>
+          <textarea id="message" class="materialize-textarea" ng-model="post.message"></textarea>
+        </div>
+        <button class="btn {{post.emotion == 'rave' ? 'raveBG' : 'rantBG'}} waves-effect waves-light" type="submit" name="action">
+          {{post.emotion == 'rave' ? "rave" : "rant"}}
+        </button>
 
-            <div class="imageUploadtab {{post.emotion == 'rave' ? 'ravecolor' : 'rantcolor'}}" ng-click="fileDialog()">
-              <i class="small icon ion-aperture"></i> +image+
-              <input id="filepicker" type="file" onchange="angular.element(this).scope().uploadFile()" style="position:absolute;left:-9999px">
-            </div>
+        <div class="btn-flat imageuploadtab {{post.emotion == 'rave' ? 'rave' : 'rant'}}hover" ng-click="fileDialog()">
+          Upload Image
+          <input id="filepicker" type="file" onchange="angular.element(this).scope().uploadFile()" style="position:absolute;left:-9999px">
+        </div>
 
-            <div class="imagebox" ng-show="post.image_url">
-              <image id="imagepreview" ng-src="{{post.image_url}}" width="160" height="160"></image>
-            </div>
-          </div>
-      </form>
+        <div class="imagebox" ng-show="post.image_url">
+          <image id="imagepreview" ng-src="{{post.image_url}}" width="160" height="160"></image>
+        </div>
+      </div>
+    </form>
   </div>
 </div>

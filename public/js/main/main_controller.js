@@ -21,7 +21,7 @@ angular.module('main',['postService', 'mapinitializer'])
       delete $window.sessionStorage.user_id;
       $location.path('/');
     }
-    
+
     $scope.post = {};
     // open modal to write new post
     $scope.newPost = function() {
@@ -33,13 +33,13 @@ angular.module('main',['postService', 'mapinitializer'])
     };
     // submit our post to the server
     $scope.submitNewPost = function() {
+      $('#modalNewPost').closeModal();
       navigator.geolocation.getCurrentPosition(function(position) {
         $scope.post.lat = position.coords.latitude;
         $scope.post.lng = position.coords.longitude;
         // $scope.post.emotion = $scope.post.rantrave ? 'rave' : 'rant';
 
         $http.post('/api/posts', $scope.post).success(function(data, status, header, config){
-          $('#modalNewPost').closeModal();
           // handleResize();
           // clear out modal for next use
           $scope.post = {};
@@ -77,5 +77,5 @@ angular.module('main',['postService', 'mapinitializer'])
       }
     };
 
-    
+
   }])

@@ -28,6 +28,7 @@ angular.module('voteService', [])
     // }
 
     function addVote(post_id) {
+      console.log('addvote: ',post_id);
       votes[post_id] = true;
       var newvote = {
         user_id: $window.sessionStorage.user_id,

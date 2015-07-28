@@ -1,7 +1,6 @@
 angular.module('map', ['postService', 'mapinitializer', 'voteService'])
-  .controller('MapCtrl', ['voteService', 'postService', '$scope', '$http', '$rootScope', '$routeParams', 'mapinitializer', function(voteService, postService, $scope, $http, $rootScope, $routeParams, mapinitializer){
+  .controller('MapCtrl', ['voteService', 'postService', '$scope', '$http', '$rootScope', '$routeParams', 'mapinitializer', '$location', function(voteService, postService, $scope, $http, $rootScope, $routeParams, mapinitializer, $location){
 
-    $rootScope.title = "Map";
     $scope.voteService = voteService;
     voteService.getVotes().then(function(data) {
       $scope.votes = data;
@@ -12,6 +11,8 @@ angular.module('map', ['postService', 'mapinitializer', 'voteService'])
     if (!mapinitializer.dataFetched) mapinitializer.fetchData();
 
     mapinitializer.triggerDetail = triggerDetail;
+
+    handleCentering();
 
     function handleResize() {
       console.log('handleResize');
@@ -30,13 +31,15 @@ angular.module('map', ['postService', 'mapinitializer', 'voteService'])
           }
           if (i < posts.length) {
             var targetpost = posts[i];
+            $scope.map.setZoom(16);
+            $scope.map.panTo(new google.maps.LatLng(targetpost.lat, targetpost.lng));
             // $scope.map.setZoom(16);
-            setTimeout(function() {
-              setTimeout(function() {
-                $scope.map.setZoom(16);
-              },0);
-              triggerDetail(targetpost);
-            }, 500);
+            // setTimeout(function() {
+            //   setTimeout(function() {
+            //     $scope.map.setZoom(16);
+            //   },0);
+            //   triggerDetail(targetpost);
+            // }, 500);
           } else {
             console.log("no post found with id: "+$routeParams.detail);
           }
@@ -48,7 +51,14 @@ angular.module('map', ['postService', 'mapinitializer', 'voteService'])
       console.log('triggerDetail');
       $scope.emotiondata = pin;
       $scope.map.panTo(new google.maps.LatLng(pin.lat, pin.lng));
-      $('#modalPostDetail').openModal();
+      setTimeout(function() {
+        $scope.$apply(function() {
+          $location.path('/post').search({detail: pin.id});
+        });
+      }, 100);
+    // setTimeout(function() {
+      // }, 500);
+      // $('#modalPostDetail').openModal();
     }
 
 }])

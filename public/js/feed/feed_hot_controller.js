@@ -3,14 +3,13 @@ angular.module('feedHot', ['momentfilter','postService','voteService'])
     // google analytics
     ga('send', 'pageview', '/#/feednew');
 
-    $rootScope.title = "FEED";
     var lastscroll = 0;
     $(window).scroll(function(event) {
 
       var scrollTopVal = $(this).scrollTop();
       if (scrollTopVal < 40) {
         $('header').css({top: '0px'});
-        $('#feedToggleBar').css({top: '40px'});
+        $('#feedToggleBar').css({top: '64px'});
       } else if(scrollTopVal > 40 && scrollTopVal - lastscroll < 0){
         $('header').css({top: '-64px'});
         $('#feedToggleBar').css({top: '0px'});
@@ -54,6 +53,7 @@ angular.module('feedHot', ['momentfilter','postService','voteService'])
       // if the voted post is already on the hot list then just resort the list and finish.
       for (var i=0; i<$scope.feeds.length; i++) {
         if (data.id === $scope.feeds[i].id) {
+          console.log('sorting new voted-on post');
           $scope.$apply(function() {
             $scope.feeds.sort(feedSortCallback);
           });
@@ -63,6 +63,7 @@ angular.module('feedHot', ['momentfilter','postService','voteService'])
       // now we know our post is going to replace something in our hot list, so do the actual replacement.
       for (var i=0; i<$scope.feeds.length; i++) {
         if (data.numvotes >= $scope.feeds[i].numvotes) {
+          console.log('appending new voted-on post');
           $scope.$apply(function() {
             $scope.feeds.splice(i,0,data);
             $scope.feeds.pop();
@@ -75,10 +76,10 @@ angular.module('feedHot', ['momentfilter','postService','voteService'])
 
     $scope.loadDetail = function(id) {
       $location.path('/post').search({detail: id});
-    }
+    };
 
     $scope.goToMap = function(id) {
       $location.path('/map').search({detail: id});
-    }
+    };
 
   }]);

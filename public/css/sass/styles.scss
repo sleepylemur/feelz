@@ -74,6 +74,7 @@ h1, h2, h3, h4, h5, h6{
   position: relative;
   max-width: 800px;
   margin: auto;
+  height: 100%;
 }
 .postmodalform {
   text-align: center;
@@ -86,9 +87,22 @@ h1, h2, h3, h4, h5, h6{
 .imagebox {
   width: 161px;
   height: 161px;
+  margin: auto;
 }
-.imageUploadtab:hover{
-  background-color: pink;
+.imageuploadtab {
+  margin: auto;
+  max-width: 175px;
+  margin-top: 20px;
+  display: block;
+  transition: .5s background;
+  transition: .5s color;
+}
+.ranthover:hover{
+  background: $rantcolor;
+  color: white;
+}
+.ravehover:hover{
+  background: $ravecolor;
 }
 .icon-large{
   font-size: 3.5em;
@@ -98,6 +112,7 @@ h1, h2, h3, h4, h5, h6{
   width: 100%;
   margin: auto;
   position: relative;
+  top: 10px;
 }
 .feedRow {
   vertical-align: middle;
@@ -113,6 +128,9 @@ h1, h2, h3, h4, h5, h6{
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.votebutton {
+  z-index: 12;
 }
 .feedMessage{
   position: relative;
@@ -245,11 +263,15 @@ header {
   width: 100%;
   z-index: 10;
   background: white;
+  text-align: center;
   .title {
     position: absolute;
-    width: 100%;
-    font-size: 20px;
-    text-align: center;
+    width: 123px;
+    top:10px;
+    left: calc(50% - 61px);
+    height: 40px;
+    background-image: url('../images/logosmall.jpg');
+    background-size: contain;
   }
 }
 
@@ -257,7 +279,7 @@ header {
 .topfixed{
   position: absolute;
   transition: top .2s linear;
-  top: 40px;
+  top: 64px;
 
   position: fixed;
   background-color: white;
@@ -277,7 +299,8 @@ header {
   li {
     display: inline-block;
     box-sizing: border-box;
-    width: 5em;
+    max-width: 5em;
+    width: 19%;
   }
   .selected {
     background-color: $rantcolorlight;
@@ -308,9 +331,9 @@ header {
 
 .popOut{
   position: absolute;
-  z-index: 1000; 
-  width: 100%; 
-  height: 100%; 
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
   color:white;
   background-color: black;
 }
