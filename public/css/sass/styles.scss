@@ -98,11 +98,15 @@ h1, h2, h3, h4, h5, h6{
 }
 .imageuploadtab {
   margin: auto;
-  max-width: 175px;
+  max-width: 161px;
   margin-top: 20px;
   display: block;
   transition: .5s background;
   transition: .5s color;
+}
+#imagepreview{
+  max-width: 90%;
+  max-height: 200px;
 }
 .ranthover:hover{
   background: $rantcolor;

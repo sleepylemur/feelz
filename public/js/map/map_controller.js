@@ -53,7 +53,7 @@ angular.module('map', ['postService', 'mapinitializer', 'voteService'])
       $scope.map.panTo(new google.maps.LatLng(pin.lat, pin.lng));
       setTimeout(function() {
         $scope.$apply(function() {
-          $location.path('/post').search({detail: pin.id});
+          $location.path('/post/' + pin.id);
         });
       }, 100);
     // setTimeout(function() {

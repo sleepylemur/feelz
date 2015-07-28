@@ -75,7 +75,7 @@ angular.module('feedHot', ['momentfilter','postService','voteService'])
 
 
     $scope.loadDetail = function(id) {
-      $location.path('/post').search({detail: id});
+      $location.path('/post/' + id);
     };
 
     $scope.goToMap = function(id) {
