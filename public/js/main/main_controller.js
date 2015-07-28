@@ -40,7 +40,7 @@ angular.module('main',['postService', 'mapinitializer'])
 
         $http.post('/api/posts', $scope.post).success(function(data, status, header, config){
           $('#modalNewPost').closeModal();
-          handleResize();
+          // handleResize();
           // clear out modal for next use
           $scope.post = {};
           $('#imagepreview').attr('src','images/placeholder.png');

@@ -1,11 +1,23 @@
 angular.module('profile', [])
-.controller('profileCtrl', ['$scope', 'profileService',function($scope) {
+.controller('profileCtrl', ['$scope', '$location', '$routeParams','profileService',function($scope, $location, $routeParams, profileService) {
     $scope.msg = 'heya';
-
-    console.log('detail:',$routeParams.detail);
-    profileService.getUser(parseInt($routeParams.detail)).then(function(data) {
+    $scope.check = $routeParams.detail;
+  // check to see if an user id is passed 
+  if($routeParams.detail){
+    profileService.getOtherProfile(parseInt($routeParams.detail)).then(function(data) {
       console.log('profile returns',data);
-      $scope.user = data;
+      $scope.profile = data;
     });
-    console.log('profilectrl ',$scope.user);
+  }else{
+    // if not then the profile route should render current user profile 
+    profileService.getProfile().then(function(data){ 
+      console.log("return profile data "+ data);
+      $scope.profile = data.user;
+      $scope.posts = data.posts; 
+    }); 
+  }
+
+
+
+  
 }])

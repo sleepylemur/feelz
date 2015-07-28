@@ -1,7 +1,20 @@
-<div ng-controller="profileCtrl">
-  <div style="height:64px"></div>
-  <button ng-click="signOut()" class="btn">logout</button>
-  profile!
-  {{msg}}
+<div class= "main-content" ng-controller="profileCtrl">
+  <div ng-hide="check"> 
+    <button ng-click="editProfile()"  class="btn houseKeeping">edit Profile</button>
+    <button ng-click="signOut()"  class="btn houseKeeping">logout</button>
+  </div>
+
+  <h1> {{profile.username}}</h1>
+  <img src="{{profile.avatar_image_url}}"></img>
+
+  <ul class="postList">
+    <li class="postRow" ng-repeat="post in posts | orderBy:'-timestamp'">
+      <p><a ng-click="goToMap(post.id)"><i class = "icon ion-android-locate"></i> {{post.location_name}} </a> <i class= "icon ion-android-time"></i>{{post.timestamp | fromNow}}</p>
+      <div class="postMessage" ng-click="loadDetail(post.id)">
+          <div class="{{post.image_url ? 'truncatedText' : ''}} {{post.emotion}}color">{{post.message}}</div>
+      </div>
+    </li>
+  </ul>
+
   <div ng-include src="'template/navbar.html'"></div>
 </div>
