@@ -8,6 +8,13 @@ $rantcolorlight : #7986cb;
 .raveBG{
   background-color: $ravecolor;
 }
+.rantON:hover{
+  color:white;
+  background-color: $rantcolor;
+}
+.raveON:hover{
+  background-color: $ravecolorlight;
+}
 .rantcolor {
   color: $rantcolor;
 }
@@ -338,8 +345,29 @@ header {
   background-color: black;
 }
 .houseKeeping{
+  position: fixed;
+  right:1em;
+  button{
+    float: right;
+    top:5em;
+    background-color: pink;
+    z-index: 1000;
+    margin: .2em;
+  }
+}
+.profile_content{
   position: relative;
   top:64px;
-  float: right;
-  background-color: pink;
+  text-align: center;
+  margin: auto;
+  img{
+    max-width: 90%;
+  }
+  small{
+    border-bottom: solid 1px #cccccc;
+    position: relative;
+    top:2em;
+  }
 }
+
+
