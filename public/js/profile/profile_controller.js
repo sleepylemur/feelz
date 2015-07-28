@@ -1,5 +1,7 @@
 angular.module('profile', [])
+
 .controller('profileCtrl', ['$scope', '$location', '$routeParams','profileService',function($scope, $location, $routeParams, profileService) {
+
     $scope.msg = 'heya';
     $scope.check = $routeParams.detail;
   // check to see if an user id is passed 
