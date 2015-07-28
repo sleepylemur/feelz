@@ -31,6 +31,8 @@ angular.module('signup',[])
         $scope.validateEmail();
         alert("invalid email");
       } else {
+        console.log("recorded user data as : "+ $scope.user);
+        
         $http.post('/signup', $scope.user)
           .success(function(data, status, header, config){
 

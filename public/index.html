@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css" media="screen,projection"> -->
     <link rel="stylesheet" href="/build/styles.css">
-
+    <link href='http://fonts.googleapis.com/css?family=Arvo:400,400italic|Quicksand:300,400' rel='stylesheet' type='text/css'>
     <script src="js/vendor/moment.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.js"></script>
@@ -39,7 +39,7 @@
 
   <body ng-app="feelz" ng-controller = "mainCtrl">
     <header>
-      <div class="title"></div>
+      <object class="title" id= "logo" type="image/svg+xml" data="images/logo.svg">feelz Co</object> 
     </header>
     <div class="{{$location.$$path == '/map' ? 'mapshow' : 'maphide'}}" id="map-container">
       <div id="map-canvas"></div>

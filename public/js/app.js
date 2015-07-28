@@ -28,6 +28,9 @@ angular.module('feelz', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map',
       .when('/profile/:user_id', {
         templateUrl: './template/profile.html'
       })
+      .when('/profile', {
+        templateUrl: './template/profile.html'
+      })
       .otherwise({
         redirectTo: '/login'
       })

@@ -10,5 +10,7 @@ angular.module('profile', [])
     $scope.posts = data.data; 
   });
 
-
+    $scope.editProfile = function(){
+      $('#editProfileModal').openModal();
+    }
 }])

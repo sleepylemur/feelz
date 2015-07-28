@@ -8,7 +8,7 @@
 
 
     <div class = "postMessage">
-      <image class="{{post.emotion}}Border postImage" ng-src="{{post.image_url}}">
+      <image class="{{post.emotion}}Border postImage" ng-show="post.image_url" ng-src="{{post.image_url}}">
       <div class="{{post.emotion}}color">{{post.message}}</div>
       <a ng-click="goToMap(post.id)"><i class = "icon ion-android-locate"></i> {{post.location_name}} </a>
       <i ng-hide="votes[post.id]" class="votebutton {{post.emotion}}color waves-effect icon-large ion-ios-bolt" ng-click="voteService.addVote(post.id)"></i>

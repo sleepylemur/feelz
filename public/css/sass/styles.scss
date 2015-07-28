@@ -40,7 +40,7 @@ $rantcolorlight : #7986cb;
   color: $ravecolorlight;
 }
 h1, h2, h3, h4, h5, h6{
-  font-family: quantum mechanics
+  font-family: 'Quicksand', sans-serif;
 }
 #nav-items{
     margin: auto;
@@ -189,7 +189,8 @@ h1, h2, h3, h4, h5, h6{
     color:#aaaaaa;
   }
   img{
-    width: 8em;
+    width: 20%;
+    max-width: 8em;
     float: right;
   }
 
@@ -276,13 +277,11 @@ header {
   background: white;
   text-align: center;
   .title {
+    background: white;
     position: absolute;
-    width: 123px;
-    top:10px;
-    left: calc(50% - 61px);
-    height: 40px;
-    background-image: url('../images/logosmall.jpg');
-    background-size: contain;
+    top:4px;
+    left: calc(50% - 90px);
+    height: 60px;
   }
 }
 
@@ -360,8 +359,6 @@ header {
   }
 }
 .profile_content{
-  position: relative;
-  top:64px;
   text-align: center;
   margin: auto;
   img{
