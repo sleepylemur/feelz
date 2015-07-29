@@ -5,12 +5,11 @@ angular.module('profileService', [])
     getProfile();
   }
 
-  function getProfile(){
+  function getProfile(user_id){
     return $q(function(resolve,reject) {
-      $http.get('/api/profile').then(function(data){
+      // passing token to verify current user
+      $http.get('/api/profile', {params:{id: user_id}}).then(function(data){
         if (data.status !== 200) {
-          console.log(arguments);
-          console.log(data.data);
           profile ="not found"
           resolve(profile);
         }else{
@@ -36,28 +35,9 @@ angular.module('profileService', [])
       });
   }
 
-  function getOtherProfile(user_id){
-    return $q(function(resolve, reject){
-      $http.get('./api/users', user_id).then(function(data){
-        if(data.status !== 200){
-          console.log(arguments); 
-          console.log(data.data); 
-          user = "not found"
-          resolve(user); 
-        }else{
-          user = data.data; 
-          resolve(user); 
-        }
-      }).catch(function(err){
-        console.log('profileService unable to fetch user profile: '+err.error); 
-        reject(err); 
-      }); 
-    });
-  }
-
   return{
     getProfile: getProfile, 
-    editProfile: editProfile, 
-    getOtherProfile: getOtherProfile 
+    editProfile: editProfile 
   };
+  
 }]);

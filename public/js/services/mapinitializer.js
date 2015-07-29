@@ -171,8 +171,7 @@ angular.module('mapinitializer', ['postService'])
 
     // called initially and by checkZoom
     var toggleZoomedOut = function() {
-      console.log('toggleZoomedOut');
-      removeMarkers();
+      mappy.removeMarkers();
       showHeatLayers();
       mappy.pandaMap.set('styles', mapStyle);
       mappy.zoomedIn = false;
@@ -185,7 +184,6 @@ angular.module('mapinitializer', ['postService'])
       console.log('addMarkers');
       mappy.markers = [];
       var bounds = getMapBounds();
-
       // iterates over current data points--if data points are near current map bounds,
       // markers are instantiated and placed on the map.
       postService.getPosts().then(function(posts) {
@@ -218,7 +216,7 @@ angular.module('mapinitializer', ['postService'])
       });
     }
 
-    var removeMarkers = function() {
+    mappy.removeMarkers = function() {
 
       console.log('removeMarkers');
       mappy.markers.forEach(function(e){

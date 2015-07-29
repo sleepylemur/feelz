@@ -23,12 +23,12 @@
         </button>
 
         <div class="btn-flat imageuploadtab {{post.emotion == 'rave' ? 'rave' : 'rant'}}hover" ng-click="fileDialog()">
-          Upload Image
+          <i class ="small icon ion-aperture"></i> add Image
           <input id="filepicker" type="file" onchange="angular.element(this).scope().uploadFile()" style="position:absolute;left:-9999px">
         </div>
 
         <div class="imagebox" ng-show="post.image_url">
-          <image id="imagepreview" ng-src="{{post.image_url}}" width="160" height="160"></image>
+          <image id="imagepreview" ng-src="{{post.image_url}}"></image>
         </div>
       </div>
     </form>

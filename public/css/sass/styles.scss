@@ -8,6 +8,13 @@ $rantcolorlight : #7986cb;
 .raveBG{
   background-color: $ravecolor;
 }
+.rantON:hover{
+  color:white;
+  background-color: $rantcolor;
+}
+.raveON:hover{
+  background-color: $ravecolorlight;
+}
 .rantcolor {
   color: $rantcolor;
 }
@@ -33,7 +40,7 @@ $rantcolorlight : #7986cb;
   color: $ravecolorlight;
 }
 h1, h2, h3, h4, h5, h6{
-  font-family: quantum mechanics
+  font-family: 'Quicksand', sans-serif;
 }
 #nav-items{
     margin: auto;
@@ -91,11 +98,15 @@ h1, h2, h3, h4, h5, h6{
 }
 .imageuploadtab {
   margin: auto;
-  max-width: 175px;
+  max-width: 161px;
   margin-top: 20px;
   display: block;
   transition: .5s background;
   transition: .5s color;
+}
+#imagepreview{
+  max-width: 90%;
+  max-height: 200px;
 }
 .ranthover:hover{
   background: $rantcolor;
@@ -178,7 +189,8 @@ h1, h2, h3, h4, h5, h6{
     color:#aaaaaa;
   }
   img{
-    width: 8em;
+    width: 20%;
+    max-width: 8em;
     float: right;
   }
 
@@ -265,13 +277,11 @@ header {
   background: white;
   text-align: center;
   .title {
+    background: white;
     position: absolute;
-    width: 123px;
-    top:10px;
-    left: calc(50% - 61px);
-    height: 40px;
-    background-image: url('../images/logosmall.jpg');
-    background-size: contain;
+    top:4px;
+    left: calc(50% - 90px);
+    height: 60px;
   }
 }
 
@@ -338,8 +348,27 @@ header {
   background-color: black;
 }
 .houseKeeping{
-  position: relative;
-  top:64px;
-  float: right;
-  background-color: pink;
+  position: fixed;
+  right:1em;
+  button{
+    float: right;
+    top:5em;
+    background-color: pink;
+    z-index: 1000;
+    margin: .2em;
+  }
 }
+.profile_content{
+  text-align: center;
+  margin: auto;
+  img{
+    max-width: 90%;
+  }
+  small{
+    border-bottom: solid 1px #cccccc;
+    position: relative;
+    top:2em;
+  }
+}
+
+

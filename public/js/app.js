@@ -22,8 +22,11 @@ angular.module('feelz', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map',
       .when('/feedHot', {
         templateUrl: './template/feedHot.html'
       })
-      .when('/post', {
+      .when('/post/:post_id', {
         templateUrl: './template/post.html'
+      })
+      .when('/profile/:user_id', {
+        templateUrl: './template/profile.html'
       })
       .when('/profile', {
         templateUrl: './template/profile.html'

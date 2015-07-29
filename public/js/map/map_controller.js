@@ -22,7 +22,7 @@ angular.module('map', ['postService', 'mapinitializer', 'voteService'])
     }
 
     function handleCentering() {
-      console.log('handleCentering');
+
       // if we have a target, then zoom map to that
       if ($routeParams.detail) {
         postService.getPosts().then(function(posts) {
@@ -33,6 +33,12 @@ angular.module('map', ['postService', 'mapinitializer', 'voteService'])
             var targetpost = posts[i];
             $scope.map.setZoom(16);
             $scope.map.panTo(new google.maps.LatLng(targetpost.lat, targetpost.lng));
+            // ensures pan is complete before adding markers
+            google.maps.event.addListenerOnce($scope.map, 'idle', function(){
+              mapinitializer.removeMarkers();
+              mapinitializer.zoomedIn = false;
+              mapinitializer.checkZoom();
+            })
             // $scope.map.setZoom(16);
             // setTimeout(function() {
             //   setTimeout(function() {
@@ -53,7 +59,7 @@ angular.module('map', ['postService', 'mapinitializer', 'voteService'])
       $scope.map.panTo(new google.maps.LatLng(pin.lat, pin.lng));
       setTimeout(function() {
         $scope.$apply(function() {
-          $location.path('/post').search({detail: pin.id});
+          $location.path('/post/' + pin.id);
         });
       }, 100);
     // setTimeout(function() {
