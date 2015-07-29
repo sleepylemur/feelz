@@ -35,6 +35,7 @@ angular.module('map', ['postService', 'mapinitializer', 'voteService'])
             $scope.map.panTo(new google.maps.LatLng(targetpost.lat, targetpost.lng));
             // ensures pan is complete before adding markers
             google.maps.event.addListenerOnce($scope.map, 'idle', function(){
+              mapinitializer.removeMarkers();
               mapinitializer.zoomedIn = false;
               mapinitializer.checkZoom();
             })

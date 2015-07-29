@@ -160,7 +160,7 @@ angular.module('mapinitializer', ['postService'])
 
     // called initially and by checkZoom
     var toggleZoomedOut = function() {
-      removeMarkers();
+      mappy.removeMarkers();
       showHeatLayers();
       mappy.pandaMap.set('styles', mapStyle);
       mappy.zoomedIn = false;
@@ -204,7 +204,7 @@ angular.module('mapinitializer', ['postService'])
       });
     }
 
-    var removeMarkers = function() {
+    mappy.removeMarkers = function() {
 
       mappy.markers.forEach(function(e){
         e.setMap(null);
