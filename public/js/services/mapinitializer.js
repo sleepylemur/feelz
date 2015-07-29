@@ -172,7 +172,6 @@ angular.module('mapinitializer', ['postService'])
 
       mappy.markers = [];
       var bounds = getMapBounds();
-
       // iterates over current data points--if data points are near current map bounds,
       // markers are instantiated and placed on the map.
       postService.getPosts().then(function(posts) {
