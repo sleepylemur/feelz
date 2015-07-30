@@ -242,6 +242,11 @@ html,body {
   top: 80px;
   margin-bottom: 64px;
 }
+.aboutcontent{
+  position:relative;
+  top: 100px;
+  margin-bottom: 64px;
+}
 .maincontent {
   position:relative;
   top: 40px;
@@ -355,6 +360,35 @@ header {
     background-color: pink;
     z-index: 1000;
     margin: .2em;
+  }
+}
+.image-holder{
+  height: 400px;
+  z-index: -1;
+  position: relative;
+  overflow: hidden;
+  .wideguy {
+    width: 100%;
+    height: auto;
+  }
+}
+.light {
+  color: $rantcolorlight;
+}
+.ravelight {
+  background-color: $rantcolorlight;
+}
+.inside-image {
+  width: 100%;
+  position: absolute;
+  bottom: 10%;
+}
+@media (max-width: 850px) {
+  .inside-image {
+    top: 10%;
+  }
+  .wideguy {
+    min-height: 400px;
   }
 }
 .profile_content{
