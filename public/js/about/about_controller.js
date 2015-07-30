@@ -1,4 +1,4 @@
 angular.module('about', [])
-  .controller('AboutCtrl', [function(){
+  .controller('aboutCtrl', [function(){
     
   }])

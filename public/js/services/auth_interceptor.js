@@ -6,17 +6,16 @@ angular.module('authinterceptor', [])
        if ($window.sessionStorage.token) {
          config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
 
-         // if no token, redirect to login, unless path === signup page.
-       } else if ($location.$$path !== '/signup'){
-        $location.path('login')
+         // if no token, redirect to home, unless path === signup page.
+       } else if ($location.$$path !== '/signup' || $location.$$path !== '/login'){
+        $location.path('');
        }
        return config;
      },
      responseError: function(response) {
-      console.log(response)
        if (response.status === 401) {
          delete $window.sessionStorage.token;
-         $location.path('login');
+         $location.path('');
        }
        return response || $q.when(response);
      }

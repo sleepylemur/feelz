@@ -1,6 +1,6 @@
 
 
-angular.module('feelz', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map','scratch','main','profile','profileService','feedNew','feedHot','post','momentfilter','postService','voteService', 'about'])
+angular.module('feelz', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map','scratch','main','profile','profileService','feedNew','feedHot','post','momentfilter','postService','voteService', 'about', 'cloudAnimation'])
 
  .config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
    $httpProvider.interceptors.push('authInterceptor');
@@ -36,7 +36,7 @@ angular.module('feelz', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map',
         templateUrl: './template/about.html'
       })
       .otherwise({
-        redirectTo: '/login'
+        redirectTo: '/'
       })
 
   }]);
