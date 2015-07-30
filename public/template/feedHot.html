@@ -16,7 +16,7 @@
       <div class="feedMessage">
           <div class="{{feed.image_url ? 'truncatedText' : ''}} {{feed.emotion}}color">{{feed.message}}</div>
           <image ng-hide="{{feed.image_url == null}}" ng-src="{{feed.image_url}}"/>
-          <p><a ng-click="goToMap(feed.id)"><i class = "icon ion-android-locate"></i> {{feed.location_name}} </a> <i class= "icon ion-android-time"></i>{{feed.timestamp | fromNow}}</p>
+          <p><a class="pointer-on-hover" ng-click="goToMap(feed.id)"><i class = "icon ion-android-locate"></i> {{feed.location_name}} </a> <i class= "icon ion-android-time"></i>{{feed.timestamp | fromNow}}</p>
       </div>
     </li>
   </ul>
