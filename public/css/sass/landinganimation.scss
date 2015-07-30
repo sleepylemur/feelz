@@ -42,10 +42,11 @@
   }
   90% {
     opacity: 1;
+    transform: scale(1);
   }
   100% {
     opacity: 0;
-    transform: translate(600px,0px);
+    transform: translate(600px,0px) scale(1.2);
   }
 }
 @keyframes floatleft {
@@ -103,5 +104,14 @@
   }
   100% {
     opacity: 0;
+    transform: scale(1.5);
   }
+}
+
+.mirror{
+  -moz-transform: scale(-1, 1);
+  -webkit-transform: scale(-1, 1);
+  -o-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  transform: scale(-1, 1);
 }
