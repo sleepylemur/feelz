@@ -7,7 +7,8 @@ angular.module('authinterceptor', [])
          config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
 
          // if no token, redirect to home, unless path === signup page.
-       } else if ($location.$$path !== '/signup' || $location.$$path !== '/login'){
+       } else if ($location.$$path !== '/signup' && $location.$$path !== '/login' && $location.$$path !== '/'){
+         console.log('redirect: ',$location.$$path);
         $location.path('');
        }
        return config;

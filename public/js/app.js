@@ -5,6 +5,9 @@ angular.module('feelz', ['ngRoute', 'authinterceptor', 'login', 'signup', 'map',
  .config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
    $httpProvider.interceptors.push('authInterceptor');
     $routeProvider
+      .when('/', {
+        templateUrl: '../template/landing.html'
+      })
       .when('/login', {
         templateUrl: '../template/login.html'
       })
