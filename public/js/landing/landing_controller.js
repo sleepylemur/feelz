@@ -3,6 +3,7 @@ angular.module('landing', [])
   .controller('LandingCtrl', ['cloudAnimation','$rootScope','$scope','$http','$window','$location', function(cloudAnimation, $rootScope, $scope, $http, $window, $location){
     window.onload = function(){
         $('#intro')[0].style.animation = "fadeInBack 3s infinite linear"; 
+        stream();
         setInterval(stream, 3000);
     };
     var counter = 0; 
