@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="150px"
+	 height="150px" viewBox="0 0 150 150" enable-background="new 0 0 150 150" xml:space="preserve">
+
+	<g id="rain">
+
+			<line fill="none" stroke="#82CFFD" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10" x1="28" y1="74" x2="28" y2="83"/>
+
+			<line fill="none" stroke="#82CFFD" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10" x1="40" y1="103" x2="40" y2="112"/>
+
+			<line fill="none" stroke="#82CFFD" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10" x1="59" y1="84" x2="59" y2="93"/>
+
+			<line fill="none" stroke="#82CFFD" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10" x1="74" y1="64" x2="74" y2="73"/>
+
+			<line fill="none" stroke="#82CFFD" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10" x1="96" y1="75" x2="96" y2="84"/>
+
+			<line fill="none" stroke="#82CFFD" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10" x1="115" y1="92" x2="115" y2="101"/>
+	</g>
+
+	<path fill="#FFFFFF" stroke="#0033FF" stroke-width="2" stroke-miterlimit="10" d="M91.69,49.315
+		C41.646,21.903,18.948,79.76,18.948,79.76S0.463,117,25.084,117c1.902,0,28.021,0,28.021,0h1.786c0,0,16.072-24.109,32.146,0h2.679
+		h33.932c36.609-23.216-4.465-41.075-4.465-41.075c-18.466-49.242-51.012-15.083-51.012-15.083"/>
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="37" y1="81.6787" x2="62.9111" y2="81.6787">
+		<stop  offset="0" style="stop-color:#FFFFFF"/>
+		<stop  offset="1" style="stop-color:#0099FF"/>
+	</linearGradient>
+	<polyline fill="url(#SVGID_1_)" id="tween" stroke="#0033FF" stroke-width="2" stroke-miterlimit="10" points="37,79 55.784,79 62.911,84.357
+			">
+		<animateTransform id= "tween"
+				attributeName = "transform"
+				attributeType = "XML"
+				type = "translate"
+				begin = ".5"
+				dur ="3s"
+				values = "0,3; 0, -3; 0,3"
+				repeatCount = "3"/>
+	</polyline>
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="85" y1="86.7949" x2="118.834" y2="86.7949">
+		<stop  offset="0" style="stop-color:#FFFFFF"/>
+		<stop  offset="1" style="stop-color:#0099FF"/>
+	</linearGradient>
+	<polyline fill="url(#SVGID_2_)" stroke="#0033FF" stroke-width="2" stroke-miterlimit="10" points="85,83 109.807,83
+		118.834,90.59 	">
+		<animateTransform id= "tween"
+				attributeName = "transform"
+				attributeType = "XML"
+				type = "translate"
+				begin = ".5"
+				dur ="3s"
+				values = "0,3; 0, -3; 0,3"
+				repeatCount = "3"/>
+	</polyline>
+	<path fill="none" stroke="#0033FF" id="tween" stroke-width="1.7859" stroke-miterlimit="10" d="M127.219,75.925"/>
+
+
+</svg>

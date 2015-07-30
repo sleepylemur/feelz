@@ -139,7 +139,7 @@ angular.module('mapinitializer', ['postService'])
 
 
       mappy.rantHeat = new google.maps.visualization.HeatmapLayer({data: rants, gradient: rantgradient, radius: 0.0030, dissipating: false});
-      mappy.raveHeat = new google.maps.visualization.HeatmapLayer({data: raves, gradient: ravegradient, radius: 0.0030, dissipating: false, maxIntensity:});
+      mappy.raveHeat = new google.maps.visualization.HeatmapLayer({data: raves, gradient: ravegradient, radius: 0.0030, dissipating: false});
 
       mappy.rantHeat.setMap(mappy.pandaMap);
       mappy.raveHeat.setMap(mappy.pandaMap);
