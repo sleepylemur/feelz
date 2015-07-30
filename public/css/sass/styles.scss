@@ -338,6 +338,9 @@ header {
     color: $rantcolor;
   }
 }
+.pointer-on-hover {
+  cursor: pointer;
+}
 .option{
   padding: .2em;
   transform:translateY(50%);
