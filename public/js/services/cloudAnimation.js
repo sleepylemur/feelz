@@ -54,7 +54,7 @@ angular.module('cloudAnimation', [])
         tears[curcloud].style.left = target[0] - 218 - 75 + "px";
         puddles[curcloud].style.top = target[1] - 10 + "px";
         puddles[curcloud].style.left = target[0] - 218 - 15 + "px";
-        var speed = Math.floor(Math.random()*50)/10+20;
+        var speed = Math.floor(Math.random()*50)/10+10;
         tears[curcloud].style.animation = 'cry '+speed+'s linear infinite';
         puddles[curcloud].style.animation = 'pool '+speed+'s linear infinite';
         if (Math.random() > 0.5) { // choose left or right side

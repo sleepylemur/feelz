@@ -1,4 +1,7 @@
 <div class='animcontainer' ng-controller="LandingCtrl">
+<button ng-click='openLogin()' class="btn-flat right">login</button>
+<button ng-click='openSignup()' class="btn-flat right">Sign up</button>
+
   <object type="image/svg+xml" data="/images/logoLarge.svg" max-width="80%"></object>
   <div class='animcenterer'>
     <object class="tear" type="image/svg+xml" data="../svg/rains.svg"></object>
@@ -7,30 +10,75 @@
     <object class="tear" type="image/svg+xml" data="../svg/rains.svg"></object>
     <object class="tear" type="image/svg+xml" data="../svg/rains.svg"></object>
     <object class="tear" type="image/svg+xml" data="../svg/rains.svg"></object>
-    <object class="tear" type="image/svg+xml" data="../svg/rains.svg"></object>
-    <object class="tear" type="image/svg+xml" data="../svg/rains.svg"></object>
-    <object class="tear" type="image/svg+xml" data="../svg/rains.svg"></object>
+
     <object class="puddle"></object>
     <object class="puddle"></object>
     <object class="puddle"></object>
     <object class="puddle"></object>
     <object class="puddle"></object>
     <object class="puddle"></object>
-    <object class="puddle"></object>
-    <object class="puddle"></object>
-    <object class="puddle"></object>
+
     <object class="cloud" type="image/svg+xml" data="../svg/sad-04.svg"></object>
     <object class="cloud" type="image/svg+xml" data="../svg/sad-03.svg"></object>
     <object class="cloud" type="image/svg+xml" data="../svg/sad-04.svg"></object>
     <object class="cloud" type="image/svg+xml" data="../svg/sad-03.svg"></object>
     <object class="cloud" type="image/svg+xml" data="../svg/sad-02.svg"></object>
     <object class="cloud" type="image/svg+xml" data="../svg/sad-04.svg"></object>
-    <object class="cloud" type="image/svg+xml" data="../svg/sad-03.svg"></object>
-    <object class="cloud" type="image/svg+xml" data="../svg/sad-04.svg"></object>
-    <object class="cloud" type="image/svg+xml" data="../svg/sad-02.svg"></object>
+
   </div>
 
   <div class="manhattanblock">
     <object id="manhattan" type="image/svg+xml" data="../svg/grey_manhattan.svg"> manhattan block </object>
   </div>
+
+
+  <div id="logInModal" class = "modal">
+    <form class="container col s10 m8 l6" auto-complete = "off" ng-submit="login()">
+
+    <div style="height: 64px"></div>
+        <div class="input-field col s6">
+         <label for ="email"><i class = "icon ion-email"></i> email </label>
+        <input type = "text"  class="validate" id = "email" ng-model = "user.email">
+    </div>
+
+      <div class="input-field col s6">
+        <label for ="password"><i class = "icon ion-lock-combination"></i> password </label>
+        <input type = "password" class="validate" id = "password" ng-model = "user.password">
+      </div>
+    <button type='submit' id="login" class="waves-effect waves-light btn right">login</button>
+    </form>
+  </div>
+
+
+  <div id = "signUpModal" class = "modal">
+    <form class="maincontent container col s9 m6 l3" ng-submit="signUp()" autocomplete="off" novalidate>
+
+      <div class="input-field col s9 m6 l3">
+          <label for ="username"><i class = "icon ion-umbrella"></i> username </label>
+          <input type = "text"  id="username" ng-model="user.username"  ng-change="usernameerror = ''">
+        <div class="formerror">{{usernameerror}}</div>
+      </div>
+
+      <div class="input-field col s9 m6 l3">
+        <label for ="email"><i class = "icon ion-email"></i> email </label>
+        <input type = "text"  id="email" ng-model="user.email" ng-change="emailerror = ''" ng-blur="validateEmail()">
+        <div class="formerror">{{emailerror}}</div>
+      </div>
+
+      <div class="input-field col s9 m6 l3">
+        <label for ="password"><i class = "icon ion-lock-combination"></i> password </label>
+        <input type = "password" id="password" ng-model="user.password" ng-change="validatePassword()" ng-blur="passwordblur = true;validatePassword()">
+      </div>
+
+      <div class="input-field col s9 m6 l3">
+        <label for ="confirm password"><i class = "icon ion-lock-combination"></i> confirm password </label>
+        <input type = "password" id="confirmpassword" ng-model="user.confirmpassword" ng-change="validatePassword()" ng-blur="confirmblur = true;validatePassword()">
+        <div class="formerror">{{passworderror}}</div>
+      </div>
+
+      <button type="submit" class="waves-effect waves-light btn right">join</a>
+    </form>
+
+  </div>
+
 </div>

@@ -6,7 +6,7 @@ angular.module('login', [])
     ga('send', 'pageview', '/#/login');
 
     $scope.user = {}
-    $scope.submit = function(e){
+    $scope.login = function(e){
       // google analytics
       ga('send', 'event', 'form', 'submit', 'login form submit');
 
