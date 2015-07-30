@@ -1,12 +1,41 @@
 <div class= "maincontent" ng-controller="profileCtrl">
   <div ng-hide="check" class="profileButtons">
-    <button ng-click="signOut()"  class="btn-floating"><i class = "small icon ion-log-out"></i>logout</button>
-    <button ng-click="editProfile()"  class="btn-floating"><i class = "small icon ion-edit"></i>edit Profile</button>
+    <button ng-click="signOut()"  class="btn-flat">logout</button>
+    <button ng-hide="editMode" ng-click="editMode = true"  class="btn-flat">edit Profile</button>
+    <button ng-show="editMode" ng-click="cancelEdit()"  class="btn-flat">cancel</button>
+    <button ng-show="editMode" ng-click="submitEdit()"  class="btn-flat">save changes</button>
   </div>
 
   <div class = "profile_content">
-    <img src="{{profile.avatar_image_url}}"></img>
-    <h3> {{profile.username}}</h3>
+    <img ng-hide="editMode" src="{{profile.avatar_image_url}}"></img>
+    <form class="avatarEditBox" ng-click="fileDialog()" ng-show="editMode" autocomplete="off" novalidate>
+
+      <div class="imagebox" ng-show="profileEdit.avatar_image_url">
+        <img id="avatarimagepreview" ng-src="{{profileEdit.avatar_image_url}}"></img>
+      </div>
+      <div class="btn-flat">
+        change avatar image
+        <input id="avatarfilepicker" type="file" onchange="angular.element(this).scope().uploadFile()" style="position:absolute;left:-9999px">
+      </div>
+    </form>
+    <div ng-hide="editMode">
+      <h3> {{profile.username}}</h3>
+      <h3> {{profile.email}}</h3>
+    </div>
+    <form ng-show="editMode">
+      <div class="row">
+        <div class="input-field col s12 m6 offset-m3">
+          <label class="active">username</label>
+          <input name="username" type="text" ng-model="profileEdit.username"><br>
+        </div>
+      </div>
+      <div class='row'>
+        <div class="input-field col s12 m6 offset-m3">
+          <label class="active">email</label>
+          <input name="email" type="text" ng-model="profileEdit.email">
+        </div>
+      </div>
+    </form>
 
     <ul class="postList">
       <li class="postRow {{post.emotion}}ON" ng-repeat="post in posts">
@@ -19,17 +48,5 @@
     </ul>
   </div>
   <div ng-include src="'template/navbar.html'"></div>
-
-
-    <form class="modal" id="editProfileModal" ng-submit="editProfile()" autocomplete="off" novalidate>
-      <div class="btn-flat" ng-click="fileDialog()">
-        change avatar image
-        <input id="filepicker" type="file" onchange="angular.element(this).scope().uploadFile()" style="position:absolute;left:-9999px">
-      </div>
-
-      <div class="imagebox" ng-show="profile.avatar_image_url">
-        <image id="imagepreview" ng-src="{{profile.avatar_image_url}}"></image>
-      </div>
-    </form>
 
 </div>

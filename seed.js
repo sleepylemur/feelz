@@ -9,8 +9,7 @@ Db.reset().then(function() {
 
   var fakeUsers = [];
 
-  fakeUsers.push({username: 'e', email: 'e@e.com', password: 'e'})
-  fakeUsers.push({username: 'dave', email: 'dave@dave.com', password: 'password'})
+  fakeUsers.push({username: 'e', email: 'e@e.com', password: 'e', avatar_image_url: '/images/avatars/blavatars-06.png'})
 
   // composes array of fake data objects
   for (var i = 0; i < 0; i++){
@@ -24,7 +23,7 @@ Db.reset().then(function() {
   // feeds fake user data into the db
   Promise.map(fakeUsers, function(e){
     return Db.digestPassword(e.password).then(function(password_digest) {
-      return db.none("INSERT INTO users (username,email,password) VALUES ($1,$2,$3)",[e.username,e.email,password_digest]);
+      return db.none("INSERT INTO users (username,email,password,avatar_image_url) VALUES ($1,$2,$3,$4)",[e.username,e.email,password_digest,e.avatar_image_url]);
     });
   }).then(function(){
     console.log('added users');

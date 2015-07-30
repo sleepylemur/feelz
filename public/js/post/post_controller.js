@@ -1,6 +1,5 @@
 angular.module('post', [])
 .controller('postCtrl', ['$scope', '$location', '$routeParams', 'postService', 'voteService', function($scope, $location, $routeParams, postService, voteService){
-  
   voteService.getVotes().then(function(data) {
     $scope.votes = data;
   });

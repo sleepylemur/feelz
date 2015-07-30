@@ -25,6 +25,7 @@ angular.module('main',['postService', 'mapinitializer'])
     $scope.post = {};
     // open modal to write new post
     $scope.newPost = function() {
+      $scope.post = {};
       $('#modalNewPost').openModal({
         complete: function(){
           $scope.post={};
