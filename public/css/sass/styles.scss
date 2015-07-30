@@ -338,6 +338,9 @@ header {
     color: $rantcolor;
   }
 }
+.pointer-on-hover {
+  cursor: pointer;
+}
 .option{
   padding: .2em;
   transform:translateY(50%);
@@ -363,6 +366,13 @@ header {
 @media (max-width: 460px) {
   .profileButtons {
     position: relative;
+  }
+}
+.pick{
+  background-color: black; 
+  color: white;
+  h2{
+    margin: .5em;
   }
 }
 .image-holder{

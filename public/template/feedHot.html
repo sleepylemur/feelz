@@ -6,7 +6,7 @@
   </ul>
 
   <ul class="feedList">
-    <li class="feedRow" ng-repeat="feed in feeds" ng-click="loadDetail(feed.id)">
+    <li class="feedRow pointer-on-hover" ng-repeat="feed in feeds" ng-click="loadDetail(feed.id)">
       <div class="listVote">
         <i ng-hide="votes[feed.id]" class="{{feed.emotion}}color waves-effect icon-large ion-ios-bolt" ng-click="voteService.addVote(feed.id); $event.stopPropagation()"></i>
         <i ng-show="votes[feed.id]" class="{{feed.emotion}}colorlight icon-large ion-ios-bolt"></i>

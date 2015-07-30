@@ -1,3 +1,9 @@
+#intro{
+  position: absolute;
+  z-index: 1000; 
+  left: 30%;
+  font-size: 3em;
+}
 .manhattanblock {
   text-align: center;
 }
@@ -14,6 +20,12 @@
   position: absolute;
   left: -9999px;
   width: 500px;
+}
+.raveMSG{
+  color: #ffd54f;
+}
+.rantMSG{
+  color: #3f51b5;
 }
 .cloud {
   position: absolute;
@@ -41,7 +53,20 @@
 #manhattan {
   pointer-events: none;
 }
-
+@keyframes fadeInBack{
+  0%{
+    opacity:.5;
+    transform: scale(0);
+  }
+  50%{
+    opacity: 1;
+    transform: scale(1);
+  }
+  100%{
+    opacity: .8;
+    transform: scale(1.1);
+  }
+}
 @keyframes floatright {
   0% {
     transform: translate(-600px,0px);
@@ -123,11 +148,8 @@
   60% {
     opacity: 0;
   }
-  61% {
-    opacity: 1;
-  }
   80% {
-    opacity: 0;
+    opacity: 1;
   }
   100% {
     opacity: 0;

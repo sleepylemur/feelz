@@ -59,7 +59,7 @@ angular.module('cloudAnimation', [])
         puddles[curcloud].style.top = target[1] - 10 + "px";
         puddles[curcloud].style.left = target[0] - 218 - 15 + "px";
         msg[curcloud].style.top = target[1] - 10 + "px";
-        msg[curcloud].style.left = target[0] - 218 - 15 + "px";
+        msg[curcloud].style.left = target[0] - 218 - 30 + "px";
         var speed = Math.floor(Math.random()*50)/10+10;
         tears[curcloud].style.animation = 'cry '+speed+'s linear infinite';
         puddles[curcloud].style.animation = 'pool '+speed+'s linear infinite';
@@ -85,7 +85,6 @@ angular.module('cloudAnimation', [])
       }
       function puddleTrigger(target, color) {
         console.log('puddle at: ',target, color);
-      
       }
 
 
