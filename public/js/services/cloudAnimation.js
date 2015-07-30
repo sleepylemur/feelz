@@ -45,8 +45,12 @@ angular.module('cloudAnimation', [])
       var clouds = document.getElementsByClassName('cloud');
       var tears = document.getElementsByClassName('tear');
       var puddles = document.getElementsByClassName('puddle');
+      var msg = document.getElementsByClassName('msg');
+
+
 
       var interval = setInterval(function() {
+        // target is [x,y] coords for the puddle where [0,0] is the top middle of the screen
         var target = pointInsideTriangle(triangles[weightedRandom(areas)]);
         clouds[curcloud].style.top = target[1] - 120 - 75 + "px";
         clouds[curcloud].style.left = target[0] - 218 - 50 + "px";
@@ -54,23 +58,38 @@ angular.module('cloudAnimation', [])
         tears[curcloud].style.left = target[0] - 218 - 75 + "px";
         puddles[curcloud].style.top = target[1] - 10 + "px";
         puddles[curcloud].style.left = target[0] - 218 - 15 + "px";
+        msg[curcloud].style.top = target[1] - 10 + "px";
+        msg[curcloud].style.left = target[0] - 218 - 15 + "px";
         var speed = Math.floor(Math.random()*50)/10+10;
         tears[curcloud].style.animation = 'cry '+speed+'s linear infinite';
         puddles[curcloud].style.animation = 'pool '+speed+'s linear infinite';
+        msg[curcloud].style.animation = 'showmsg '+speed+'s linear infinite';
+
+        puddles[curcloud].style.background = msg[curcloud].getAttribute('data-emotion') == 'rave' ? "#ffd54f" : "#3f51b5";
         if (Math.random() > 0.5) { // choose left or right side
           clouds[curcloud].style.animation = 'floatright '+speed+'s linear infinite';
-          puddles[curcloud].style.background = "#3f51b5";
         } else {
           clouds[curcloud].style.animation = 'floatleft '+speed+'s linear infinite';
-          puddles[curcloud].style.background = "#ffd54f";
-          clouds[curcloud].className = clouds[curcloud].className + " mirror";
         }
+        setTimeout(puddleStart.bind(null,speed*1000,target), speed*1000*0.6, puddles[curcloud].style.background);
         curcloud++;
         if (curcloud >= clouds.length) {
           curcloud = 0;
           clearInterval(interval);
         }
       },700);
+
+      function puddleStart(timeToNext, target, color) {
+        setInterval(puddleTrigger.bind(null,target), timeToNext, color);
+        puddleTrigger(target, color);
+      }
+      function puddleTrigger(target, color) {
+        console.log('puddle at: ',target, color);
+      
+      }
+
+
+
 
     }
     return {runClouds: runClouds}

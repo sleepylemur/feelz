@@ -10,6 +10,11 @@
   left: 50%;
   position: absolute;
 }
+.msg{
+  position: absolute;
+  left: -9999px;
+  width: 500px;
+}
 .cloud {
   position: absolute;
   height: 100px;
@@ -55,7 +60,7 @@
 }
 @keyframes floatleft {
   0% {
-    transform: translate(600px,0px);
+    transform: translate(600px,0px) scaleX(-1);
     opacity: 0;
   }
   10% {
@@ -66,7 +71,7 @@
   }
   100% {
     opacity: 0;
-    transform: translate(-600px,0px);
+    transform: translate(-600px,0px) scaleX(-1);
   }
 }
 @keyframes cry {
@@ -102,7 +107,7 @@
   61% {
     opacity: 1;
   }
-  70% {
+  80% {
     opacity: 0;
     transform: scale(1.0,1.0);
   }
@@ -111,11 +116,20 @@
     transform: scale(1.5);
   }
 }
-
-.mirror{
-  -moz-transform: scale(-1, 1);
-  -webkit-transform: scale(-1, 1);
-  -o-transform: scale(-1, 1);
-  -ms-transform: scale(-1, 1);
-  transform: scale(-1, 1);
+@keyframes showmsg {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 0;
+  }
+  61% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
 }
