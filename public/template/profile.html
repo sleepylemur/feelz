@@ -1,19 +1,19 @@
 <div class= "maincontent" ng-controller="profileCtrl">
-  <div ng-hide="check" class="houseKeeping"> 
+  <div ng-hide="check" class="profileButtons">
     <button ng-click="signOut()"  class="btn-floating"><i class = "small icon ion-log-out"></i>logout</button>
     <button ng-click="editProfile()"  class="btn-floating"><i class = "small icon ion-edit"></i>edit Profile</button>
   </div>
-        
+
   <div class = "profile_content">
     <img src="{{profile.avatar_image_url}}"></img>
     <h3> {{profile.username}}</h3>
 
     <ul class="postList">
       <li class="postRow {{post.emotion}}ON" ng-repeat="post in posts">
-        <small><i class = "icon ion-android-locate"></i> {{post.location_name}}  | <i class= "icon ion-android-time"></i>{{post.timestamp | fromNow}}</small>
+        <small><span ng-click="goToMap(post.id)"><i class = "icon ion-android-locate"></i> {{post.location_name}}</span> | <i class= "icon ion-android-time"></i> {{post.timestamp | fromNow}}</small>
         <div class="postMessage" ng-click="loadDetail(post.id)">
-            <img ng-hide="{{post.image_url == null}}" ng-src="{{post.image_url}}"/>
-            <div>{{post.message}}</div>
+          <img ng-hide="{{post.image_url == null}}" ng-src="{{post.image_url}}"/>
+          <div>{{post.message}}</div>
         </div>
       </li>
     </ul>
@@ -23,7 +23,7 @@
 
     <form class="modal" id="editProfileModal" ng-submit="editProfile()" autocomplete="off" novalidate>
       <div class="btn-flat" ng-click="fileDialog()">
-        change avatar image 
+        change avatar image
         <input id="filepicker" type="file" onchange="angular.element(this).scope().uploadFile()" style="position:absolute;left:-9999px">
       </div>
 

@@ -90,5 +90,4 @@ angular.module('landing', [])
           });
       }
     };
-
 }]);
