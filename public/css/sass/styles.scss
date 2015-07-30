@@ -351,13 +351,13 @@ header {
   color:white;
   background-color: black;
 }
-.houseKeeping{
+.profileButtons{
   position: fixed;
   right:1em;
   button{
     float: right;
     top:40px;
-    background-color: pink;
+    background-color: $rantcolor;
     z-index: 1000;
     margin: .2em;
   }
@@ -407,7 +407,7 @@ header {
 .about{
   margin: 0 auto;
   h3{
-    margin: 0; 
+    margin: 0;
     padding: 0;
   }
   small{
@@ -415,7 +415,7 @@ header {
   }
   li{
     border-bottom: dashed 1px #cccccc;
-    list-style: none; 
+    list-style: none;
     display: inline-block;
     width: 25em;
     text-align: center;
@@ -424,7 +424,6 @@ header {
     background-color: pink;
   }
   img{
-    max-width: 8em; 
+    max-width: 8em;
   }
 }
-
