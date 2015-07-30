@@ -9,7 +9,7 @@
     <h3> {{profile.username}}</h3>
 
     <ul class="postList">
-      <li class="postRow {{post.emotion}}ON" ng-repeat="post in posts">
+      <li class="pointer-on-hover postRow {{post.emotion}}ON" ng-repeat="post in posts">
         <small><span ng-click="goToMap(post.id)"><i class = "icon ion-android-locate"></i> {{post.location_name}}</span> | <i class= "icon ion-android-time"></i> {{post.timestamp | fromNow}}</small>
         <div class="postMessage" ng-click="loadDetail(post.id)">
           <img ng-hide="{{post.image_url == null}}" ng-src="{{post.image_url}}"/>
