@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="/build/styles.css">
   </head>
   <body>
-    <img src="/images/logo.png" width="195" height="63">
+    <object type="image/svg+xml" data="/images/logoLarge.svg" max-width="80%"></object>
+
     <div class='animholder'>
       <object class="tear" type="image/svg+xml" data="../svg/rains.svg"></object>
       <object class="tear" type="image/svg+xml" data="../svg/rains.svg"></object>
@@ -95,10 +96,12 @@
         var speed = Math.floor(Math.random()*50)/10+10;
         tears[curcloud].style.animation = 'cry '+speed+'s linear infinite';
         puddles[curcloud].style.animation = 'pool '+speed+'s linear infinite';
-        if (Math.random() < 0.5) { // choose left or right side
+        if (Math.random() > 0.5) { // choose left or right side
           clouds[curcloud].style.animation = 'floatright '+speed+'s linear infinite';
+          puddles[curcloud].style.background = "#3f51b5";
         } else {
           clouds[curcloud].style.animation = 'floatleft '+speed+'s linear infinite';
+          puddles[curcloud].style.background = "#ffd54f";
         }
         curcloud++;
         if (curcloud >= clouds.length) {
