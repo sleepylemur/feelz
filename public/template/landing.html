@@ -1,7 +1,6 @@
 <div class='animcontainer' ng-controller="LandingCtrl">
 <button ng-click='openLogin()' class="btn-flat right">login</button>
 <button ng-click='openSignup()' class="btn-flat right">Sign up</button>
-
   <object type="image/svg+xml" data="/images/logoLarge.svg" max-width="80%"></object>
   <div class='animcenterer'>
     <object class="tear" type="image/svg+xml" data="../svg/rains.svg"></object>
@@ -18,12 +17,12 @@
     <object class="puddle"></object>
     <object class="puddle"></object>
 
-    <p class="msg" data-emotion="rave">happy hour at GA on</p>
-    <p class="msg" data-emotion="rant">A train is stuck on 116th again ~. ~</p>
-    <p class="msg" data-emotion="rant">the AAAAyA parade better be over soon</p>
-    <p class="msg" data-emotion="rave">free ice cream @ union sq. who knew?  benJerry did it again !!</p>
-    <p class="msg" data-emotion="rant">i lost my best friend. . . in this crowd</p>
-    <p class="msg" data-emotion="rave">hellooo world</p>
+    <p class="msg raveMSG" data-emotion="rave">happy hour around the corner</p>
+    <p class="msg rantMSG" data-emotion="rant">A train is stuck here again ~. ~</p>
+    <p class="msg rantMSG" data-emotion="rant">the AAAAyA PARADE better be over soon ...</p>
+    <p class="msg raveMSG" data-emotion="rave">free ice cream COME QUICK !!</p>
+    <p class="msg rantMSG" data-emotion="rant">i lost my best friend. . . in this crowd</p>
+    <p class="msg raveMSG" data-emotion="rave">sunset tour settting off </p>
 
     <object class="cloud" type="image/svg+xml" data="../svg/sad-04.svg"></object>
     <object class="cloud" type="image/svg+xml" data="../svg/sad-03.svg"></object>
@@ -33,6 +32,8 @@
     <object class="cloud" type="image/svg+xml" data="../svg/sad-04.svg"></object>
 
   </div>
+
+<h1 id="intro"></h1>
 
   <div class="manhattanblock">
     <object id="manhattan" type="image/svg+xml" data="../svg/grey_manhattan.svg"> manhattan block </object>
@@ -54,6 +55,7 @@
     <button type='submit' id="login" class="waves-effect waves-light btn right">login</button>
     </form>
   </div>
+
 
 
   <div id = "signUpModal" class = "modal">

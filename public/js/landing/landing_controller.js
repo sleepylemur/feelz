@@ -1,7 +1,21 @@
 angular.module('landing', [])
 
   .controller('LandingCtrl', ['cloudAnimation','$rootScope','$scope','$http','$window','$location', function(cloudAnimation, $rootScope, $scope, $http, $window, $location){
-
+    window.onload = function(){
+        $('#intro')[0].style.animation = "fadeInBack 3s infinite linear"; 
+        setInterval(stream, 3000);
+    };
+    var counter = 0; 
+    var text = ["buiding steam ?", "vent on the spot ~~! ", "LET IT OUT", " --> Broadcast", "? what's happening", "RAVE or RANT"]; 
+    function stream(){
+        if(counter < text.length){
+            console.log(text[counter]);
+          $('#intro')[0].textContent = text[counter]; 
+          counter++; 
+        }else{
+            $('#intro')[0].textContent = ""; 
+        }
+    }
     // google analytics
     ga('send', 'pageview', '/#/landing');  
     cloudAnimation.runClouds();
