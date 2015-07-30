@@ -121,14 +121,13 @@ h1, h2, h3, h4, h5, h6{
 }
 .feedList{
   width: 100%;
-  margin: auto;
+  margin: 0 auto 0 auto;
   position: relative;
-  top: 10px;
 }
 .feedRow {
   vertical-align: middle;
-  min-width: 25em;
-  max-height: 15em;
+  max-width: 90%;
+  width: 25em;
   display: inline-block;
   position: relative;
   border: solid 1px rgba(51, 51, 51, 0.12);
@@ -146,7 +145,7 @@ h1, h2, h3, h4, h5, h6{
 .feedMessage{
   position: relative;
   display: inline-block;
-  max-width: 20em;
+  max-width: 80%;
   left: 4em;
   div{
     font-size:1em;
@@ -157,6 +156,7 @@ h1, h2, h3, h4, h5, h6{
     height: 10em;
   }
   p{
+    margin: 0;
     bottom:.2em;
     font-size: .8em;
   }
@@ -239,20 +239,20 @@ html,body {
 }
 .feedcontent {
   position:relative;
-  top: 100px;
+  top: 80px;
   margin-bottom: 64px;
 }
 .maincontent {
   position:relative;
-  top: 64px;
-  height: calc(100% - (64px + 64px));
+  top: 40px;
+  height: calc(100% - (64px + 40px));
   overflow: scroll;
 }
 #map-container {
   position: absolute;
   z-index: 1;
-  top: 64px;
-  height: calc(100% - (64px + 64px));
+  top: 40px;
+  height: calc(100% - (64px + 40px));
   width: 100%;
 }
 .maphide {
@@ -268,7 +268,7 @@ html,body {
 }
 
 header {
-  height: 64px;
+  height: 40px;
   position: fixed;
   transition: top .2s linear;
   top: 0px;
@@ -280,8 +280,8 @@ header {
     background: white;
     position: absolute;
     top:4px;
-    left: calc(50% - 90px);
-    height: 60px;
+    left: calc(50% - 55px);
+    height: 36px;
   }
 }
 
@@ -289,7 +289,7 @@ header {
 .topfixed{
   position: absolute;
   transition: top .2s linear;
-  top: 64px;
+  top: 40px;
 
   position: fixed;
   background-color: white;
@@ -302,7 +302,6 @@ header {
   width: 100%;
 }
 .navlist{
-  // line-height: 2;
   margin: 0;
   width: 100%;
   text-align:center;
@@ -352,7 +351,7 @@ header {
   right:1em;
   button{
     float: right;
-    top:5em;
+    top:40px;
     background-color: pink;
     z-index: 1000;
     margin: .2em;
@@ -371,4 +370,27 @@ header {
   }
 }
 
+.about{
+  margin: 0 auto;
+  h3{
+    margin: 0; 
+    padding: 0;
+  }
+  small{
+    font-size: .3em;
+  }
+  li{
+    border-bottom: dashed 1px #cccccc;
+    list-style: none; 
+    display: inline-block;
+    width: 25em;
+    text-align: center;
+  }
+  a:hover{
+    background-color: pink;
+  }
+  img{
+    max-width: 8em; 
+  }
+}
 

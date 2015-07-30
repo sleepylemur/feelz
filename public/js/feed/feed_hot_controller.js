@@ -7,15 +7,15 @@ angular.module('feedHot', ['momentfilter','postService','voteService'])
     $(window).scroll(function(event) {
 
       var scrollTopVal = $(this).scrollTop();
-      if (scrollTopVal < 40) {
+      if (scrollTopVal < 30) {
         $('header').css({top: '0px'});
-        $('#feedToggleBar').css({top: '64px'});
-      } else if(scrollTopVal > 40 && scrollTopVal - lastscroll < 0){
-        $('header').css({top: '-64px'});
+        $('#feedToggleBar').css({top: '40px'});
+      } else if(scrollTopVal > 30 && scrollTopVal - lastscroll < 0){
+        $('header').css({top: '-40px'});
         $('#feedToggleBar').css({top: '0px'});
       }else{
-        $('header').css({top: '-64px'});
-        $('#feedToggleBar').css({top: '-64px'});
+        $('header').css({top: '-40px'});
+        $('#feedToggleBar').css({top: '-40px'});
       }
       lastscroll = scrollTopVal;
     });
