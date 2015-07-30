@@ -1,7 +1,12 @@
 .manhattanblock {
   text-align: center;
 }
-.animholder {
+.animcontainer {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.animcenterer {
   left: 50%;
   position: absolute;
 }

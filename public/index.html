@@ -38,11 +38,9 @@
 
 
   <body ng-app="feelz" ng-controller = "mainCtrl">
-    <header ng-hide="{{$location.$$path=='/'}}">
-      <object class="title" id= "logo" type="image/svg+xml" data="images/logo.svg">feelz Co</object> 
+    <header ng-hide="$location.$$path=='/'">
+      <object class="title" id= "logo" type="image/svg+xml" data="images/logo.svg">feelz Co</object>
     </header>
-    <button> <a href="/#login">login</a></button>
-    <div ng-show="{{$location.$$path=='/'}}" ng-include src="'template/landing.html'"></div>
 
     <div class="{{$location.$$path == '/map' ? 'mapshow' : 'maphide'}}" id="map-container">
       <div id="map-canvas"></div>
